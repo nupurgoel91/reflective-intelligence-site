@@ -37,9 +37,9 @@ body{background:var(--bg-white);color:var(--body);font-family:var(--sans);font-w
 
 /* NAV */
 nav{position:fixed;top:0;left:0;right:0;z-index:900;display:flex;align-items:center;justify-content:space-between;padding:18px 52px;background:rgba(12,46,52,0.97);backdrop-filter:blur(12px);border-bottom:1px solid rgba(45,212,191,0.12)}
-.nav-logo{display:flex;align-items:center;gap:13px;text-decoration:none}
-.nav-logo img{width:40px;height:40px;object-fit:contain;border-radius:50%}
-.nav-logo-text{font-family:var(--serif);font-size:20px;font-style:italic;color:#e6faf8}
+.nav-logo{display:flex;align-items:center;gap:16px;text-decoration:none}
+.nav-logo img{width:52px;height:52px;object-fit:contain;border-radius:50%}
+.nav-logo-text{font-family:var(--serif);font-size:28px;font-style:italic;color:#e6faf8;letter-spacing:0.3px}
 .nav-links{display:flex;gap:32px;list-style:none;align-items:center}
 .nav-links a{font-family:var(--sans);font-size:13px;font-weight:300;letter-spacing:2.5px;text-transform:uppercase;color:var(--foam);text-decoration:none;opacity:0.75;transition:opacity 0.3s}
 .nav-links a:hover{opacity:1}
@@ -378,7 +378,7 @@ footer{background:#081e22;padding:64px 24px 40px;border-top:1px solid rgba(45,21
         <div class="section-label">For Researchers &amp; Therapists</div>
         <h2 class="section-h2">LumeRI is not a wellness app.<br/><em>It is a measurement instrument.</em></h2>
         <p class="section-body">Every session produces construct scores derived from the user's writing — grounded in validated psychological frameworks: Neff's Self-Compassion Scale, Blatt's introjective depression model, Pennebaker's LIWC, McAdams's narrative identity theory, and Gilbert's Compassion-Focused Therapy.</p>
-        <p class="section-body">We are actively seeking research collaborators. Write to us at <a href="mailto:lumeri.support@gmail.com" style="color:var(--brand-dark);font-weight:400;">lumeri.support@gmail.com</a></p>
+        <p class="section-body">We are actively seeking research collaborators. Write to us at <a href="/cdn-cgi/l/email-protection#0c607961697e65227f797c7c637e784c6b616d6560226f6361" style="color:var(--brand-dark);font-weight:400;"><span class="__cf_email__" data-cfemail="aec2dbc3cbdcc780dddbdedec1dcdaeec9c3cfc7c280cdc1c3">[email&#160;protected]</span></a></p>
       </div>
       <div class="reveal reveal-delay-2">
         <ul class="research-list">
@@ -467,8 +467,8 @@ footer{background:#081e22;padding:64px 24px 40px;border-top:1px solid rgba(45,21
       <ul>
         <li><a href="https://lumeri.co.in">LumeRI — the tool</a></li>
         <li><a href="https://linkedin.com/company/reflective-intelligence">LinkedIn</a></li>
-        <li><a href="mailto:lumeri.support@gmail.com">Write to us</a></li>
-        <li><a href="mailto:lumeri.support@gmail.com">Research collaboration</a></li>
+        <li><a href="/cdn-cgi/l/email-protection#462a332b23342f683533363629343206212b272f2a6825292b">Write to us</a></li>
+        <li><a href="/cdn-cgi/l/email-protection#80ecf5ede5f2e9aef3f5f0f0eff2f4c0e7ede1e9ecaee3efed">Research collaboration</a></li>
       </ul>
     </div>
   </div>
@@ -478,17 +478,10 @@ footer{background:#081e22;padding:64px 24px 40px;border-top:1px solid rgba(45,21
   </div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(e => { if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)} });
 },{threshold:0.08,rootMargin:'0px 0px -50px 0px'});
 document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
 
-document.querySelector('.email-form button').addEventListener('click',()=>{
-  const input=document.querySelector('.email-form input');
-  if(input.value&&input.value.includes('@')){
-    document.querySelector('.email-form').innerHTML='<p style="color:#80ede0;font-family:Cormorant Garamond,serif;font-style:italic;font-size:22px;padding:16px 0;">Thank you. The mirror awaits.</p>';
-  }
-});
-
-const
+document.querySelector('.email-form button').add
