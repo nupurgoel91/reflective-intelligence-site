@@ -208,12 +208,6 @@ section{position:relative;padding:120px 24px}
 .manifesto-text h3{font-family:var(--serif);font-size:28px;font-style:italic;color:var(--heading);margin-bottom:12px;line-height:1.3}
 .manifesto-text p{font-family:var(--sans);font-size:18px;line-height:1.85;color:var(--body);font-weight:300}
 
-/* RESEARCHERS */
-#researchers{background:var(--bg-light)}
-.research-cols{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
-.research-list{list-style:none;margin-top:32px}
-.research-list li{display:flex;align-items:flex-start;gap:16px;padding:18px 0;border-bottom:1px solid rgba(15,184,164,0.12);font-family:var(--sans);font-size:17px;color:var(--body);font-weight:300;line-height:1.65}
-.research-list li::before{content:'→';color:var(--brand);flex-shrink:0;margin-top:2px;font-size:18px}
 
 /* JOIN */
 #join{background:linear-gradient(160deg,var(--hero-bg) 0%,var(--hero-mid) 100%);text-align:center}
@@ -299,6 +293,30 @@ footer{background:#081e22;padding:64px 24px 40px;border-top:1px solid rgba(45,21
 @media(max-width:480px){
   .nav-logo-text{display:none}
 }
+
+/* ── FRAMEWORK SECTIONS ── */
+.iq-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:2px}
+.map-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.compass-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.inquiry-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.journey-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:8px}
+.inquiry-card{background:var(--bg-white);border:1px solid var(--card-border);border-radius:10px;padding:32px 28px;transition:all 0.3s;cursor:default}
+.inquiry-card:hover{box-shadow:0 8px 30px rgba(15,184,164,0.12);transform:translateY(-3px);border-color:rgba(15,184,164,0.4)}
+.map-stage{transition:background 0.3s}
+.map-stage:hover{background:rgba(15,184,164,0.18)!important}
+:root{--brand-dark:#0a8f7d;--muted:rgba(15,184,164,0.5);--hero-mid:#0a2e36;--bg-tint:rgba(15,184,164,0.06);--card-border:rgba(15,184,164,0.12);--label-txt:rgba(45,212,191,0.8);--soft:rgba(15,184,164,0.5)}
+
+/* ── MOBILE FRAMEWORK ── */
+@media(max-width:900px){
+  .iq-grid{grid-template-columns:1fr}
+  .map-grid,.compass-grid{grid-template-columns:1fr;gap:48px}
+  .inquiry-grid{grid-template-columns:1fr 1fr}
+  .journey-grid{grid-template-columns:repeat(4,1fr)}
+}
+@media(max-width:600px){
+  .inquiry-grid{grid-template-columns:1fr}
+  .journey-grid{grid-template-columns:1fr 1fr}
+}
 </style>
 </head>
 <body>
@@ -356,17 +374,31 @@ footer{background:#081e22;padding:64px 24px 40px;border-top:1px solid rgba(45,21
       </svg>
       <span class="nav-label">Manifesto</span>
     </a></li>
-
-    <!-- RESEARCH: magnifying glass — universally understood for research/explore -->
-    <li><a href="#researchers">
-      <svg class="nav-icon" viewBox="0 0 18 18" stroke-width="1.2">
-        <circle cx="7.5" cy="7.5" r="4.5"/>
-        <line x1="11" y1="11" x2="16" y2="16"/>
-      </svg>
-      <span class="nav-label">Research</span>
-    </a></li>
-
     <!-- FAQ: speech bubble with question mark -->
+        <li><a href="#rq">
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="9" cy="9" r="7"/><circle cx="9" cy="9" r="3"/>
+        <line x1="9" y1="2" x2="9" y2="0.5"/><line x1="9" y1="16" x2="9" y2="17.5"/>
+        <line x1="2" y1="9" x2="0.5" y2="9"/><line x1="16" y1="9" x2="17.5" y2="9"/>
+      </svg>
+      <span class="nav-label">RQ Framework</span>
+    </a></li>
+    <li><a href="#compass">
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="9" cy="9" r="7.5"/>
+        <polygon points="9,3 10.5,8 9,7 7.5,8" fill="currentColor" stroke="none"/>
+        <polygon points="9,15 7.5,10 9,11 10.5,10" fill="currentColor" opacity="0.4" stroke="none"/>
+        <line x1="1.5" y1="9" x2="16.5" y2="9" stroke-opacity="0.4"/>
+      </svg>
+      <span class="nav-label">Compass</span>
+    </a></li>
+    <li><a href="#journey">
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M9 2v14M5 5l4-3 4 3M5 13l4 3 4-3"/>
+        <line x1="6" y1="9" x2="12" y2="9" stroke-opacity="0.5"/>
+      </svg>
+      <span class="nav-label">Journey</span>
+    </a></li>
     <li><a href="#faq">
       <svg class="nav-icon" viewBox="0 0 18 18" stroke-width="1.2">
         <path d="M3,2 L15,2 Q16,2 16,3 L16,12 Q16,13 15,13 L7,13 L3,16 L3,13 Q2,13 2,12 L2,3 Q2,2 3,2 Z"/>
@@ -452,9 +484,9 @@ footer{background:#081e22;padding:64px 24px 40px;border-top:1px solid rgba(45,21
 <section id="science">
   <div class="container">
     <div class="reveal">
-      <div class="section-label">The Research</div>
+      <div class="section-label">The Foundation in Science</div>
       <h2 class="section-h2">The science that confirms<br/><em>what the ancients knew.</em></h2>
-      <p class="section-body">Every principle of Reflective Intelligence is grounded in decades of peer-reviewed research across neuroscience, clinical psychology, and cognitive science.</p>
+      <p class="section-body">Every principle of Reflective Intelligence is grounded in decades of research across neuroscience, cognitive science, and human psychology.</p>
     </div>
     <div class="science-grid">
       <div class="science-card reveal">
@@ -465,17 +497,17 @@ footer{background:#081e22;padding:64px 24px 40px;border-top:1px solid rgba(45,21
       <div class="science-card reveal">
         <div class="card-num">02</div>
         <div class="card-title">Writing changes your physical reality</div>
-        <div class="card-body">James Pennebaker's 40-year research programme showed that people who write about inner experiences visit the doctor at half the rate of those who don't. Over 200 replications confirmed: reduced anxiety, lower blood pressure, improved immune function. Narrative is how the mind integrates and moves on.</div>
+        <div class="card-body">Four decades of research on expressive writing show that honest self-expression — writing about what you are actually carrying — changes your physiology, reduces anxiety, and helps the mind integrate difficult experience. The page is not just a record. It is an instrument.</div>
       </div>
       <div class="science-card reveal">
         <div class="card-num">03</div>
         <div class="card-title">The Default Mode Network loops without witness</div>
-        <div class="card-body">The brain's internal narrator maintains a coherent sense of self using old data, unexamined assumptions, and outdated conclusions. High DMN activity is linked to depression and rumination. Metacognitive practice activates the prefrontal networks that can observe and edit these narratives — not suppress them, but see them clearly.</div>
+        <div class="card-body">The brain's internal narrator runs constantly — maintaining a story about who you are, using old data and unexamined assumptions. The practice of observing this narrator, rather than being run by it, is what neuroscience identifies as metacognition — and it is learnable.</div>
       </div>
       <div class="science-card reveal">
         <div class="card-num">04</div>
         <div class="card-title">Coherent narrative is health</div>
-        <div class="card-body">Across therapeutic traditions from psychoanalysis to narrative therapy, one mechanism consistently predicts recovery: the construction of a coherent narrative. Not a positive one — a coherent one, where events have causes, feelings have sources, and the person exists as the protagonist of their own story.</div>
+        <div class="card-body">One thing consistently predicts whether a person moves through difficulty: whether they can construct a coherent narrative of what happened. Not a positive story — a coherent one. Where events have causes, feelings have sources, and the person exists as the protagonist of their own life.</div>
       </div>
     </div>
     <div class="quote-block reveal" style="margin-top:80px;border-top:1px solid rgba(15,184,164,0.15);padding-top:64px;">
@@ -572,27 +604,204 @@ footer{background:#081e22;padding:64px 24px 40px;border-top:1px solid rgba(45,21
   </div>
 </section>
 
-<!-- RESEARCHERS -->
-<section id="researchers">
+<!-- IQ EQ RQ ══════════════════════════════════════════ -->
+<section id="rq" style="background:var(--bg-white);padding:110px 24px;">
   <div class="container">
-    <div class="research-cols">
-      <div class="reveal">
-        <div class="section-label">For Researchers &amp; Therapists</div>
-        <h2 class="section-h2">LumeRI is not a wellness app.<br/><em>It is a measurement instrument.</em></h2>
-        <p class="section-body">Every session produces construct scores derived from the user's writing — grounded in validated psychological frameworks: Neff's Self-Compassion Scale, Blatt's introjective depression model, Pennebaker's LIWC, McAdams's narrative identity theory, and Gilbert's Compassion-Focused Therapy.</p>
+    <div style="text-align:center;max-width:760px;margin:0 auto 64px;">
+      <div class="section-label" style="justify-content:center;">The Intelligence Framework</div>
+      <h2 class="section-h2" style="text-align:center;">The missing intelligence<br/><em>in the age of AI.</em></h2>
+      <p class="section-body" style="text-align:center;max-width:640px;margin:0 auto;">We have spent decades developing two forms of intelligence. But the complexity of modern life — and the rise of artificial intelligence — demands a third.</p>
+    </div>
+    <div class="iq-grid" style="margin-bottom:64px;">
+      <div style="background:var(--bg-light);padding:48px 36px;border-radius:10px 0 0 10px;border:1px solid var(--card-border);border-right:none;text-align:center;">
+        <div style="font-family:var(--serif);font-size:72px;font-style:italic;color:rgba(15,184,164,0.12);line-height:1;margin-bottom:12px;">IQ</div>
+        <div style="font-family:var(--sans);font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--soft);margin-bottom:16px;">Analytical Intelligence</div>
+        <p style="font-family:var(--sans);font-size:16px;color:var(--body);line-height:1.8;font-weight:300;">The ability to analyse, calculate, and solve problems. It powers science, technology, and rational thinking.</p>
+      </div>
+      <div style="background:var(--bg-tint);padding:48px 36px;border:2px solid var(--brand);text-align:center;position:relative;border-radius:10px;margin:-4px -2px;z-index:2;box-shadow:0 0 40px rgba(15,184,164,0.1);">
+        <div style="position:absolute;top:-1px;left:50%;transform:translateX(-50%);background:var(--brand);color:#040c0f;font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;padding:5px 16px;border-radius:0 0 6px 6px;font-weight:500;white-space:nowrap;">The Next Evolution</div>
+        <div style="font-family:var(--serif);font-size:72px;font-style:italic;color:var(--brand);line-height:1;margin-bottom:12px;">RQ</div>
+        <div style="font-family:var(--sans);font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--label-txt);margin-bottom:16px;">Reflective Intelligence</div>
+        <p style="font-family:var(--sans);font-size:16px;color:var(--body);line-height:1.8;font-weight:300;">The ability to observe one's own thinking, question assumptions, and gain deeper clarity. It enables insight, wisdom, and conscious action.</p>
+      </div>
+      <div style="background:var(--bg-light);padding:48px 36px;border-radius:0 10px 10px 0;border:1px solid var(--card-border);border-left:none;text-align:center;">
+        <div style="font-family:var(--serif);font-size:72px;font-style:italic;color:rgba(15,184,164,0.12);line-height:1;margin-bottom:12px;">EQ</div>
+        <div style="font-family:var(--sans);font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--soft);margin-bottom:16px;">Emotional Intelligence</div>
+        <p style="font-family:var(--sans);font-size:16px;color:var(--body);line-height:1.8;font-weight:300;">The ability to understand emotions, relationships, and social dynamics. It shapes leadership, empathy, and collaboration.</p>
+      </div>
+    </div>
+    <div style="text-align:center;padding:44px 40px;background:var(--hero-bg);border-radius:12px;max-width:820px;margin:0 auto;">
+      <p style="font-family:var(--serif);font-size:clamp(20px,2.8vw,32px);font-style:italic;color:#e8fdfb;line-height:1.6;margin-bottom:16px;">IQ solves problems.<br/>EQ understands people.<br/><em style="color:var(--lite);">RQ understands thinking itself.</em></p>
+      <p style="font-family:var(--sans);font-size:13px;letter-spacing:2px;text-transform:uppercase;color:rgba(45,212,191,0.5);line-height:1.8;">In an age of AI, analytical capability is increasingly automated.<br/>The true differentiator will be Reflective Intelligence.</p>
+    </div>
+  </div>
+</section>
 
+<!-- THE MAP ══════════════════════════════════════════ -->
+<section id="map" style="background:var(--hero-bg);padding:110px 24px;">
+  <div class="container">
+    <div class="map-grid">
+      <div class="reveal">
+        <div class="section-label" style="color:rgba(45,212,191,0.6);">The Reflective Intelligence Map</div>
+        <h2 class="section-h2" style="color:#e8fdfb;">How thinking<br/><em>evolves.</em></h2>
+        <p style="font-family:var(--sans);font-size:18px;color:rgba(200,240,238,0.7);line-height:1.9;font-weight:300;margin-bottom:24px;">Most human behaviour begins in reaction. Reflective Intelligence is the capacity that moves thinking from automatic response toward genuine understanding.</p>
+        <p style="font-family:var(--sans);font-size:18px;color:rgba(200,240,238,0.7);line-height:1.9;font-weight:300;">Each stage is not a destination — it is a quality of attention that becomes available when the previous one is genuinely inhabited.</p>
       </div>
       <div class="reveal">
-        <ul class="research-list">
-          <li>Longitudinal tracking of 9 psychological constructs across writing sessions</li>
-          <li>Narrative Recurrence Mapping — themes the mind keeps returning to</li>
-          <li>12 Human Condition pattern detection from construct combinations</li>
-          <li>Population-level aggregation (anonymised) for research insight</li>
-          <li>Integration with clinical workflows as a between-session journaling tool</li>
-          <li>A private, low-barrier entry point capturing what people rarely say aloud</li>
-          <li>Practitioner access model in development — therapist dashboard with client consent</li>
-        </ul>
+        <div style="display:flex;flex-direction:column;gap:0;position:relative;">
+          <div class="map-stage" style="display:flex;align-items:center;gap:20px;padding:22px 28px;background:rgba(15,184,164,0.22);border:1px solid rgba(15,184,164,0.45);border-radius:10px 10px 0 0;border-bottom:none;">
+            <div style="font-family:var(--serif);font-size:36px;font-style:italic;color:var(--lite);min-width:36px;text-align:center;opacity:0.8;">6</div>
+            <div><div style="font-family:var(--serif);font-size:22px;font-style:italic;color:#e8fdfb;margin-bottom:4px;">Wisdom</div><div style="font-family:var(--sans);font-size:14px;color:rgba(200,240,238,0.55);font-weight:300;">Insight integrated into living.</div></div>
+          </div>
+          <div class="map-stage" style="display:flex;align-items:center;gap:20px;padding:22px 28px;background:rgba(15,184,164,0.16);border:1px solid rgba(15,184,164,0.35);border-bottom:none;">
+            <div style="font-family:var(--serif);font-size:36px;font-style:italic;color:var(--lite);min-width:36px;text-align:center;opacity:0.7;">5</div>
+            <div><div style="font-family:var(--serif);font-size:22px;font-style:italic;color:#e8fdfb;margin-bottom:4px;">Clarity</div><div style="font-family:var(--sans);font-size:14px;color:rgba(200,240,238,0.55);font-weight:300;">Perception becomes conscious and deliberate.</div></div>
+          </div>
+          <div class="map-stage" style="display:flex;align-items:center;gap:20px;padding:22px 28px;background:rgba(15,184,164,0.11);border:1px solid rgba(15,184,164,0.25);border-bottom:none;">
+            <div style="font-family:var(--serif);font-size:36px;font-style:italic;color:var(--lite);min-width:36px;text-align:center;opacity:0.6;">4</div>
+            <div><div style="font-family:var(--serif);font-size:22px;font-style:italic;color:#e8fdfb;margin-bottom:4px;">Insight</div><div style="font-family:var(--sans);font-size:14px;color:rgba(200,240,238,0.55);font-weight:300;">Direct perception — not analysis.</div></div>
+          </div>
+          <div class="map-stage" style="display:flex;align-items:center;gap:20px;padding:22px 28px;background:rgba(15,184,164,0.07);border:1px solid rgba(15,184,164,0.18);border-bottom:none;">
+            <div style="font-family:var(--serif);font-size:36px;font-style:italic;color:var(--lite);min-width:36px;text-align:center;opacity:0.5;">3</div>
+            <div><div style="font-family:var(--serif);font-size:22px;font-style:italic;color:#e8fdfb;margin-bottom:4px;">Reflection</div><div style="font-family:var(--sans);font-size:14px;color:rgba(200,240,238,0.55);font-weight:300;">Examining assumptions, beliefs, patterns.</div></div>
+          </div>
+          <div class="map-stage" style="display:flex;align-items:center;gap:20px;padding:22px 28px;background:rgba(15,184,164,0.04);border:1px solid rgba(15,184,164,0.12);border-bottom:none;">
+            <div style="font-family:var(--serif);font-size:36px;font-style:italic;color:var(--lite);min-width:36px;text-align:center;opacity:0.35;">2</div>
+            <div><div style="font-family:var(--serif);font-size:22px;font-style:italic;color:rgba(200,240,238,0.8);margin-bottom:4px;">Observation</div><div style="font-family:var(--sans);font-size:14px;color:rgba(200,240,238,0.45);font-weight:300;">Noticing the thinking process itself.</div></div>
+          </div>
+          <div class="map-stage" style="display:flex;align-items:center;gap:20px;padding:22px 28px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:0 0 10px 10px;">
+            <div style="font-family:var(--serif);font-size:36px;font-style:italic;color:rgba(200,240,238,0.2);min-width:36px;text-align:center;">1</div>
+            <div><div style="font-family:var(--serif);font-size:22px;font-style:italic;color:rgba(200,240,238,0.4);margin-bottom:4px;">Reaction</div><div style="font-family:var(--sans);font-size:14px;color:rgba(200,240,238,0.3);font-weight:300;">Automatic. Unconscious. Conditioned.</div></div>
+          </div>
+        </div>
+        <p style="font-family:var(--sans);font-size:11px;letter-spacing:3px;text-transform:uppercase;color:rgba(45,212,191,0.4);text-align:right;margin-top:10px;">↑ evolves upward</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- THE COMPASS ══════════════════════════════════════════ -->
+<section id="compass" style="background:var(--bg-white);padding:110px 24px;">
+  <div class="container">
+    <div style="text-align:center;max-width:700px;margin:0 auto 72px;">
+      <div class="section-label" style="justify-content:center;">The Reflective Intelligence Compass</div>
+      <h2 class="section-h2" style="text-align:center;">Four directions of<br/><em>inner clarity.</em></h2>
+      <p class="section-body" style="text-align:center;">Not a destination. A navigation system. When you are unclear, reactive, or stuck — the Compass shows you which direction to move.</p>
+    </div>
+    <div class="compass-grid">
+      <div style="display:flex;justify-content:center;align-items:center;">
+        <svg viewBox="0 0 440 440" width="400" height="400" style="max-width:100%;overflow:visible;">
+          <defs>
+            <radialGradient id="cg" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#0d5c63" stop-opacity="0.5"/>
+              <stop offset="100%" stop-color="#040c0f" stop-opacity="0"/>
+            </radialGradient>
+            <filter id="glow"><feGaussianBlur stdDeviation="4" result="blur"/><feComposite in="SourceGraphic" in2="blur" operator="over"/></filter>
+          </defs>
+          <circle cx="220" cy="220" r="195" fill="url(#cg)" stroke="rgba(15,184,164,0.12)" stroke-width="1"/>
+          <circle cx="220" cy="220" r="145" fill="none" stroke="rgba(15,184,164,0.08)" stroke-width="1" stroke-dasharray="4,7"/>
+          <circle cx="220" cy="220" r="90" fill="none" stroke="rgba(15,184,164,0.06)" stroke-width="1" stroke-dasharray="2,9"/>
+          <line x1="220" y1="28" x2="220" y2="412" stroke="rgba(15,184,164,0.18)" stroke-width="1"/>
+          <line x1="28" y1="220" x2="412" y2="220" stroke="rgba(15,184,164,0.18)" stroke-width="1"/>
+          <line x1="82" y1="82" x2="358" y2="358" stroke="rgba(15,184,164,0.06)" stroke-width="1"/>
+          <line x1="358" y1="82" x2="82" y2="358" stroke="rgba(15,184,164,0.06)" stroke-width="1"/>
+          <!-- North arrow -->
+          <polygon points="220,42 213,108 227,108" fill="rgba(15,184,164,0.9)"/>
+          <circle cx="220" cy="40" r="16" fill="#0c2e34" stroke="rgba(15,184,164,0.7)" stroke-width="1.5"/>
+          <text x="220" y="45.5" text-anchor="middle" font-family="'Cormorant Garamond',serif" font-size="13" font-style="italic" fill="#2dd4bf">N</text>
+          <text x="220" y="24" text-anchor="middle" font-family="'Jost',sans-serif" font-size="10.5" letter-spacing="2.5" fill="rgba(45,212,191,0.95)" font-weight="300">AWARENESS</text>
+          <!-- South arrow -->
+          <polygon points="220,398 213,332 227,332" fill="rgba(15,184,164,0.5)"/>
+          <circle cx="220" cy="400" r="16" fill="#0c2e34" stroke="rgba(15,184,164,0.4)" stroke-width="1.5"/>
+          <text x="220" y="405.5" text-anchor="middle" font-family="'Cormorant Garamond',serif" font-size="13" font-style="italic" fill="#0fb8a4">S</text>
+          <text x="220" y="424" text-anchor="middle" font-family="'Jost',sans-serif" font-size="10.5" letter-spacing="2.5" fill="rgba(45,212,191,0.65)" font-weight="300">INTEGRATION</text>
+          <!-- East arrow -->
+          <polygon points="398,220 332,213 332,227" fill="rgba(15,184,164,0.7)"/>
+          <circle cx="400" cy="220" r="16" fill="#0c2e34" stroke="rgba(15,184,164,0.55)" stroke-width="1.5"/>
+          <text x="400" y="225.5" text-anchor="middle" font-family="'Cormorant Garamond',serif" font-size="13" font-style="italic" fill="#2dd4bf">E</text>
+          <text x="400" y="204" text-anchor="middle" font-family="'Jost',sans-serif" font-size="10.5" letter-spacing="2.5" fill="rgba(45,212,191,0.85)" font-weight="300">INQUIRY</text>
+          <!-- West arrow -->
+          <polygon points="42,220 108,213 108,227" fill="rgba(15,184,164,0.7)"/>
+          <circle cx="40" cy="220" r="16" fill="#0c2e34" stroke="rgba(15,184,164,0.55)" stroke-width="1.5"/>
+          <text x="40" y="225.5" text-anchor="middle" font-family="'Cormorant Garamond',serif" font-size="13" font-style="italic" fill="#2dd4bf">W</text>
+          <text x="34" y="204" text-anchor="middle" font-family="'Jost',sans-serif" font-size="10.5" letter-spacing="2.5" fill="rgba(45,212,191,0.85)" font-weight="300">UNDERSTANDING</text>
+          <!-- Centre -->
+          <circle cx="220" cy="220" r="10" fill="var(--brand,#0fb8a4)" filter="url(#glow)"/>
+          <circle cx="220" cy="220" r="5" fill="#e8fdfb"/>
+          <text x="220" y="210" text-anchor="middle" font-family="'Cormorant Garamond',serif" font-size="13" font-style="italic" fill="rgba(200,240,238,0.45)">Reflective</text>
+          <text x="220" y="234" text-anchor="middle" font-family="'Cormorant Garamond',serif" font-size="13" font-style="italic" fill="rgba(200,240,238,0.45)">Intelligence</text>
+        </svg>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:20px;" class="reveal">
+        <div style="padding:26px 28px;border-left:3px solid var(--brand);background:var(--bg-light);border-radius:0 8px 8px 0;">
+          <div style="font-family:var(--sans);font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--brand);margin-bottom:8px;">North · Awareness</div>
+          <p style="font-family:var(--serif);font-size:17px;font-style:italic;color:var(--heading);line-height:1.55;margin-bottom:8px;">"What am I actually thinking right now?"</p>
+          <p style="font-family:var(--sans);font-size:15px;color:var(--body);font-weight:300;line-height:1.7;">Most people live inside their thoughts without noticing them. Awareness creates the first distance between thinking and observing thinking.</p>
+        </div>
+        <div style="padding:26px 28px;border-left:3px solid rgba(15,184,164,0.65);background:var(--bg-light);border-radius:0 8px 8px 0;">
+          <div style="font-family:var(--sans);font-size:10px;letter-spacing:4px;text-transform:uppercase;color:rgba(15,184,164,0.7);margin-bottom:8px;">East · Inquiry</div>
+          <p style="font-family:var(--serif);font-size:17px;font-style:italic;color:var(--heading);line-height:1.55;margin-bottom:8px;">"Is this belief actually true?"</p>
+          <p style="font-family:var(--sans);font-size:15px;color:var(--body);font-weight:300;line-height:1.7;">Questioning assumptions rather than accepting them automatically. Most beliefs are inherited, not examined. Inquiry keeps the mind open.</p>
+        </div>
+        <div style="padding:26px 28px;border-left:3px solid rgba(15,184,164,0.65);background:var(--bg-light);border-radius:0 8px 8px 0;">
+          <div style="font-family:var(--sans);font-size:10px;letter-spacing:4px;text-transform:uppercase;color:rgba(15,184,164,0.7);margin-bottom:8px;">West · Understanding</div>
+          <p style="font-family:var(--serif);font-size:17px;font-style:italic;color:var(--heading);line-height:1.55;margin-bottom:8px;">"What pattern keeps showing up?"</p>
+          <p style="font-family:var(--sans);font-size:15px;color:var(--body);font-weight:300;line-height:1.7;">When observation and inquiry combine, patterns become visible — recurring reactions, unconscious beliefs, emotional influences. Experience becomes learning.</p>
+        </div>
+        <div style="padding:26px 28px;border-left:3px solid rgba(15,184,164,0.35);background:var(--bg-light);border-radius:0 8px 8px 0;">
+          <div style="font-family:var(--sans);font-size:10px;letter-spacing:4px;text-transform:uppercase;color:rgba(15,184,164,0.45);margin-bottom:8px;">South · Integration</div>
+          <p style="font-family:var(--serif);font-size:17px;font-style:italic;color:var(--heading);line-height:1.55;margin-bottom:8px;">"How does this change how I act?"</p>
+          <p style="font-family:var(--sans);font-size:15px;color:var(--body);font-weight:300;line-height:1.7;">Reflection is only meaningful when it influences action. Integration is where insight becomes practice — wiser decisions, calmer responses, more conscious living.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 12 INQUIRY QUESTIONS ══════════════════════════════════════════ -->
+<section id="inquiry" style="background:var(--bg-warm);padding:110px 24px;">
+  <div class="container">
+    <div style="text-align:center;max-width:700px;margin:0 auto 72px;">
+      <div class="section-label" style="justify-content:center;">The Reflective Intelligence Inquiry</div>
+      <h2 class="section-h2" style="text-align:center;">Twelve questions that<br/><em>begin everything.</em></h2>
+      <p class="section-body" style="text-align:center;">These are not questions designed to produce immediate answers. They are designed to create awareness of one's own thinking — the beginning of Reflective Intelligence.</p>
+    </div>
+    <div class="inquiry-grid">
+      <div class="inquiry-card"><div style="font-family:var(--serif);font-size:44px;font-style:italic;color:rgba(15,184,164,0.12);line-height:1;margin-bottom:14px;">01</div><div style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--brand);margin-bottom:12px;">Assumption</div><p style="font-family:var(--serif);font-size:18px;font-style:italic;color:var(--heading);line-height:1.55;">What assumptions am I making right now that I have not examined?</p></div>
+      <div class="inquiry-card"><div style="font-family:var(--serif);font-size:44px;font-style:italic;color:rgba(15,184,164,0.12);line-height:1;margin-bottom:14px;">02</div><div style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--brand);margin-bottom:12px;">Reaction</div><p style="font-family:var(--serif);font-size:18px;font-style:italic;color:var(--heading);line-height:1.55;">Am I responding to the situation — or reacting to my interpretation of it?</p></div>
+      <div class="inquiry-card"><div style="font-family:var(--serif);font-size:44px;font-style:italic;color:rgba(15,184,164,0.12);line-height:1;margin-bottom:14px;">03</div><div style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--brand);margin-bottom:12px;">Identity</div><p style="font-family:var(--serif);font-size:18px;font-style:italic;color:var(--heading);line-height:1.55;">Is my opinion shaped by clear observation — or by the need to defend my identity?</p></div>
+      <div class="inquiry-card"><div style="font-family:var(--serif);font-size:44px;font-style:italic;color:rgba(15,184,164,0.12);line-height:1;margin-bottom:14px;">04</div><div style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--brand);margin-bottom:12px;">Certainty</div><p style="font-family:var(--serif);font-size:18px;font-style:italic;color:var(--heading);line-height:1.55;">How certain am I that my interpretation is correct?</p></div>
+      <div class="inquiry-card"><div style="font-family:var(--serif);font-size:44px;font-style:italic;color:rgba(15,184,164,0.12);line-height:1;margin-bottom:14px;">05</div><div style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--brand);margin-bottom:12px;">Influence</div><p style="font-family:var(--serif);font-size:18px;font-style:italic;color:var(--heading);line-height:1.55;">Where did this belief originally come from?</p></div>
+      <div class="inquiry-card"><div style="font-family:var(--serif);font-size:44px;font-style:italic;color:rgba(15,184,164,0.12);line-height:1;margin-bottom:14px;">06</div><div style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--brand);margin-bottom:12px;">Perspective</div><p style="font-family:var(--serif);font-size:18px;font-style:italic;color:var(--heading);line-height:1.55;">What might this look like from a completely different perspective?</p></div>
+      <div class="inquiry-card"><div style="font-family:var(--serif);font-size:44px;font-style:italic;color:rgba(15,184,164,0.12);line-height:1;margin-bottom:14px;">07</div><div style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--brand);margin-bottom:12px;">Pattern</div><p style="font-family:var(--serif);font-size:18px;font-style:italic;color:var(--heading);line-height:1.55;">Is this reaction part of a recurring pattern in my thinking?</p></div>
+      <div class="inquiry-card"><div style="font-family:var(--serif);font-size:44px;font-style:italic;color:rgba(15,184,164,0.12);line-height:1;margin-bottom:14px;">08</div><div style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--brand);margin-bottom:12px;">Emotion</div><p style="font-family:var(--serif);font-size:18px;font-style:italic;color:var(--heading);line-height:1.55;">What emotion is influencing my thinking right now?</p></div>
+      <div class="inquiry-card"><div style="font-family:var(--serif);font-size:44px;font-style:italic;color:rgba(15,184,164,0.12);line-height:1;margin-bottom:14px;">09</div><div style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--brand);margin-bottom:12px;">Narrative</div><p style="font-family:var(--serif);font-size:18px;font-style:italic;color:var(--heading);line-height:1.55;">What story am I telling myself about this situation?</p></div>
+      <div class="inquiry-card"><div style="font-family:var(--serif);font-size:44px;font-style:italic;color:rgba(15,184,164,0.12);line-height:1;margin-bottom:14px;">10</div><div style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--brand);margin-bottom:12px;">Clarity</div><p style="font-family:var(--serif);font-size:18px;font-style:italic;color:var(--heading);line-height:1.55;">If I were completely clear, what might I see differently?</p></div>
+      <div class="inquiry-card"><div style="font-family:var(--serif);font-size:44px;font-style:italic;color:rgba(15,184,164,0.12);line-height:1;margin-bottom:14px;">11</div><div style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--brand);margin-bottom:12px;">Responsibility</div><p style="font-family:var(--serif);font-size:18px;font-style:italic;color:var(--heading);line-height:1.55;">What part of this am I responsible for that I may not be acknowledging?</p></div>
+      <div class="inquiry-card" style="background:var(--bg-tint);border:2px solid var(--brand);"><div style="font-family:var(--serif);font-size:44px;font-style:italic;color:rgba(15,184,164,0.25);line-height:1;margin-bottom:14px;">12</div><div style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--brand);margin-bottom:12px;">The Observer</div><p style="font-family:var(--serif);font-size:18px;font-style:italic;color:var(--heading);line-height:1.55;">Who is the one noticing these thoughts?</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 7-DAY JOURNEY ══════════════════════════════════════════ -->
+<section id="journey" style="background:linear-gradient(160deg,#040c0f 0%,#0a2e36 100%);padding:110px 24px;">
+  <div class="container">
+    <div style="text-align:center;max-width:680px;margin:0 auto 64px;">
+      <div class="section-label" style="color:rgba(45,212,191,0.6);justify-content:center;">Begin The Practice</div>
+      <h2 class="section-h2" style="color:#e8fdfb;text-align:center;">A 7-day journey into<br/><em>your own thinking.</em></h2>
+      <p style="font-family:var(--sans);font-size:18px;color:rgba(200,240,238,0.7);line-height:1.9;font-weight:300;">Reflective Intelligence is not something to merely understand. It is something to experience through observation and inquiry. This 7-day journey is a simple entry point.</p>
+    </div>
+    <div class="journey-grid" style="margin-bottom:56px;">
+      <div style="background:rgba(15,184,164,0.08);border:1px solid rgba(15,184,164,0.2);border-radius:8px;padding:26px 16px;text-align:center;"><div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--brand);margin-bottom:10px;">Day 1</div><div style="font-family:var(--serif);font-size:18px;font-style:italic;color:#e8fdfb;margin-bottom:8px;">Pause</div><div style="font-family:var(--sans);font-size:12px;color:rgba(200,240,238,0.45);line-height:1.5;">The power of stopping before reacting.</div></div>
+      <div style="background:rgba(15,184,164,0.08);border:1px solid rgba(15,184,164,0.2);border-radius:8px;padding:26px 16px;text-align:center;"><div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--brand);margin-bottom:10px;">Day 2</div><div style="font-family:var(--serif);font-size:18px;font-style:italic;color:#e8fdfb;margin-bottom:8px;">Observe</div><div style="font-family:var(--sans);font-size:12px;color:rgba(200,240,238,0.45);line-height:1.5;">Watching your thoughts without controlling them.</div></div>
+      <div style="background:rgba(15,184,164,0.09);border:1px solid rgba(15,184,164,0.22);border-radius:8px;padding:26px 16px;text-align:center;"><div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--brand);margin-bottom:10px;">Day 3</div><div style="font-family:var(--serif);font-size:18px;font-style:italic;color:#e8fdfb;margin-bottom:8px;">Notice</div><div style="font-family:var(--sans);font-size:12px;color:rgba(200,240,238,0.45);line-height:1.5;">What triggers your emotional reactions.</div></div>
+      <div style="background:rgba(15,184,164,0.10);border:1px solid rgba(15,184,164,0.28);border-radius:8px;padding:26px 16px;text-align:center;"><div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--brand);margin-bottom:10px;">Day 4</div><div style="font-family:var(--serif);font-size:18px;font-style:italic;color:#e8fdfb;margin-bottom:8px;">Question</div><div style="font-family:var(--sans);font-size:12px;color:rgba(200,240,238,0.45);line-height:1.5;">One belief you have never examined.</div></div>
+      <div style="background:rgba(15,184,164,0.11);border:1px solid rgba(15,184,164,0.30);border-radius:8px;padding:26px 16px;text-align:center;"><div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--brand);margin-bottom:10px;">Day 5</div><div style="font-family:var(--serif);font-size:18px;font-style:italic;color:#e8fdfb;margin-bottom:8px;">See</div><div style="font-family:var(--sans);font-size:12px;color:rgba(200,240,238,0.45);line-height:1.5;">Recurring patterns in how you respond.</div></div>
+      <div style="background:rgba(15,184,164,0.13);border:1px solid rgba(15,184,164,0.35);border-radius:8px;padding:26px 16px;text-align:center;"><div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--brand);margin-bottom:10px;">Day 6</div><div style="font-family:var(--serif);font-size:18px;font-style:italic;color:#e8fdfb;margin-bottom:8px;">Listen</div><div style="font-family:var(--sans);font-size:12px;color:rgba(200,240,238,0.45);line-height:1.5;">Deeply, without preparing your response.</div></div>
+      <div style="background:rgba(15,184,164,0.16);border:2px solid var(--brand);border-radius:8px;padding:26px 16px;text-align:center;"><div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--lite);margin-bottom:10px;">Day 7</div><div style="font-family:var(--serif);font-size:18px;font-style:italic;color:var(--lite);margin-bottom:8px;">The Observer</div><div style="font-family:var(--sans);font-size:12px;color:rgba(200,240,238,0.6);line-height:1.5;">Who is watching all of this?</div></div>
+    </div>
+    <div style="text-align:center;">
+      <a href="https://lumeri.co.in" style="display:inline-block;font-family:var(--sans);font-size:12px;letter-spacing:3px;text-transform:uppercase;color:#040c0f;background:var(--brand);padding:18px 44px;text-decoration:none;border-radius:3px;font-weight:500;">Begin in LumeRI →</a>
     </div>
   </div>
 </section>
@@ -685,7 +894,7 @@ footer{background:#081e22;padding:64px 24px 40px;border-top:1px solid rgba(45,21
         <div style="background:rgba(15,184,164,0.09);border:1px solid rgba(15,184,164,0.15);padding:44px 36px;">
           <div style="font-family:var(--sans);font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--brand);opacity:0.7;margin-bottom:18px;">Modern Psychology</div>
           <h3 style="font-family:var(--serif);font-size:22px;font-style:italic;color:#e8fdfb;margin-bottom:16px;line-height:1.3;">40 years of research confirm it.</h3>
-          <p style="font-family:var(--sans);font-size:16px;color:rgba(180,230,225,0.75);line-height:1.8;font-weight:300;">Pennebaker's landmark studies on expressive writing. Neff's self-compassion research. Neuroscience on metacognition as the brain's highest function. The science and the wisdom are pointing at the same place.</p>
+          <p style="font-family:var(--sans);font-size:16px;color:rgba(180,230,225,0.75);line-height:1.8;font-weight:300;">Decades of research on expressive writing, metacognition, and narrative coherence have arrived at the same conclusion ancient wisdom traditions reached long ago: honest self-observation changes things. The science and the wisdom point in the same direction.</p>
         </div>
         <div style="background:rgba(15,184,164,0.06);border:1px solid rgba(15,184,164,0.12);padding:44px 36px;border-radius:0 8px 8px 0;">
           <div style="font-family:var(--sans);font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--brand);opacity:0.7;margin-bottom:18px;">Technology That Serves</div>
@@ -707,16 +916,16 @@ footer{background:#081e22;padding:64px 24px 40px;border-top:1px solid rgba(45,21
 
         <div>
           <p style="font-family:var(--serif);font-size:clamp(17px,2vw,22px);font-style:italic;color:rgba(128,237,224,0.8);line-height:1.8;margin-bottom:28px;border-left:2px solid rgba(15,184,164,0.4);padding-left:24px;">
-            "I spent years inside the most rigorous institutions in the world — consulting, finance, strategy. I was surrounded by extraordinarily intelligent people. And I noticed something: almost none of them, myself included, actually understood themselves. Not deeply. Not honestly."
+            'I have always been more interested in what lies beneath the surface than what sits on top of it. The questions that kept me up at night were never about career or achievement — they were about why people, including me, kept repeating the same patterns despite knowing better."
           </p>
           <p style="font-family:var(--serif);font-size:clamp(16px,1.8vw,20px);font-weight:300;color:rgba(200,240,238,0.75);line-height:2;margin-bottom:22px;">
-            The problem was never intelligence. It was the absence of a mirror. We had been trained to look outward with extraordinary precision — at markets, at systems, at other people — and almost never inward at the mind doing the looking.
+            I found Krishnamurti in my mid-twenties and something shifted. Not because he gave answers — he refused to — but because he pointed so precisely at the right question. Who is the observer? What happens when you look at your own looking? Every tradition I explored afterward — Advaita Vedanta, Sufism, Taoism — was pointing at the same place.
           </p>
           <p style="font-family:var(--serif);font-size:clamp(16px,1.8vw,20px);font-weight:300;color:rgba(200,240,238,0.75);line-height:2;margin-bottom:22px;">
-            Reflective Intelligence began as a personal obsession. Reading Krishnamurti at 2am. Going back to the psychological research to find out why his observations worked. Building frameworks. Writing, and noticing what changed when the writing was honest.
+            Reflective Intelligence is my attempt to make that practice accessible — to anyone who senses that the most important frontier is not outside them, but inside. We live in an age of extraordinary external tools and almost no serious inner ones. That asymmetry costs us more than we know.
           </p>
           <p style="font-family:var(--serif);font-size:clamp(16px,1.8vw,20px);font-weight:300;color:rgba(200,240,238,0.75);line-height:2;">
-            LumeRI is the result. Not a wellness app. Not a journal with a chatbot. A mirror — built carefully, grounded in evidence, informed by wisdom that is thousands of years old. For anyone ready to stop thinking about themselves, and begin to truly see.
+            This is not a startup. It is a conviction — that self-knowledge is the most practical thing a human being can develop, and that the right mirror, held carefully, changes everything.
           </p>
           <p style="font-family:var(--serif);font-size:19px;font-style:italic;color:var(--brand);margin-top:32px;">— Nupur Goel</p>
         </div>
@@ -743,14 +952,13 @@ footer{background:#081e22;padding:64px 24px 40px;border-top:1px solid rgba(45,21
         <li><a href="#science">The Science</a></li>
         <li><a href="#philosophy">Philosophy</a></li>
         <li><a href="#manifesto">The Manifesto</a></li>
-        <li><a href="#researchers">For Researchers</a></li>
       </ul>
     </div>
     <div class="footer-col">
       <h4>Connect</h4>
       <ul>
         <li><a href="https://lumeri.co.in">LumeRI — Begin Writing</a></li>
-        <li><a href="/cdn-cgi/l/email-protection#355d5059595a75475053595056415c43505c5b415059595c52505b56501b595c5350">Contact</a></li>
+        <li><a href="/cdn-cgi/l/email-protection#a1d3c4c7cdc4c2d5c8d7c4c8cfd5c4cdcdc8c6c4cfc2c48fcdc8c7c4e1c6ccc0c8cd8fc2cecc">Contact Us</a></li>
       </ul>
     </div>
   </div>
@@ -760,7 +968,7 @@ footer{background:#081e22;padding:64px 24px 40px;border-top:1px solid rgba(45,21
   </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 // FAQ accordion
 document.querySelectorAll('.faq-q').forEach(q => {
   q.addEventListener('click', () => {
@@ -776,11 +984,4 @@ const navLinks = document.querySelectorAll('.nav-links a, .nav-cta-wrap a');
 const sections = document.querySelectorAll('section[id]');
 window.addEventListener('scroll', () => {
   let current = '';
-  sections.forEach(s => { if (window.scrollY >= s.offsetTop - 120) current = s.id; });
-  navLinks.forEach(a => {
-    a.classList.toggle('active', a.getAttribute('href') === '#' + current);
-  });
-}, { passive: true });
-</script>
-</body>
-</html>
+  sections.forEach(s => { if (window.scrollY >= s.offsetTop - 120) current 
