@@ -344,19 +344,19 @@ footer{background:#081e22;padding:64px 24px 40px;border-top:1px solid rgba(45,21
 /* Cycle two cards */
 .cycle-two-col{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:32px}
 @media(max-width:700px){.cycle-two-col{grid-template-columns:1fr}}
-.cycle-card{padding:30px 28px;border:1px solid;position:relative;background:rgba(4,6,12,.96);border-radius:6px;overflow:hidden}
+.cycle-card{padding:30px 28px;border:1px solid;position:relative;background:#ffffff;border-radius:6px;overflow:hidden;box-shadow:0 2px 24px rgba(15,184,164,0.08)}
 .cycle-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px}
-.cycle-card.am{border-color:rgba(255,255,255,.16)}
+.cycle-card.am{border-color:rgba(232,160,32,0.30)}
 .cycle-card.am::before{background:linear-gradient(90deg,transparent,rgba(255,255,255,.70),transparent)}
-.cycle-card.te{border-color:rgba(94,234,212,.20)}
+.cycle-card.te{border-color:rgba(15,184,164,0.35)}
 .cycle-card.te::before{background:linear-gradient(90deg,transparent,#2dd4bf,transparent)}
 .cycle-card-label{font-family:'Cinzel',serif;font-size:9px;letter-spacing:4px;text-transform:uppercase;margin-bottom:12px}
-.am .cycle-card-label{color:rgba(255,255,255,.55)}
+.am .cycle-card-label{color:rgba(12,46,52,0.55)}
 .te .cycle-card-label{color:#5eead4}
 .cycle-card-title{font-size:clamp(18px,2vw,23px);font-weight:300;line-height:1.22;margin-bottom:16px;font-family:var(--serif)}
 .am .cycle-card-title em{font-style:italic;color:#fde68a}
 .te .cycle-card-title em{font-style:italic;color:#5eead4}
-.cycle-card-body{font-family:var(--sans);font-size:14.5px;line-height:1.9;color:rgba(240,236,227,.55);font-weight:300}
+.cycle-card-body{font-family:var(--sans);font-size:14.5px;line-height:1.9;color:rgba(12,46,52,0.80);font-weight:300}
 .cycle-card-body p+p{margin-top:10px}
 .cycle-nodes{margin-top:20px;display:flex;flex-direction:column;gap:7px;border-top:1px solid rgba(255,255,255,.07);padding-top:16px}
 .cycle-nrow{display:flex;align-items:baseline;gap:10px;font-size:13px}
@@ -366,19 +366,19 @@ footer{background:#081e22;padding:64px 24px 40px;border-top:1px solid rgba(45,21
 .cycle-nkey{font-family:'Cinzel',serif;font-size:8.5px;letter-spacing:2px;text-transform:uppercase;width:84px;flex-shrink:0}
 .am .cycle-nkey{color:rgba(255,255,255,.60)}
 .te .cycle-nkey{color:#5eead4}
-.cycle-nval{font-style:italic;color:rgba(240,236,227,.35);font-size:13.5px;font-family:var(--serif)}
+.cycle-nval{font-style:italic;color:rgba(12,46,52,0.65);font-size:13.5px;font-family:var(--serif)}
 
 /* Cycle bridge (RI hinge) */
 .cycle-bridge{
-  padding:40px 40px;border:1px solid rgba(167,139,250,.20);
-  background:rgba(4,6,12,.96);position:relative;text-align:center;
+  padding:40px 40px;border:1px solid rgba(15,184,164,0.20);
+  background:rgba(15,184,164,0.04);position:relative;text-align:center;
   border-radius:6px;margin-bottom:0;
 }
-.cycle-bridge::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#a78bfa,transparent)}
-.cycle-bridge-label{font-family:'Cinzel',serif;font-size:9px;letter-spacing:4px;color:#a78bfa;opacity:.6;margin-bottom:12px}
-.cycle-bridge-title{font-family:var(--serif);font-size:clamp(20px,2.5vw,28px);font-weight:300;line-height:1.3;margin-bottom:16px;color:#e8fdfb}
+.cycle-bridge::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--brand),transparent)}
+.cycle-bridge-label{font-family:'Cinzel',serif;font-size:9px;letter-spacing:4px;color:rgba(10,138,122,0.80);opacity:.6;margin-bottom:12px}
+.cycle-bridge-title{font-family:var(--serif);font-size:clamp(20px,2.5vw,28px);font-weight:300;line-height:1.3;margin-bottom:16px;color:var(--heading)
 .cycle-bridge-title em{font-style:italic;color:#c4b5fd}
-.cycle-bridge-body{font-family:var(--sans);font-size:15px;line-height:1.92;color:rgba(240,236,227,.52);max-width:780px;margin:0 auto;font-weight:300}
+.cycle-bridge-body{font-family:var(--sans);font-size:15px;line-height:1.92;color:rgba(12,46,52,0.78);max-width:780px;margin:0 auto;font-weight:300}
 .cycle-bridge-body p+p{margin-top:14px}
 
 /* Divider */
@@ -1109,12 +1109,12 @@ body { font-size: 20px !important; line-height: 1.9 !important; }
     </div>
     <div>
       <p style="font-size:9px;letter-spacing:5px;text-transform:uppercase;font-weight:600;color:#0a8a7a;padding-bottom:14px;border-bottom:2px solid rgba(15,184,164,0.25);margin-bottom:4px;">The Hinge &amp; Zoom Out</p>
-      <div style="padding:14px 12px;border-left:2.5px solid rgba(45,212,191,0.45);border-bottom:1px solid rgba(45,212,191,0.08);background:rgba(45,212,191,0.03);border-radius:0 6px 6px 0;"><p style="font-size:10px;letter-spacing:2px;color:#0a8a7a;margin-bottom:6px;font-family:var(--sans);">6</p><p style="font-family:var(--serif);font-size:clamp(15px,2vw,20px);font-weight:300;color:rgba(12,46,52,0.90);line-height:1.5;">Who are you &mdash; <em style="color:var(--brand-dark)">the one caught in this,</em> or <em style="color:var(--brand-dark)">the one who can see it?</em></p><p style="font-size:13px;color:rgba(220,245,242,0.70);font-style:italic;margin-top:6px;font-family:var(--serif);">The hinge. Step outside the one who is suffering.</p></div>
-      <div style="padding:14px 0;border-bottom:1px solid rgba(45,212,191,0.08);"><p style="font-size:10px;letter-spacing:2px;color:#0a8a7a;margin-bottom:6px;font-family:var(--sans);">7</p><p style="font-family:var(--serif);font-size:clamp(15px,2vw,20px);font-weight:300;color:rgba(12,46,52,0.90);line-height:1.5;">What would you tell a <em style="color:var(--brand-dark)">close friend</em> who brought you this?</p><p style="font-size:13px;color:rgba(220,245,242,0.70);font-style:italic;margin-top:5px;font-family:var(--serif);">You already know the answer. You always did.</p></div>
-      <div style="padding:14px 0;"><p style="font-size:10px;letter-spacing:2px;color:#0a8a7a;margin-bottom:6px;font-family:var(--sans);">8</p><p style="font-family:var(--serif);font-size:clamp(15px,2vw,20px);font-weight:300;color:rgba(12,46,52,0.90);line-height:1.5;">What will you <em style="color:var(--brand-dark)">do</em> after seeing this?</p><p style="font-size:13px;color:rgba(220,245,242,0.70);font-style:italic;margin-top:5px;font-family:var(--serif);">Not from habit. From here. From now.</p></div>
-      <div style="margin-top:28px;padding:24px;border:1px solid rgba(45,212,191,0.14);border-radius:8px;background:rgba(45,212,191,0.02);text-align:center;">
-        <p style="font-family:var(--serif);font-size:clamp(15px,2vw,20px);font-style:italic;color:rgba(220,245,242,0.78);line-height:1.75;">"The dust is seen. What is seen clearly &mdash; loses its grip.<br/>Layer by layer, the mirror clears."</p>
-        <p style="margin-top:14px;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(45,212,191,0.50);">How are you? &rarr; Who are you? &mdash; The path.</p>
+      <div style="padding:14px 12px;border-left:2.5px solid rgba(45,212,191,0.45);border-bottom:1px solid rgba(45,212,191,0.08);background:rgba(15,184,164,0.08);border-radius:0 6px 6px 0;"><p style="font-size:10px;letter-spacing:2px;color:#0a8a7a;margin-bottom:6px;font-family:var(--sans);">6</p><p style="font-family:var(--serif);font-size:clamp(15px,2vw,20px);font-weight:300;color:rgba(12,46,52,0.90);line-height:1.5;">Who are you &mdash; <em style="color:var(--brand-dark)">the one caught in this,</em> or <em style="color:var(--brand-dark)">the one who can see it?</em></p><p style="font-size:13px;color:rgba(12,46,52,0.58);font-style:italic;margin-top:6px;font-family:var(--serif);">The hinge. Step outside the one who is suffering.</p></div>
+      <div style="padding:14px 0;border-bottom:1px solid rgba(45,212,191,0.08);"><p style="font-size:10px;letter-spacing:2px;color:#0a8a7a;margin-bottom:6px;font-family:var(--sans);">7</p><p style="font-family:var(--serif);font-size:clamp(15px,2vw,20px);font-weight:300;color:rgba(12,46,52,0.90);line-height:1.5;">What would you tell a <em style="color:var(--brand-dark)">close friend</em> who brought you this?</p><p style="font-size:13px;color:rgba(12,46,52,0.58);font-style:italic;margin-top:5px;font-family:var(--serif);">You already know the answer. You always did.</p></div>
+      <div style="padding:14px 0;"><p style="font-size:10px;letter-spacing:2px;color:#0a8a7a;margin-bottom:6px;font-family:var(--sans);">8</p><p style="font-family:var(--serif);font-size:clamp(15px,2vw,20px);font-weight:300;color:rgba(12,46,52,0.90);line-height:1.5;">What will you <em style="color:var(--brand-dark)">do</em> after seeing this?</p><p style="font-size:13px;color:rgba(12,46,52,0.58);font-style:italic;margin-top:5px;font-family:var(--serif);">Not from habit. From here. From now.</p></div>
+      <div style="margin-top:28px;padding:24px;border:1px solid rgba(45,212,191,0.14);border-radius:8px;background:rgba(15,184,164,0.06);text-align:center;">
+        <p style="font-family:var(--serif);font-size:clamp(15px,2vw,20px);font-style:italic;color:rgba(12,46,52,0.78);line-height:1.75;">"The dust is seen. What is seen clearly &mdash; loses its grip.<br/>Layer by layer, the mirror clears."</p>
+        <p style="margin-top:14px;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(10,138,122,0.75);">How are you? &rarr; Who are you? &mdash; The path.</p>
       </div>
     </div>
   </div>
@@ -1176,7 +1176,7 @@ body { font-size: 20px !important; line-height: 1.9 !important; }
 <!-- FAQ -->
 
 <!-- ══ PRIVACY & DATA ══════════════════════════════════════════════ -->
-<section id="privacy-ri" style="background:var(--bg-warm);padding:110px 24px;border-top:1px solid rgba(45,212,191,0.06);">
+<section id="privacy-ri" style="background:var(--bg-white);padding:110px 24px;border-top:1px solid rgba(45,212,191,0.12);">
 <div class="container">
   <div style="max-width:760px;">
     <div class="section-label">Privacy &amp; Data</div>
@@ -1193,7 +1193,7 @@ body { font-size: 20px !important; line-height: 1.9 !important; }
 </div>
 </section>
 <!-- ══ END PRIVACY ══════════════════════════════════════════════════ -->
-<section id="faq" style="background:var(--bg-warm)">
+<section id="faq" style="background:var(--bg-warm);padding:110px 24px;border-top:1px solid rgba(45,212,191,0.06);">
   <div class="container">
     <div class="section-label">Questions</div>
     <h2 class="section-h2">Honest answers to <em>real questions.</em></h2>
@@ -1410,15 +1410,15 @@ canvas { width: 100%; display: block; border-radius: 10px; margin-bottom: 0; }
   font-size: 9px; letter-spacing: 4px; text-transform: uppercase;
   font-weight: 600; margin-bottom: 7px; display: block;
 }
-.sp-phase-label.teal { color: rgba(45,212,191,0.65); }
-.sp-phase-label.amber { color: rgba(232,160,32,0.75); }
+.sp-phase-label.teal { color: rgba(10,138,122,0.85); }
+.sp-phase-label.amber { color: rgba(180,100,10,0.85); }
 .sp-head {
   font-family: var(--serif);
   font-size: 15px; font-weight: 400; line-height: 1.35;
-  color: var(--ivory); margin-bottom: 7px;
+  color:rgba(12,46,52,0.92); margin-bottom: 7px;
 }
 .sp-body {
-  font-size: 13px; color: rgba(220,245,242,0.65);
+  font-size: 13px; color: rgba(12,46,52,0.75);
   line-height: 1.72; font-weight: 300;
 }
 
@@ -1530,9 +1530,9 @@ canvas { width: 100%; display: block; border-radius: 10px; margin-bottom: 0; }
 
       <!-- BEFORE START: Play button overlay -->
       <div id="lib-start" style="
-        border:1px solid rgba(245,197,24,0.18);
+        border:1px solid rgba(232,160,32,0.25);
         border-radius:10px;
-        background:rgba(245,197,24,0.03);
+        background:rgba(232,160,32,0.04);
         padding:36px 24px;
         text-align:center;
         cursor:pointer;
@@ -1564,7 +1564,7 @@ canvas { width: 100%; display: block; border-radius: 10px; margin-bottom: 0; }
 
         <!-- Phase stepper -->
         <div id="lib-stepper" style="
-          border:1px solid rgba(245,197,24,0.14);
+          border:1px solid rgba(232,160,32,0.22);
           border-radius:10px;
           background:rgba(245,197,24,0.02);
           overflow:hidden;
@@ -2507,6 +2507,7 @@ function cl(v)  { return Math.max(0, Math.min(1, v)); }
 })();
 </script>
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+document.addEventListener('DOMContentLoaded', function() {
 // FAQ accordion
 document.querySelectorAll('.faq-q').forEach(q => {
   q.addEventListener('click', () => {
@@ -2515,6 +2516,7 @@ document.querySelectorAll('.faq-q').forEach(q => {
     document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
     if (!isOpen) item.classList.add('open');
   });
+});
 });
 
 // Active nav state on scroll
