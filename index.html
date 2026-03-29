@@ -1,5 +1,6 @@
 
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -1032,8 +1033,8 @@ body { font-size: 20px !important; line-height: 1.9 !important; }
           <!-- Centre -->
           <circle cx="220" cy="220" r="10" fill="var(--brand,#0fb8a4)" filter="url(#glow)"/>
           <circle cx="220" cy="220" r="5" fill="#e8fdfb"/>
-          <text x="220" y="210" text-anchor="middle" font-family="'Cormorant Garamond',serif" font-size="13" font-style="italic" fill="rgba(200,240,238,0.82)">Reflective</text>
-          <text x="220" y="234" text-anchor="middle" font-family="'Cormorant Garamond',serif" font-size="13" font-style="italic" fill="rgba(200,240,238,0.82)">Intelligence</text>
+          <text x="220" y="210" text-anchor="middle" font-family="'Cormorant Garamond',serif" font-size="13" font-style="italic" fill="rgba(220,245,242,0.92)">Reflective</text>
+          <text x="220" y="234" text-anchor="middle" font-family="'Cormorant Garamond',serif" font-size="13" font-style="italic" fill="rgba(220,245,242,0.92)">Intelligence</text>
         </svg>
       </div>
       <div style="display:flex;flex-direction:column;gap:20px;" class="reveal">
@@ -1267,8 +1268,8 @@ body { font-size: 20px !important; line-height: 1.9 !important; }
       <!-- Founder note -->
       <div style="border-top:1px solid rgba(45,212,191,0.12);padding-top:72px;padding-bottom:80px;display:grid;grid-template-columns:1fr 1.6fr;gap:80px;align-items:start;" <div style="max-width:720px;margin:0 auto;text-align:left;padding:60px 0;">
         <p style="font-family:var(--serif);font-size:clamp(18px,2.5vw,28px);font-style:italic;font-weight:300;color:rgba(128,237,224,0.82);line-height:1.8;border-left:2px solid rgba(15,184,164,0.35);padding-left:28px;margin-bottom:30px;">There is a mirror in you. Not the mirror of reputation or self-image. The mirror of awareness itself &mdash; pristine, luminous, already whole.</p>
-        <p style="font-family:var(--serif);font-size:clamp(16px,2vw,22px);font-weight:300;color:rgba(200,240,238,0.84);line-height:1.9;margin-bottom:22px;"><em style="color:var(--lite);">Seeing</em> is what restores it. Not discipline. Not belief. Direct, choiceless awareness &mdash; the kind that does not add to the dust but simply lets it fall.</p>
-        <p style="font-family:var(--serif);font-size:clamp(16px,2vw,22px);font-weight:300;color:rgba(200,240,238,0.84);line-height:1.9;">The purpose of life, as understood here, is not to arrive somewhere. It is to let the mirror clear &mdash; and let the world flow through you.</p>
+        <p style="font-family:var(--serif);font-size:clamp(16px,2vw,22px);font-weight:300;color:rgba(220,245,242,0.92);line-height:1.9;margin-bottom:22px;"><em style="color:var(--lite);">Seeing</em> is what restores it. Not discipline. Not belief. Direct, choiceless awareness &mdash; the kind that does not add to the dust but simply lets it fall.</p>
+        <p style="font-family:var(--serif);font-size:clamp(16px,2vw,22px);font-weight:300;color:rgba(220,245,242,0.92);line-height:1.9;">The purpose of life, as understood here, is not to arrive somewhere. It is to let the mirror clear &mdash; and let the world flow through you.</p>
       </div>
     </div>
   </div>
@@ -1352,56 +1353,1984 @@ body { font-size: 20px !important; line-height: 1.9 !important; }
       title="The Conditioning and Liberation Cycle — Reflective Intelligence">
     </iframe>
   </div>
-</section>
 
-<!-- FOOTER -->
-<footer>
-  <div class="footer-inner">
-    <div>
-      <div class="footer-brand">
-        <img src="ri-logo.png" alt="RI"/>
-        <span class="footer-brand-name">Reflective Intelligence</span>
+
+<!-- ═══ K-CYCLE DIAGRAMS ═══ -->
+<div id="kcycle-diagrams-embed">
+<style>
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --teal:   #0fb8a4;
+  --lite:   #2dd4bf;
+  --gold:   #f5c518;
+  --amber:  #e8a020;
+  --ivory:  #e8fdfb;
+  --soft:   rgba(220,245,242,0.65);
+  --deep:   #030a0c;
+  --serif:  'Cormorant Garamond', Georgia, serif;
+  --sans:   'DM Sans', sans-serif;
+}
+html, body {
+  background: var(--deep);
+  color: var(--ivory);
+  font-family: var(--sans);
+  min-height: 100vh;
+}
+.page { max-width: 1100px; margin: 0 auto; padding: 64px 24px 100px; }
+
+/* ── PAGE HEADER ── */
+.page-header { text-align: center; margin-bottom: 72px; }
+.eyeline { font-size: 10px; letter-spacing: 6px; text-transform: uppercase; color: rgba(45,212,191,0.42); margin-bottom: 14px; }
+.page-title { font-family: var(--serif); font-size: clamp(26px,4vw,48px); font-weight: 300; line-height: 1.22; margin-bottom: 14px; }
+.page-title em { color: var(--lite); font-style: italic; }
+.page-sub { font-size: 14px; color: var(--soft); font-weight: 300; max-width: 480px; margin: 0 auto; line-height: 1.8; }
+
+/* ── TWO COLUMN ── */
+.diagrams-row { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+@media(max-width: 780px) { .diagrams-row { grid-template-columns: 1fr; gap: 64px; } }
+
+/* ── DIAGRAM CARD — strict block flow, nothing absolute ── */
+.diagram-card { display: block; }
+
+.diagram-header { margin-bottom: 16px; }
+.diagram-tag { font-size: 9px; letter-spacing: 5px; text-transform: uppercase; margin-bottom: 7px; display: block; }
+.diagram-tag.amber { color: rgba(232,160,32,0.75); }
+.diagram-tag.teal  { color: rgba(45,212,191,0.55); }
+.diagram-title { font-family: var(--serif); font-size: clamp(16px,2vw,22px); font-weight: 300; line-height: 1.28; margin-bottom: 4px; }
+.diagram-title.amber { color: #e8c070; }
+.diagram-title.teal  { color: var(--lite); }
+.diagram-sub { font-size: 12px; color: rgba(220,245,242,0.68); font-weight: 300; font-style: italic; line-height: 1.5; }
+
+/* canvas — block, no position tricks */
+canvas { width: 100%; display: block; border-radius: 10px; margin-bottom: 0; }
+
+/* ── STORY PANEL — plain block, JS sets innerHTML ── */
+.story-panel {
+  margin-top: 14px;
+  padding: 16px 18px;
+  border: 1px solid rgba(45,212,191,0.10);
+  border-radius: 8px;
+  background: rgba(15,184,164,0.03);
+  display: block; /* never absolute */
+}
+.story-panel.gold {
+  border-color: rgba(232,160,32,0.15);
+  background: rgba(232,160,32,0.02);
+}
+.sp-phase-label {
+  font-size: 9px; letter-spacing: 4px; text-transform: uppercase;
+  font-weight: 600; margin-bottom: 7px; display: block;
+}
+.sp-phase-label.teal { color: rgba(45,212,191,0.65); }
+.sp-phase-label.amber { color: rgba(232,160,32,0.75); }
+.sp-head {
+  font-family: var(--serif);
+  font-size: 15px; font-weight: 400; line-height: 1.35;
+  color: var(--ivory); margin-bottom: 7px;
+}
+.sp-body {
+  font-size: 13px; color: rgba(220,245,242,0.65);
+  line-height: 1.72; font-weight: 300;
+}
+
+/* ── NODE KEY — always below panel, never overlaps ── */
+.node-key { margin-top: 16px; border: 1px solid rgba(45,212,191,0.08); border-radius: 8px; overflow: hidden; display: block; }
+.key-row { display: grid; grid-template-columns: 32px 1fr; border-bottom: 1px solid rgba(45,212,191,0.06); }
+.key-row:last-child { border-bottom: none; }
+.key-letter { display: flex; align-items: center; justify-content: center; font-family: var(--serif); font-size: 14px; font-style: italic; background: rgba(45,212,191,0.04); border-right: 1px solid rgba(45,212,191,0.07); }
+.key-letter.tl { color: var(--teal); }
+.key-letter.am { color: var(--amber); }
+.key-letter.gl { color: var(--gold); }
+.key-content { padding: 8px 11px; }
+.key-name { font-size: 11px; font-weight: 500; color: rgba(220,245,242,0.78); margin-bottom: 2px; }
+.key-desc { font-size: 11px; color: rgba(200,240,238,0.45); font-weight: 300; line-height: 1.5; }
+
+/* ══ ZOOM-OUT SECTION ══ */
+.zo-section { margin-top: 88px; border-top: 1px solid rgba(45,212,191,0.09); padding-top: 72px; }
+.zo-header { text-align: center; margin-bottom: 52px; }
+.zo-title { font-family: var(--serif); font-size: clamp(22px,3.5vw,40px); font-weight: 300; line-height: 1.25; margin-bottom: 10px; }
+.zo-title em { color: var(--lite); font-style: italic; }
+.zo-tagline { font-family: var(--serif); font-size: clamp(13px,1.6vw,16px); font-style: italic; color: rgba(45,212,191,0.48); }
+.zo-intro { max-width: 640px; margin: 0 auto 48px; font-size: 14px; color: var(--soft); font-weight: 300; line-height: 1.85; text-align: center; }
+
+/* TWO QUESTION COLUMNS */
+.zo-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; max-width: 820px; margin: 0 auto; }
+@media(max-width: 620px) { .zo-cols { grid-template-columns: 1fr; } }
+
+/* Column header — BOLD and prominent */
+.zo-col-head {
+  font-size: 9px; letter-spacing: 5px; text-transform: uppercase;
+  padding-bottom: 12px;
+  border-bottom: 2px solid rgba(45,212,191,0.18);
+  margin-bottom: 4px;
+  font-weight: 700;
+}
+.zo-col-head.zoom-in  { color: rgba(45,212,191,0.88); }
+.zo-col-head.zoom-out { color: rgba(45,212,191,0.88); border-bottom-color: rgba(45,212,191,0.18); }
+
+/* Question rows — all same white format */
+.zo-q {
+  display: grid; grid-template-columns: 20px 1fr; gap: 12px;
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(45,212,191,0.06);
+  opacity: 0; transform: translateY(8px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.zo-q:last-child { border-bottom: none; }
+.zo-q.visible { opacity: 1; transform: translateY(0); }
+
+/* Q6 hinge — same white format, just a teal border left */
+.zo-q.hinge {
+  border-left: 3px solid rgba(45,212,191,0.40);
+  padding-left: 10px;
+  border-bottom: 1px solid rgba(45,212,191,0.06);
+  margin: 4px 0;
+}
+
+.zo-num { font-family: var(--serif); font-size: 13px; font-style: italic; color: rgba(45,212,191,0.28); padding-top: 2px; line-height: 1; }
+
+/* ALL question text — same white, no yellow */
+.zo-text { font-family: var(--serif); font-size: clamp(14px,1.7vw,17px); font-weight: 300; color: rgba(232,253,251,0.84); line-height: 1.52; }
+.zo-text em { color: var(--lite); font-style: italic; }
+
+/* Sub-labels — all same teal, no yellow */
+.zo-sub { font-size: 11px; color: rgba(45,212,191,0.38); font-weight: 300; margin-top: 4px; font-style: italic; }
+
+/* Final quote */
+.zo-final { text-align: center; margin-top: 56px; padding-top: 48px; border-top: 1px solid rgba(45,212,191,0.08); opacity: 0; transition: opacity 1.2s ease; }
+.zo-final.visible { opacity: 1; }
+.zo-final-q { font-family: var(--serif); font-size: clamp(17px,2.5vw,28px); font-weight: 300; font-style: italic; color: var(--ivory); line-height: 1.65; margin-bottom: 10px; }
+.zo-final-q em { color: var(--lite); }
+.zo-final-s { font-size: 11px; color: rgba(200,240,238,0.35); font-weight: 300; letter-spacing: 1px; text-transform: uppercase; }
+
+</style>
+
+<div class="page">
+
+  <!-- PAGE HEADER -->
+  <div class="page-header">
+    <p class="eyeline">Reflective Intelligence</p>
+    <h1 class="page-title">How we get <span style="color:#e8a020;font-style:italic;">trapped</span> —<br/>and how we can become <em>free.</em></h1>
+    <p class="page-sub">Every human being runs a cycle of conditioning — automatically, without knowing it. Reflective Intelligence is what makes the cycle visible.</p>
+  </div>
+
+  <!-- TWO DIAGRAMS -->
+  <div class="diagrams-row">
+
+    <!-- ── DIAGRAM 1: CONDITIONING ── -->
+    <div class="diagram-card">
+      <div class="diagram-header">
+        <span class="diagram-tag amber">The Conditioning Cycle</span>
+        <h2 class="diagram-title amber">The mind running on autopilot</h2>
+        <p class="diagram-sub">Running continuously, without awareness — shaping every reaction</p>
       </div>
-      <p class="footer-tagline">The observer and the observed<br/>are not two things.</p>
-    </div>
-    <div class="footer-col">
-      <h4>Explore</h4>
-      <ul>
-        <li><a href="#symbol">The Symbol</a></li>
-        <li><a href="#science">The Science</a></li>
-        <li><a href="#philosophy">Philosophy</a></li>
-        <li><a href="#manifesto">The Manifesto</a></li>
-        <li><a href="#the-cycle">The Cycle</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Connect</h4>
-      <ul>
-        <li><a href="https://lumeri.co.in">LumeRI — Begin Writing</a></li>
-        <li><a href="/cdn-cgi/l/email-protection#a1d3c4c7cdc4c2d5c8d7c4c8cfd5c4cdcdc8c6c4cfc2c48fcdc8c7c4e1c6ccc0c8cd8fc2cecc">Contact Us</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <p>© 2025 Reflective Intelligence. All rights reserved.</p>
-    <p class="footer-motto">The mirror has always been inside you.</p>
-  </div>
-</footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-// FAQ accordion
-document.querySelectorAll('.faq-q').forEach(q => {
-  q.addEventListener('click', () => {
-    const item = q.parentElement;
-    const isOpen = item.classList.contains('open');
-    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
-    if (!isOpen) item.classList.add('open');
+      <canvas id="c1"></canvas>
+
+      <div class="story-panel">
+        <span class="sp-phase-label teal">What you are watching</span>
+        <div class="sp-head">Five moments. One automatic loop.</div>
+        <div class="sp-body">Knowledge shapes what we expect. Experiences arrive already filtered. Memories generate thoughts. Thoughts drive reactions. The loop runs by itself — we don't choose it, we don't notice it.<br/><br/>This is why the same argument repeats. The same pattern returns. The same reaction fires — even when you don't want it to. Not because something is wrong with you. Because the loop was never seen.</div>
+      </div>
+
+      <div class="node-key">
+        <div class="key-row"><div class="key-letter am">K</div><div class="key-content"><div class="key-name">Knowledge</div><div class="key-desc">Beliefs and assumptions inherited from childhood, culture, and experience — accepted without examination.</div></div></div>
+        <div class="key-row"><div class="key-letter am">E</div><div class="key-content"><div class="key-name">Experience</div><div class="key-desc">Every event we live through — filtered by our existing knowledge before it even arrives.</div></div></div>
+        <div class="key-row"><div class="key-letter am">M</div><div class="key-content"><div class="key-name">Memory</div><div class="key-desc">What the mind stores — not the raw event, but our emotional interpretation of it.</div></div></div>
+        <div class="key-row"><div class="key-letter am">T</div><div class="key-content"><div class="key-name">Thought</div><div class="key-desc">Every thought is generated by memory. We mostly see our past, projected onto the present.</div></div></div>
+        <div class="key-row"><div class="key-letter am">A</div><div class="key-content"><div class="key-name">Action / Reaction</div><div class="key-desc">Driven by thought, memory, and old knowledge. The same pattern repeated with new names.</div></div></div>
+      </div>
+    </div>
+
+    <!-- ── DIAGRAM 2: LIBERATION — INTERACTIVE ── -->
+    <div class="diagram-card" id="lib-card">
+      <div class="diagram-header">
+        <span class="diagram-tag teal">The Liberation Path</span>
+        <h2 class="diagram-title teal">The same cycle — witnessed</h2>
+        <p class="diagram-sub">When awareness enters the gap between thought and action — the cycle changes. Move through each phase at your own pace.</p>
+      </div>
+
+      <!-- BEFORE START: Play button overlay -->
+      <div id="lib-start" style="
+        border:1px solid rgba(245,197,24,0.18);
+        border-radius:10px;
+        background:rgba(245,197,24,0.03);
+        padding:36px 24px;
+        text-align:center;
+        cursor:pointer;
+        margin-bottom:16px;
+        user-select:none;
+        -webkit-tap-highlight-color:transparent;
+      " onclick="libBegin()" role="button" aria-label="Begin the liberation cycle">
+        <div style="
+          width:60px;height:60px;border-radius:50%;
+          border:2px solid rgba(245,197,24,0.65);
+          display:flex;align-items:center;justify-content:center;
+          background:rgba(245,197,24,0.08);
+          box-shadow:0 0 28px rgba(245,197,24,0.18);
+          margin:0 auto 16px;
+        ">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="rgba(245,197,24,0.88)"><polygon points="7,3 19,11 7,19"/></svg>
+        </div>
+        <div style="font-family:'DM Sans',sans-serif;font-size:11px;letter-spacing:4px;text-transform:uppercase;color:rgba(245,197,24,0.72);margin-bottom:8px;">Begin the cycle</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:13px;font-style:italic;color:rgba(220,245,242,0.38);">Tap anywhere here to start</div>
+      </div>
+
+      <!-- AFTER START: Canvas + side panel (hidden initially) -->
+      <div id="lib-active" style="display:none;">
+
+        <!-- Canvas -->
+        <div style="position:relative;margin-bottom:16px;">
+          <canvas id="c2"></canvas>
+        </div>
+
+        <!-- Phase stepper -->
+        <div id="lib-stepper" style="
+          border:1px solid rgba(245,197,24,0.14);
+          border-radius:10px;
+          background:rgba(245,197,24,0.02);
+          overflow:hidden;
+        ">
+          <!-- Phase nav pills -->
+          <div style="
+            display:flex;
+            border-bottom:1px solid rgba(245,197,24,0.10);
+            overflow-x:auto;
+            scrollbar-width:none;
+          " id="lib-pills">
+            <!-- Pills injected by JS -->
+          </div>
+
+          <!-- Current phase content -->
+          <div id="lib-content" style="padding:18px 20px;">
+            <!-- Content injected by JS -->
+          </div>
+
+          <!-- Navigation buttons -->
+          <div style="
+            padding:14px 20px;
+            border-top:1px solid rgba(245,197,24,0.08);
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+          ">
+            <button id="lib-prev" onclick="libPrev()" style="
+              font-family:'DM Sans',sans-serif;font-size:10px;
+              letter-spacing:3px;text-transform:uppercase;
+              color:rgba(45,212,191,0.50);
+              background:none;border:none;cursor:pointer;
+              padding:8px 0;
+              visibility:hidden;
+            ">← Prev</button>
+            <div id="lib-dots" style="display:flex;gap:6px;align-items:center;">
+              <!-- Dots injected by JS -->
+            </div>
+            <button id="lib-next" onclick="libNext()" style="
+              font-family:'DM Sans',sans-serif;font-size:10px;
+              letter-spacing:3px;text-transform:uppercase;
+              color:rgba(245,197,24,0.80);
+              background:none;
+              border:1px solid rgba(245,197,24,0.30);
+              border-radius:3px;
+              cursor:pointer;
+              padding:8px 16px;
+            ">Next →</button>
+          </div>
+        </div>
+
+        <!-- Node key -->
+        <div class="node-key" style="margin-top:16px;">
+          <div class="key-row"><div class="key-letter gl">RI</div><div class="key-content"><div class="key-name">Reflective Intelligence — RI</div><div class="key-desc">Sits on the orbit just before Action. Intercepts the automatic T→A jump. From here, awareness traces backward to the root — and forward to A* (response from clarity).</div></div></div>
+          <div class="key-row"><div class="key-letter gl">↺</div><div class="key-content"><div class="key-name">Backward Trace — T → M → E → K</div><div class="key-desc">From the T→RI gap, awareness traces back: detecting the pattern (T→M), identifying the event (M→E), finding the source (E→K).</div></div></div>
+          <div class="key-row"><div class="key-letter gl">A*</div><div class="key-content"><div class="key-name">A* — Response from clarity</div><div class="key-desc">After RI sees clearly, RI passes to A* — action arising from awareness, not from old conditioning. RI → A* on the orbit.</div></div></div>
+        </div>
+
+      </div><!-- end lib-active -->
+    </div>
+
+  </div><!-- end diagrams-row -->
+
+
+  <!-- ══ THIRD DIAGRAM: HOW LUMERI FITS ══ -->
+  <div style="margin-top:72px;border-top:1px solid rgba(45,212,191,0.09);padding-top:64px;">
+    <div style="text-align:center;margin-bottom:48px;">
+      <p class="eyeline" style="margin-bottom:12px;">LumeRI · The Practice Instrument</p>
+      <h2 style="font-family:var(--serif);font-size:clamp(22px,3.5vw,40px);font-weight:300;line-height:1.25;margin-bottom:10px;">
+        Where LumeRI sits<br/>in the <em style="color:var(--lite);">liberation cycle.</em>
+      </h2>
+      <p style="font-size:14px;color:var(--soft);font-weight:300;max-width:480px;margin:0 auto;line-height:1.8;">
+        LumeRI is not the awareness. It is the instrument placed at the gap — helping you see the cycle clearly enough that something different becomes possible.
+      </p>
+    </div>
+
+    <!-- Three step flow: E → RI → A* -->
+    <div style="max-width:720px;margin:0 auto;display:flex;flex-direction:column;gap:0;">
+
+      <!-- Step E -->
+      <div style="display:grid;grid-template-columns:48px 1fr;gap:20px;align-items:start;padding:24px 0;border-bottom:1px solid rgba(45,212,191,0.08);">
+        <div style="width:48px;height:48px;border-radius:50%;border:1.5px solid rgba(15,184,164,0.55);display:flex;align-items:center;justify-content:center;background:rgba(15,184,164,0.06);flex-shrink:0;">
+          <span style="font-family:var(--sans);font-size:16px;font-weight:500;color:var(--teal);">1</span>
+        </div>
+        <div>
+          <div style="font-family:var(--sans);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:rgba(45,212,191,0.55);margin-bottom:6px;font-weight:500;">You write honestly</div>
+          <div style="font-family:var(--serif);font-size:clamp(15px,1.8vw,19px);color:var(--ivory);line-height:1.4;margin-bottom:6px;">You bring your experience to the page — exactly as it is. What you are carrying. What keeps returning. What you cannot yet say out loud.</div>
+          <div style="font-size:12px;color:rgba(200,240,238,0.42);font-weight:300;">LumeRI is your private space. No human ever reads what you write.</div>
+        </div>
+      </div>
+
+      <!-- Arrow down -->
+      <div style="display:flex;justify-content:center;padding:12px 0;">
+        <svg width="2" height="32" viewBox="0 0 2 32"><line x1="1" y1="0" x2="1" y2="28" stroke="rgba(245,197,24,0.35)" stroke-width="1.5" stroke-dasharray="3,3"/><polygon points="1,32 -3,24 5,24" fill="rgba(245,197,24,0.45)"/></svg>
+      </div>
+
+      <!-- Step RI -->
+      <div style="display:grid;grid-template-columns:48px 1fr;gap:20px;align-items:start;padding:24px 0;border-bottom:1px solid rgba(245,197,24,0.10);background:rgba(245,197,24,0.02);border-radius:8px;padding:20px 16px;margin:0 -16px;">
+        <div style="width:48px;height:48px;border-radius:50%;border:1.5px solid rgba(245,197,24,0.70);display:flex;align-items:center;justify-content:center;background:rgba(245,197,24,0.08);flex-shrink:0;box-shadow:0 0 16px rgba(245,197,24,0.15);">
+          <span style="font-family:var(--sans);font-size:16px;font-weight:500;color:rgba(245,197,24,0.90);">2</span>
+        </div>
+        <div>
+          <div style="font-family:var(--sans);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:rgba(245,197,24,0.65);margin-bottom:6px;font-weight:500;">LumeRI reads the structure</div>
+          <div style="font-family:var(--serif);font-size:clamp(15px,1.8vw,19px);color:var(--ivory);line-height:1.4;margin-bottom:6px;">LumeRI reads nine dimensions of how your mind was moving — not what you said, but how you were thinking. It detects your pattern across the K-cycle and names it.</div>
+          <div style="font-size:12px;color:rgba(200,240,238,0.42);font-weight:300;">Cognitive Flexibility · Emotional Intensity · Attribution · Reflective Depth · Narrative Coherence · Attentional Stability · Self-Warmth · Compassion · Perspective</div>
+        </div>
+      </div>
+
+      <!-- Arrow down -->
+      <div style="display:flex;justify-content:center;padding:12px 0;">
+        <svg width="2" height="32" viewBox="0 0 2 32"><line x1="1" y1="0" x2="1" y2="28" stroke="rgba(245,197,24,0.35)" stroke-width="1.5" stroke-dasharray="3,3"/><polygon points="1,32 -3,24 5,24" fill="rgba(245,197,24,0.45)"/></svg>
+      </div>
+
+      <!-- Step A* -->
+      <div style="display:grid;grid-template-columns:48px 1fr;gap:20px;align-items:start;padding:24px 0;">
+        <div style="width:48px;height:48px;border-radius:50%;border:1.5px solid rgba(15,184,164,0.55);display:flex;align-items:center;justify-content:center;background:rgba(15,184,164,0.06);flex-shrink:0;">
+          <span style="font-family:var(--sans);font-size:16px;font-weight:500;color:var(--teal);">3</span>
+        </div>
+        <div>
+          <div style="font-family:var(--sans);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:rgba(45,212,191,0.55);margin-bottom:6px;font-weight:500;">You receive a reflection</div>
+          <div style="font-family:var(--serif);font-size:clamp(15px,1.8vw,19px);color:var(--ivory);line-height:1.4;margin-bottom:6px;">A reflection drawn from what you actually wrote — and from centuries of wisdom matched to your specific pattern. Not advice. A different quality of light on the same moment.</div>
+          <div style="font-size:12px;color:rgba(200,240,238,0.42);font-weight:300;">Over time: patterns become visible. Self-warmth deepens. The conditioning loosens — not by force, but by seeing.</div>
+        </div>
+      </div>
+
+    </div><!-- end three steps -->
+
+    <!-- Bottom statement -->
+    <div style="text-align:center;margin-top:48px;padding:24px 20px;border:1px solid rgba(45,212,191,0.10);border-radius:8px;background:rgba(15,184,164,0.02);max-width:560px;margin-left:auto;margin-right:auto;">
+      <p style="font-family:var(--serif);font-size:clamp(16px,2vw,21px);font-style:italic;color:rgba(220,245,242,0.78);line-height:1.7;">
+        "LumeRI does not give you freedom.<br/>It helps you see the cycle clearly enough<br/>that freedom becomes possible."
+      </p>
+      <div style="margin-top:20px;">
+        <a href="https://lumeri.co.in" style="display:inline-block;font-family:var(--sans);font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#040c0f;background:var(--teal);padding:14px 32px;text-decoration:none;border-radius:3px;font-weight:500;">Begin Writing in LumeRI →</a>
+      </div>
+    </div>
+
+  </div><!-- end third diagram -->
+
+  <!-- ══ ZOOM-OUT QUESTIONS ══ -->
+  <div class="zo-section">
+    <div class="zo-header">
+      <p class="eyeline" style="margin-bottom:12px;">The Practice</p>
+      <h2 class="zo-title">Eight questions that<br/>walk you through the <em>cycle.</em></h2>
+    </div>
+
+    <p class="zo-intro">
+      The liberation diagram above shows the path visually. These eight questions are how you actually walk it — in writing, in your own life, about whatever is alive for you right now. Each question moves one step closer to the root. By question eight, you are no longer inside the problem. You are seeing it.
+    </p>
+
+    <div class="zo-cols" id="zoGrid">
+
+      <!-- ZOOM IN column -->
+      <div>
+        <p class="zo-col-head zoom-in">Zoom In — Trace Toward the Root</p>
+        <div class="zo-q" id="zoq1">
+          <span class="zo-num">1</span>
+          <div><div class="zo-text">How are you <em>feeling</em> today?</div></div>
+        </div>
+        <div class="zo-q" id="zoq2">
+          <span class="zo-num">2</span>
+          <div><div class="zo-text">What is the <em>cause</em> of this feeling?</div></div>
+        </div>
+        <div class="zo-q" id="zoq3">
+          <span class="zo-num">3</span>
+          <div><div class="zo-text">When did it happen — <em>past</em> event or <em>future</em> planning?</div></div>
+        </div>
+        <div class="zo-q" id="zoq4">
+          <span class="zo-num">4</span>
+          <div><div class="zo-text">Why is it an <em>issue</em> exactly?</div></div>
+        </div>
+        <div class="zo-q" id="zoq5">
+          <span class="zo-num">5</span>
+          <div><div class="zo-text">Who is <em>facing</em> this issue?</div></div>
+        </div>
+      </div>
+
+      <!-- HINGE + ZOOM OUT column -->
+      <div>
+        <p class="zo-col-head zoom-out">The Hinge &amp; Zoom Out</p>
+        <div class="zo-q hinge" id="zoq6">
+          <span class="zo-num">6</span>
+          <div>
+            <div class="zo-text">Who are you — <em>conditioned self</em> or <em>choicelessly aware?</em></div>
+            <div class="zo-sub">The hinge. Step outside the one who is suffering.</div>
+          </div>
+        </div>
+        <div class="zo-q" id="zoq7">
+          <span class="zo-num">7</span>
+          <div>
+            <div class="zo-text">What would you <em>advise a friend</em> who brought you this question?</div>
+            <div class="zo-sub">You already know the answer. You always did.</div>
+          </div>
+        </div>
+        <div class="zo-q" id="zoq8">
+          <span class="zo-num">8</span>
+          <div>
+            <div class="zo-text">What will you <em>do</em> after seeing this?</div>
+            <div class="zo-sub">Not from habit. From here. From now.</div>
+          </div>
+        </div>
+        <div style="margin-top:20px;padding:16px 18px;border:1px solid rgba(45,212,191,0.10);border-radius:7px;background:rgba(45,212,191,0.02);">
+          <p style="font-family:var(--serif);font-size:14px;font-style:italic;color:rgba(200,240,238,0.58);line-height:1.7;">
+            "The dust is seen. What is seen clearly — loses its grip. Layer by layer, the mirror clears."
+          </p>
+          <p style="font-family:var(--sans);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(45,212,191,0.35);margin-top:8px;">— Reflective Intelligence</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="zo-final" id="zoFinal">
+      <p class="zo-final-q">From <em>"How are you?"</em><br/>to <em>"Who are you?"</em></p>
+      <p style="font-family:var(--serif);font-size:clamp(16px,2vw,22px);font-weight:300;font-style:italic;letter-spacing:0.5px;color:var(--lite);margin-top:16px;margin-bottom:0;">That is the entire path.</p>
+      <p class="zo-final-s">Reflective Intelligence · The practice of seeing clearly</p>
+    </div>
+  </div>
+
+</div><!-- end page -->
+
+<script>
+(function(){
+
+// ═══════════════════════════════════════════════════════
+// SHARED UTILITIES
+// ═══════════════════════════════════════════════════════
+const T_  = 'rgba(15,184,164,';   // teal — liberation
+const AM_ = 'rgba(232,160,32,';   // amber — conditioning
+const G_  = 'rgba(245,197,24,';   // gold — RI node / A*
+const IV  = '#e8fdfb';
+const DP  = '#030a0c';
+const MD  = '#061a1e';
+
+const NODES = [
+  { key:'K', full:'Knowledge',  angle:-126 },
+  { key:'E', full:'Experience', angle:-54  },
+  { key:'M', full:'Memory',     angle:18   },
+  { key:'T', full:'Thought',    angle:90   },
+  { key:'A', full:'Action',     angle:162  },
+];
+
+function initGeo(canvas) {
+  const dpr = window.devicePixelRatio || 1;
+  const W   = canvas.getBoundingClientRect().width;
+  const H   = W * 1.28; // taller — more room top and bottom
+  canvas.style.height = H + 'px';
+  canvas.width  = W * dpr;
+  canvas.height = H * dpr;
+  const ctx = canvas.getContext('2d');
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  const sc  = W / 500;
+  const cx  = W / 2;
+  const cy  = H * 0.48; // slightly above centre — room for top labels
+  const R   = W * 0.185; // fits all nodes on narrow mobile screens
+  const nr  = 19 * sc;
+  const nodes = NODES.map(n => ({
+    ...n,
+    x: cx + R * Math.cos(n.angle * Math.PI / 180),
+    y: cy + R * Math.sin(n.angle * Math.PI / 180),
+  }));
+  return { ctx, W, H, cx, cy, R, sc, nr, nodes };
+}
+
+function drawBg(ctx, cx, cy, W, H, c1, c2) {
+  const g = ctx.createRadialGradient(cx, cy * .85, 0, cx, cy, W * .75);
+  g.addColorStop(0, c1); g.addColorStop(1, c2);
+  ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
+}
+
+function drawArrow(ctx, x1, y1, x2, y2, col, alpha, lw, sc, dash) {
+  ctx.beginPath(); ctx.moveTo(x1, y1); ctx.lineTo(x2, y2);
+  ctx.strokeStyle = col + alpha + ')';
+  ctx.lineWidth = lw;
+  ctx.setLineDash(dash ? [4 * sc, 3 * sc] : []);
+  ctx.stroke(); ctx.setLineDash([]);
+  const ang = Math.atan2(y2 - y1, x2 - x1);
+  const al = Math.max(8, 10 * sc), aw = Math.max(4, 5 * sc); // bigger on mobile
+  ctx.save(); ctx.translate(x2, y2); ctx.rotate(ang);
+  ctx.beginPath(); ctx.moveTo(0, 0); ctx.lineTo(-al, -aw); ctx.lineTo(-al, aw);
+  ctx.closePath(); ctx.fillStyle = col + Math.min(1, alpha + .15) + ')'; ctx.fill();
+  ctx.restore();
+}
+
+function drawNodeCircle(ctx, n, nr, col, alpha, sc) {
+  const g = ctx.createRadialGradient(n.x, n.y, 0, n.x, n.y, nr * 3);
+  g.addColorStop(0, col + alpha * .18 + ')'); g.addColorStop(1, col + '0)');
+  ctx.fillStyle = g; ctx.beginPath(); ctx.arc(n.x, n.y, nr * 3, 0, Math.PI * 2); ctx.fill();
+  ctx.beginPath(); ctx.arc(n.x, n.y, nr, 0, Math.PI * 2);
+  ctx.fillStyle = MD; ctx.fill();
+  ctx.strokeStyle = col + alpha + ')'; ctx.lineWidth = 1.5 * sc; ctx.stroke();
+  ctx.font = `500 ${Math.max(11, 13 * sc)}px 'DM Sans',sans-serif`;
+  ctx.fillStyle = col + Math.min(1, alpha + .2) + ')';
+  ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+  ctx.fillText(n.key, n.x, n.y);
+}
+
+// Per-node label — precise manual offsets, guaranteed no clip/overlap
+function drawNodeLabel(ctx, n, cx, cy, R, sc, alpha) {
+  // Each node: explicit pixel offset direction and alignment
+  // K (-126°) = upper-left  → label to the LEFT, baseline above
+  // E (-54°)  = upper-right → label to the RIGHT, baseline above
+  // M (18°)   = right       → label to the RIGHT
+  // T (90°)   = bottom      → label BELOW, centred
+  // A (162°)  = left        → label to the LEFT
+  const off = 46 * sc;
+  const lx = cx + (R + off) * Math.cos(n.angle * Math.PI / 180);
+  const ly = cy + (R + off) * Math.sin(n.angle * Math.PI / 180);
+
+  ctx.font = `italic ${Math.max(9, 10.5 * sc)}px 'Cormorant Garamond',serif`;
+  ctx.fillStyle = IV;
+  ctx.globalAlpha = alpha;
+
+  if (n.key === 'K') {
+    // Upper-left: right-align text so it extends leftward from node
+    ctx.textAlign = 'right'; ctx.textBaseline = 'bottom';
+    ctx.fillText(n.full, lx + 6*sc, ly + 8*sc);
+  } else if (n.key === 'E') {
+    // Upper-right: left-align, reduced offset to prevent clipping
+    const eLx = cx + (R + 36*sc) * Math.cos(n.angle * Math.PI/180);
+    const eLy = cy + (R + 36*sc) * Math.sin(n.angle * Math.PI/180);
+    ctx.textAlign = 'left'; ctx.textBaseline = 'bottom';
+    ctx.fillText(n.full, eLx - 4*sc, eLy + 10*sc);
+  } else if (n.key === 'M') {
+    // Right side: left-align, centred vertically
+    // Use reduced offset to stay on-screen
+    const mLx = cx + (R + 38*sc) * Math.cos(n.angle * Math.PI/180);
+    ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
+    ctx.fillText(n.full, mLx, ly);
+  } else if (n.key === 'T') {
+    // Bottom: centred below
+    ctx.textAlign = 'center'; ctx.textBaseline = 'top';
+    ctx.fillText(n.full, lx, ly + 4*sc);
+  } else if (n.key === 'A') {
+    // Left side: right-align, centred vertically
+    ctx.textAlign = 'right'; ctx.textBaseline = 'middle';
+    ctx.fillText(n.full, lx, ly);
+  }
+
+  ctx.globalAlpha = 1;
+}
+
+function eio(t) { return t < .5 ? 2 * t * t : -1 + (4 - 2 * t) * t; }
+function cl(v)  { return Math.max(0, Math.min(1, v)); }
+
+// ═══════════════════════════════════════════════════════
+// DIAGRAM 1 — CONDITIONING (amber, clockwise, uniform)
+// ═══════════════════════════════════════════════════════
+(function () {
+  const canvas = document.getElementById('c1');
+  if (!canvas) return;
+  let geo, tick = 0;
+  const PARTS = Array.from({ length: 8 }, (_, i) => ({ pos: i / 8 }));
+
+  function draw() {
+    tick++;
+    const { ctx, W, H, cx, cy, R, sc, nr, nodes } = geo;
+    ctx.clearRect(0, 0, W, H);
+    drawBg(ctx, cx, cy, W, H, '#0d1a10', DP);
+
+    // Orbit ring
+    ctx.beginPath(); ctx.arc(cx, cy, R, 0, Math.PI * 2);
+    ctx.strokeStyle = AM_ + '0.12)'; ctx.lineWidth = 1; ctx.stroke();
+
+    // Arrows — all 5 clockwise
+    for (let i = 0; i < 5; i++) {
+      const f = nodes[i], t = nodes[(i + 1) % 5];
+      const dx = t.x - f.x, dy = t.y - f.y, len = Math.sqrt(dx * dx + dy * dy);
+      const ux = dx / len, uy = dy / len;
+      drawArrow(ctx, f.x + ux * nr, f.y + uy * nr, t.x - ux * nr, t.y - uy * nr, AM_, 0.45, 1.4 * sc, sc, false);
+    }
+
+    // Particles — uniform, slow
+    PARTS.forEach(p => {
+      p.pos = (p.pos + 0.00075) % 1;
+      const ang = p.pos * Math.PI * 2 - Math.PI / 2;
+      const px = cx + R * Math.cos(ang), py = cy + R * Math.sin(ang);
+      const g = ctx.createRadialGradient(px, py, 0, px, py, 7 * sc);
+      g.addColorStop(0, AM_ + '0.80)'); g.addColorStop(1, AM_ + '0)');
+      ctx.fillStyle = g; ctx.beginPath(); ctx.arc(px, py, 7 * sc, 0, Math.PI * 2); ctx.fill();
+      ctx.beginPath(); ctx.arc(px, py, 2.2 * sc, 0, Math.PI * 2);
+      ctx.fillStyle = '#f0c060'; ctx.fill();
+    });
+
+    nodes.forEach(n => { drawNodeCircle(ctx, n, nr, AM_, 0.75, sc); drawNodeLabel(ctx, n, cx, cy, R, sc, 0.82); });
+    requestAnimationFrame(draw);
+  }
+
+  function init() { geo = initGeo(canvas); draw(); }
+  window.addEventListener('resize', () => setTimeout(init, 80));
+  setTimeout(init, 100);
+})();
+
+// ═══════════════════════════════════════════════════════
+// LIBERATION DIAGRAM — USER-CONTROLLED PHASES
+// ═══════════════════════════════════════════════════════
+(function () {
+  const PHASES = [
+    {
+      tag: 'Phase 1 · The conditioning loop',
+      head: 'K → E → M → T — the automatic cycle.',
+      body: 'Knowledge shapes what we expect. Experience arrives already filtered. Memory stores the interpretation. Memory generates Thought. This is the conditioning cycle — running automatically, without awareness, shaping every reaction.',
+      col: 'teal'
+    },
+    {
+      tag: 'Phase 2 · RI activates',
+      head: 'Before thought becomes action — RI enters.',
+      body: 'In the gap between Thought and Action, RI activates — shown here as an inner node between T and A. The automatic T → A jump is intercepted. Thought arrives — but before it becomes Action, awareness enters. This is the gap. This is where everything can change.',
+      col: 'amber'
+    },
+    {
+      tag: 'Phase 3 · Tracing backward',
+      head: 'RI traces the thought back to its root.',
+      body: 'From RI, awareness traces backward:\nT — seeing the thought clearly.\nT → M — detecting the recurring pattern in memory.\nM → E — identifying the original experience or event.\nE → K — identifying the source: lived truth, inherited belief, or conditioned assumption?',
+      col: 'amber'
+    },
+    {
+      tag: 'Phase 4 · The source is seen',
+      head: 'K illuminates — where did this come from?',
+      body: 'The root is now visible. The original knowledge — inherited, unexamined, mistaken for truth — is seen for what it is. Not fought. Not suppressed. Simply seen. What is seen clearly, loses its grip.',
+      col: 'amber'
+    },
+    {
+      tag: 'Phase 5 · A* — response from clarity',
+      head: 'From RI, a different action becomes possible.',
+      body: 'Not reaction. Not suppression. A* — action arising from what is actually seen now, not from old conditioning. RI passes to A* on the orbit. The same situation. A completely different response. The loop opens.',
+      col: 'amber'
+    }
+  ];
+
+  // Current active phase (0-4). -1 = not started.
+  let curPhase = -1;
+  let traceStep = 0; // 0-3: which trace segment is active in phase 3
+  let traceArrowP = 0; // 0→1: animation progress of current segment's arrow
+  let traceDone = false; // current segment arrow fully drawn
+  let geo, phaseTick = 0, animId = null;
+
+  // Phase 0 forward particles
+  const FWD = Array.from({ length: 6 }, (_, i) => ({ pos: i / 6 }));
+
+  // Build the phase pills and dots
+  function buildNav() {
+    const pills = document.getElementById('lib-pills');
+    const dots  = document.getElementById('lib-dots');
+    if (!pills || !dots) return;
+    // Short labels for pills
+    const shortTags = ['1 · Loop','2 · Pause','3 · Trace','4 · Root','5 · A*'];
+    pills.innerHTML = PHASES.map((ph, i) => `
+      <div id="pill-${i}" onclick="libGoTo(${i})" style="
+        flex-shrink:0;
+        padding:10px 16px;
+        font-family:'DM Sans',sans-serif;
+        font-size:9px;letter-spacing:3px;text-transform:uppercase;
+        cursor:pointer;
+        border-right:1px solid rgba(245,197,24,0.08);
+        transition:all 0.3s;
+        color:rgba(200,240,238,0.30);
+        background:transparent;
+        white-space:nowrap;
+      ">${shortTags[i]}</div>
+    `).join('');
+    // Add right-fade gradient to pill bar
+    pills.style.WebkitMaskImage = 'linear-gradient(to right, black 80%, transparent 100%)';
+    pills.style.maskImage = 'linear-gradient(to right, black 80%, transparent 100%)';
+    dots.innerHTML = PHASES.map((_, i) => `
+      <div id="dot-${i}" style="
+        width:6px;height:6px;border-radius:50%;
+        background:rgba(45,212,191,0.20);
+        transition:all 0.3s;
+      "></div>
+    `).join('');
+  }
+
+  function updateNav(p) {
+    PHASES.forEach((_, i) => {
+      const pill = document.getElementById('pill-'+i);
+      const dot  = document.getElementById('dot-'+i);
+      if (pill) {
+        if (i === p) {
+          pill.style.color = 'rgba(245,197,24,0.90)';
+          pill.style.background = 'rgba(245,197,24,0.06)';
+          pill.style.borderBottom = '2px solid rgba(245,197,24,0.50)';
+        } else if (i < p) {
+          pill.style.color = 'rgba(45,212,191,0.45)';
+          pill.style.background = 'transparent';
+          pill.style.borderBottom = 'none';
+        } else {
+          pill.style.color = 'rgba(200,240,238,0.25)';
+          pill.style.background = 'transparent';
+          pill.style.borderBottom = 'none';
+        }
+      }
+      if (dot) {
+        dot.style.background = i === p
+          ? 'rgba(245,197,24,0.80)'
+          : i < p
+          ? 'rgba(45,212,191,0.40)'
+          : 'rgba(200,240,238,0.15)';
+        dot.style.width  = i === p ? '8px' : '6px';
+        dot.style.height = i === p ? '8px' : '6px';
+      }
+    });
+
+    // Prev/Next buttons
+    const prev = document.getElementById('lib-prev');
+    const next = document.getElementById('lib-next');
+    if (prev) prev.style.visibility = p > 0 ? 'visible' : 'hidden';
+    if (next) {
+      if (p === PHASES.length - 1) {
+        next.textContent = 'Watch again ↺';
+        next.style.color = 'rgba(45,212,191,0.70)';
+        next.style.borderColor = 'rgba(45,212,191,0.25)';
+      } else {
+        next.textContent = 'Next →';
+        next.style.color = 'rgba(245,197,24,0.80)';
+        next.style.borderColor = 'rgba(245,197,24,0.30)';
+      }
+    }
+
+    // Scroll active pill into view
+    const activePill = document.getElementById('pill-'+p);
+    if (activePill) activePill.scrollIntoView({ behavior:'smooth', block:'nearest', inline:'center' });
+  }
+
+  function updateContent(p) {
+    const content = document.getElementById('lib-content');
+    if (!content) return;
+    const ph = PHASES[p];
+    const colMap = { teal: 'rgba(45,212,191,0.65)', amber: 'rgba(232,160,32,0.75)' };
+    const bodyFormatted = ph.body.split('\n').join('<br/>');
+    content.innerHTML = `
+      <div style="font-family:'DM Sans',sans-serif;font-size:9px;letter-spacing:4px;text-transform:uppercase;font-weight:600;color:${colMap[ph.col]};margin-bottom:8px;">Phase ${p+1} · ${ph.tag}</div>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:400;line-height:1.35;color:#e8fdfb;margin-bottom:8px;">${ph.head}</div>
+      <div style="font-family:'DM Sans',sans-serif;font-size:13px;color:rgba(220,245,242,0.65);line-height:1.72;font-weight:300;">${bodyFormatted}</div>`;
+  }
+
+  function goToPhase(p) {
+    curPhase = Math.max(0, Math.min(PHASES.length - 1, p));
+    phaseTick = 0;
+    traceStep = 0;
+    traceArrowP = 0;
+    traceDone = false;
+    updateNav(curPhase);
+    updateContent(curPhase);
+    updateTraceUI();
+  }
+
+  // Sub-step labels for phase 3
+  const TRACE_LABELS = [
+    {
+      arrow: 'Reflective Intelligence sees the Thought',
+      desc: 'What exactly is this thought?',
+      context: 'Before doing anything, just pause and look at the thought. Not good or bad — just what it actually is. Most people skip this. They react before they even notice what they are reacting to.'
+    },
+    {
+      arrow: 'Thought traces back to Memory',
+      desc: 'Have I felt this way before?',
+      context: 'Every thought comes from somewhere. Your mind is not creating something new — it is replaying a stored pattern. This feeling, this reaction, has shown up before. Where does it usually appear?'
+    },
+    {
+      arrow: 'Memory traces back to Experience',
+      desc: 'What happened that created this pattern?',
+      context: 'At some point in your life, something happened — a moment, a relationship, a loss, a criticism. Your mind stored it. And ever since, it has been running that stored response automatically, even in new situations.'
+    },
+    {
+      arrow: 'Experience traces back to Knowledge',
+      desc: 'Where did the original belief come from?',
+      context: 'At the root is a belief — something you accepted as true. Maybe you were taught it. Maybe you concluded it from a painful experience. The question now is: is it actually true? Or was it just what you learned to believe?'
+    },
+  ];
+
+  function updateTraceUI() {
+    const nextBtn = document.getElementById('lib-next');
+    const content = document.getElementById('lib-content');
+    if (curPhase !== 2) {
+      if (nextBtn) { nextBtn.textContent = 'Next →'; nextBtn.style.color='rgba(245,197,24,0.80)'; }
+      return;
+    }
+    // Phase 3: show sub-step info in content panel
+    if (content) {
+      const tl = TRACE_LABELS[traceStep];
+      const ph = PHASES[2];
+      const colMap = { teal: 'rgba(45,212,191,0.65)', amber: 'rgba(232,160,32,0.75)' };
+      const descHTML = traceDone
+        ? '<div style="font-family:DM Sans,sans-serif;font-size:14px;color:rgba(232,253,251,0.88);line-height:1.6;font-weight:400;margin-bottom:10px;">' + tl.desc + '</div>'
+          + '<div style="font-family:DM Sans,sans-serif;font-size:13px;color:rgba(200,240,238,0.68);line-height:1.75;font-weight:300;">' + tl.context + '</div>'
+        : '<div style="font-family:DM Sans,sans-serif;font-size:13px;color:rgba(245,197,24,0.50);font-style:italic;line-height:1.6;">Watch the arrow draw...</div>';
+      content.innerHTML =
+        '<div style="font-family:DM Sans,sans-serif;font-size:9px;letter-spacing:4px;text-transform:uppercase;font-weight:600;color:rgba(232,160,32,0.75);margin-bottom:10px;">Step ' + (traceStep+1) + ' of 4 · Tracing Backward</div>'
+        + '<div style="font-family:Cormorant Garamond,Georgia,serif;font-size:15px;font-weight:400;line-height:1.35;color:rgba(245,197,24,0.85);margin-bottom:8px;">' + tl.arrow + '</div>'
+        + descHTML;
+    }
+    if (nextBtn) {
+      if (traceStep < 3) {
+        nextBtn.textContent = traceDone ? 'Next step →' : '...';
+        nextBtn.style.color = traceDone ? 'rgba(245,197,24,0.80)' : 'rgba(245,197,24,0.30)';
+        nextBtn.style.borderColor = traceDone ? 'rgba(245,197,24,0.30)' : 'rgba(245,197,24,0.10)';
+        nextBtn.onclick = traceDone ? () => { traceStep++; traceArrowP=0; traceDone=false; updateTraceUI(); } : null;
+      } else {
+        nextBtn.textContent = traceDone ? 'Phase 4 — The source →' : '...';
+        nextBtn.style.color = traceDone ? 'rgba(45,212,191,0.80)' : 'rgba(45,212,191,0.30)';
+        nextBtn.style.borderColor = traceDone ? 'rgba(45,212,191,0.30)' : 'rgba(45,212,191,0.10)';
+        nextBtn.onclick = traceDone ? () => libNext() : null;
+      }
+    }
+  }
+
+  window.libGoTo = function(p) {
+    goToPhase(p);
+    const nextBtn = document.getElementById('lib-next');
+    if (nextBtn && p !== 2) nextBtn.onclick = libNext;
+  };
+  window.libNext = function() {
+    if (curPhase === PHASES.length - 1) { goToPhase(0); }
+    else {
+      goToPhase(curPhase + 1);
+      // Restore normal Next button onclick after leaving phase 3
+      const nextBtn = document.getElementById('lib-next');
+      if (nextBtn) nextBtn.onclick = libNext;
+    }
+  };
+  window.libPrev = function() { goToPhase(curPhase - 1); };
+
+  window.libBegin = function() {
+    const startEl  = document.getElementById('lib-start');
+    const activeEl = document.getElementById('lib-active');
+    if (startEl)  startEl.style.display  = 'none';
+    if (activeEl) activeEl.style.display = 'block';
+    buildNav();
+    goToPhase(0);
+    updateTraceUI();
+    // Re-init canvas now that it's visible
+    const canvas = document.getElementById('c2');
+    if (canvas) {
+      geo = initGeo(canvas);
+      phaseTick = 0;
+      animFrame();
+    }
+  };
+
+  // ── DRAW FUNCTION — RI on orbit between T and A ──
+  function animFrame() {
+    animId = requestAnimationFrame(animFrame);
+    phaseTick++;
+    const canvas = document.getElementById('c2');
+    if (!canvas || !geo) return;
+    const { ctx, W, H, cx, cy, R, sc, nr, nodes } = geo;
+    const phase = curPhase < 0 ? 0 : curPhase;
+
+    const LOOP = 600;
+    const lt = phaseTick % LOOP;
+    const lp = lt / LOOP; // 0..1 loops
+
+    ctx.clearRect(0, 0, W, H);
+    drawBg(ctx, cx, cy, W, H, '#081e18', DP);
+
+    // Node references
+    const K = nodes[0], E = nodes[1], M = nodes[2], T = nodes[3], A = nodes[4];
+
+    // RI sits at the chord midpoint between T and A, pulled 38% toward centre
+    // This guarantees clear separation from both T and A on any screen size
+    // T = angle 90°, A = angle 162°
+    const T_node = nodes[3], A_node = nodes[4];
+    const chordMidX = (T_node.x + A_node.x) / 2;
+    const chordMidY = (T_node.y + A_node.y) / 2;
+    const RI = {
+      x: chordMidX + 0.38 * (cx - chordMidX),
+      y: chordMidY + 0.38 * (cy - chordMidY)
+    };
+    const riR = nr * 1.15; // slightly larger than K-cycle nodes
+
+    // Phase label at top
+    const phaseNames = ['Phase 1 — Conditioning loop','Phase 2 — RI activates','Phase 3 — Tracing backward','Phase 4 — Source seen','Phase 5 — A* response'];
+    ctx.font = `500 ${Math.max(7, 8.5 * sc)}px 'DM Sans',sans-serif`;
+    ctx.fillStyle = 'rgba(45,212,191,0.38)';
+    ctx.textAlign = 'center'; ctx.textBaseline = 'top';
+    ctx.fillText(phaseNames[phase], W / 2, 9 * sc);
+
+    // Orbit ring
+    ctx.beginPath(); ctx.arc(cx, cy, R, 0, Math.PI * 2);
+    ctx.strokeStyle = T_ + '0.07)'; ctx.lineWidth = 1; ctx.stroke();
+
+    // ────────────────────────────────────────────
+    // PHASE 0: Full conditioning loop K→E→M→T→A
+    // Shows the automatic cycle with T→A direct
+    // ────────────────────────────────────────────
+    if (phase === 0) {
+      const fade = lp > 0.85 ? cl(1 - (lp - 0.85) / 0.15) : 1;
+      // Draw all 5 arrows K→E→M→T→A clockwise
+      for (let i = 0; i < 5; i++) {
+        const f = nodes[i], t2 = nodes[(i+1)%5];
+        const dx=t2.x-f.x, dy=t2.y-f.y, len=Math.sqrt(dx*dx+dy*dy);
+        const ux=dx/len, uy=dy/len;
+        drawArrow(ctx, f.x+ux*nr, f.y+uy*nr, t2.x-ux*nr, t2.y-uy*nr, AM_, 0.42*fade, 1.4*sc, sc, false);
+      }
+      // Particles flowing clockwise K→E→M→T→A
+      const FWD_PARTS = ctx._fwdParts || (ctx._fwdParts = Array.from({length:6},(_,i)=>({pos:i/6})));
+      FWD_PARTS.forEach(fp => {
+        fp.pos = (fp.pos + 0.0009) % 1;
+        const ang = fp.pos * Math.PI * 2 - Math.PI / 2;
+        const px = cx + R * Math.cos(ang), py = cy + R * Math.sin(ang);
+        const g = ctx.createRadialGradient(px,py,0,px,py,7*sc);
+        g.addColorStop(0, AM_+(0.78*fade)+')'); g.addColorStop(1, AM_+'0)');
+        ctx.fillStyle=g; ctx.beginPath(); ctx.arc(px,py,7*sc,0,Math.PI*2); ctx.fill();
+        ctx.beginPath(); ctx.arc(px,py,2*sc,0,Math.PI*2);
+        ctx.fillStyle=AM_+(0.88*fade)+')'; ctx.fill();
+      });
+      // RI visible very faintly — not yet active
+      _drawRINode(ctx, RI, riR, sc, 0.12, false, phaseTick);
+    }
+
+    // ────────────────────────────────────────────
+    // PHASE 1: RI activates in T→A gap
+    // Show T→RI arrow. T→A path "intercepted".
+    // RI pulses/breathes.
+    // ────────────────────────────────────────────
+    if (phase === 1) {
+      // Show the K→E→M→T arrows (conditioning approach, faded)
+      for (let i = 0; i < 4; i++) {
+        const f=nodes[i], t2=nodes[i+1];
+        const dx=t2.x-f.x, dy=t2.y-f.y, len=Math.sqrt(dx*dx+dy*dy);
+        const ux=dx/len, uy=dy/len;
+        drawArrow(ctx, f.x+ux*nr, f.y+uy*nr, t2.x-ux*nr, t2.y-uy*nr, AM_, 0.25, 1.2*sc, sc, false);
+      }
+
+      // T→RI activation arrow — draws in during first third of loop
+      const actP = lp < 0.4 ? cl(lp / 0.4) : 1;
+      const dxTR=RI.x-T.x, dyTR=RI.y-T.y, lenTR=Math.sqrt(dxTR*dxTR+dyTR*dyTR);
+      const uxTR=dxTR/lenTR, uyTR=dyTR/lenTR;
+      const exTR=T.x+uxTR*(nr+(lenTR-nr*2)*actP);
+      const eyTR=T.y+uyTR*(nr+(lenTR-nr*2)*actP);
+      ctx.beginPath(); ctx.moveTo(T.x+uxTR*nr, T.y+uyTR*nr); ctx.lineTo(exTR, eyTR);
+      ctx.strokeStyle=G_+'0.75)'; ctx.lineWidth=2*sc;
+      ctx.shadowColor=G_+'0.35)'; ctx.shadowBlur=10; ctx.stroke(); ctx.shadowBlur=0;
+      if (actP > 0.85) {
+        const ang2=Math.atan2(eyTR-(T.y+uyTR*nr),exTR-(T.x+uxTR*nr));
+        ctx.save(); ctx.translate(exTR,eyTR); ctx.rotate(ang2);
+        ctx.beginPath(); ctx.moveTo(0,0); ctx.lineTo(-9*sc,-4*sc); ctx.lineTo(-9*sc,4*sc);
+        ctx.closePath(); ctx.fillStyle=G_+'0.85)'; ctx.fill(); ctx.restore();
+      }
+
+      // Single clean label: show "The Gap" above the T→RI arrow midpoint
+      // Only one label, positioned above the arrow, never near RI node text
+      const ga = lp < 0.15 ? lp/0.15 : lp > 0.85 ? (1-lp)/0.15 : 1;
+      const gapMidX = (T.x + RI.x) / 2, gapMidY = (T.y + RI.y) / 2;
+      // Push label to the LEFT of the T→RI arrow so it doesn't crowd RI
+      ctx.font=`italic ${Math.max(8,9*sc)}px 'Cormorant Garamond',serif`;
+      ctx.fillStyle=G_+ga*.60+')';
+      ctx.textAlign='right'; ctx.textBaseline='middle';
+      ctx.fillText('the gap', gapMidX - 8*sc, gapMidY - 10*sc);
+
+      // RI glows — actively breathing
+      _drawRINode(ctx, RI, riR, sc, 0.85 + 0.15*lp, true, phaseTick);
+    }
+
+    // ────────────────────────────────────────────
+    // PHASE 2: Backward trace — USER-CONTROLLED SUB-STEPS
+    // traceStep 0=RI→T, 1=T→M, 2=M→E, 3=E→K
+    // Each step: arrow draws → label appears → user taps Next step
+    // ────────────────────────────────────────────
+    if (phase === 2) {
+      // Segment definitions
+      const allSegs = [
+        { from:RI, to:T, fromR:riR, toR:nr },
+        { from:T,  to:M, fromR:nr,  toR:nr },
+        { from:M,  to:E, fromR:nr,  toR:nr },
+        { from:E,  to:K, fromR:nr,  toR:nr },
+      ];
+
+      // Label positions per segment (clear of canvas edges)
+      const labelPos = [
+        { align:'right',  dx:-28, dy: 8  }, // RI→T: left of midpoint
+        { align:'left',   dx: 28, dy: 0  }, // T→M: right
+        { align:'left',   dx: 26, dy:-10 }, // M→E: right and up
+        { align:'center', dx:  0, dy: 20 }, // E→K: below line
+      ];
+
+      // Advance arrow animation
+      if (!traceDone) {
+        traceArrowP = Math.min(1, traceArrowP + 0.018); // ~55 frames to draw
+        if (traceArrowP >= 1) {
+          traceDone = true;
+          updateTraceUI(); // reveal label text + enable Next button
+        }
+      }
+
+      // Draw completed segments (faint)
+      for (let si = 0; si < traceStep; si++) {
+        const seg = allSegs[si];
+        const dx=seg.to.x-seg.from.x, dy=seg.to.y-seg.from.y;
+        const len=Math.sqrt(dx*dx+dy*dy);
+        const ux=dx/len, uy=dy/len;
+        const sx=seg.from.x+ux*seg.fromR, sy=seg.from.y+uy*seg.fromR;
+        const ex=seg.to.x-ux*seg.toR,    ey=seg.to.y-uy*seg.toR;
+        ctx.beginPath(); ctx.moveTo(sx,sy); ctx.lineTo(ex,ey);
+        ctx.strokeStyle=G_+'0.30)'; ctx.lineWidth=1.5*sc;
+        ctx.setLineDash([3*sc,3*sc]); ctx.stroke(); ctx.setLineDash([]);
+        // Completed arrowhead
+        const ang2=Math.atan2(ey-sy,ex-sx);
+        ctx.save(); ctx.translate(ex,ey); ctx.rotate(ang2);
+        ctx.beginPath(); ctx.moveTo(0,0); ctx.lineTo(-8*sc,-3.5*sc); ctx.lineTo(-8*sc,3.5*sc);
+        ctx.closePath(); ctx.fillStyle=G_+'0.38)'; ctx.fill(); ctx.restore();
+        // Completed label (faint)
+        const tl = TRACE_LABELS[si];
+        const mx=(seg.from.x+seg.to.x)/2, my=(seg.from.y+seg.to.y)/2;
+        const lp2 = labelPos[si];
+        ctx.font=`italic ${Math.max(7,8.5*sc)}px 'Cormorant Garamond',serif`;
+        ctx.fillStyle=G_+'0.30)';
+        ctx.textAlign=lp2.align; ctx.textBaseline='middle';
+        ctx.fillText(tl.arrow + ' · ' + tl.desc, mx+lp2.dx*sc, my+lp2.dy*sc);
+      }
+
+      // Draw current segment (animating)
+      if (traceStep < allSegs.length) {
+        const seg = allSegs[traceStep];
+        const dx=seg.to.x-seg.from.x, dy=seg.to.y-seg.from.y;
+        const len=Math.sqrt(dx*dx+dy*dy);
+        const ux=dx/len, uy=dy/len;
+        const sx=seg.from.x+ux*seg.fromR, sy=seg.from.y+uy*seg.fromR;
+        const fullEx=seg.to.x-ux*seg.toR, fullEy=seg.to.y-uy*seg.toR;
+        const curEx=sx+(fullEx-sx)*traceArrowP;
+        const curEy=sy+(fullEy-sy)*traceArrowP;
+
+        // Arrow line
+        ctx.beginPath(); ctx.moveTo(sx,sy); ctx.lineTo(curEx,curEy);
+        ctx.strokeStyle=G_+'0.72)'; ctx.lineWidth=2.2*sc;
+        ctx.setLineDash([4*sc,3*sc]);
+        ctx.shadowColor=G_+'0.30)'; ctx.shadowBlur=10;
+        ctx.stroke(); ctx.shadowBlur=0; ctx.setLineDash([]);
+
+        // Arrowhead when nearly complete
+        if (traceArrowP > 0.88) {
+          const ang2=Math.atan2(fullEy-sy,fullEx-sx);
+          ctx.save(); ctx.translate(fullEx,fullEy); ctx.rotate(ang2);
+          ctx.beginPath(); ctx.moveTo(0,0); ctx.lineTo(-10*sc,-4.5*sc); ctx.lineTo(-10*sc,4.5*sc);
+          ctx.closePath(); ctx.fillStyle=G_+'0.88)'; ctx.fill(); ctx.restore();
+        }
+
+        // Traveling gold dot at tip (while drawing)
+        if (traceArrowP < 1) {
+          const g2=ctx.createRadialGradient(curEx,curEy,0,curEx,curEy,11*sc);
+          g2.addColorStop(0,G_+'0.95)'); g2.addColorStop(1,G_+'0)');
+          ctx.fillStyle=g2; ctx.beginPath(); ctx.arc(curEx,curEy,11*sc,0,Math.PI*2); ctx.fill();
+          ctx.beginPath(); ctx.arc(curEx,curEy,2.5*sc,0,Math.PI*2);
+          ctx.fillStyle='#fffde0'; ctx.fill();
+        }
+
+        // Gentle pulse on arrived arrowhead when done
+        if (traceDone) {
+          const pulse2 = 0.5+0.5*Math.sin(phaseTick*0.06);
+          const pg=ctx.createRadialGradient(fullEx,fullEy,0,fullEx,fullEy,14*sc);
+          pg.addColorStop(0,G_+(0.20+pulse2*.15)+')'); pg.addColorStop(1,G_+'0)');
+          ctx.fillStyle=pg; ctx.beginPath(); ctx.arc(fullEx,fullEy,14*sc,0,Math.PI*2); ctx.fill();
+          // Label appears when done
+          const tl = TRACE_LABELS[traceStep];
+          const mx=(seg.from.x+seg.to.x)/2, my=(seg.from.y+seg.to.y)/2;
+          const lp2 = labelPos[traceStep];
+          const la=cl((traceArrowP-0.88)/0.12 + (traceDone?1:0));
+          ctx.font=`italic ${Math.max(8,9.5*sc)}px 'Cormorant Garamond',serif`;
+          ctx.fillStyle=G_+Math.min(0.82,la*.82)+')';
+          ctx.textAlign=lp2.align; ctx.textBaseline='middle';
+          ctx.fillText(tl.desc, mx+lp2.dx*sc, my+lp2.dy*sc);
+        }
+      }
+
+      _drawRINode(ctx, RI, riR, sc, 0.80, true, phaseTick);
+    }
+
+    // ────────────────────────────────────────────
+    // PHASE 3: K illuminates — "where did this come from?"
+    // Zoom-out rings. All trace lines remain visible.
+    // ────────────────────────────────────────────
+    if (phase === 3) {
+      // Show all trace lines faint
+      [[T,M],[M,E],[E,K]].forEach(([f,t2])=>{
+        const dx=t2.x-f.x, dy=t2.y-f.y, len=Math.sqrt(dx*dx+dy*dy);
+        const ux=dx/len, uy=dy/len;
+        ctx.beginPath(); ctx.moveTo(f.x+ux*nr,f.y+uy*nr); ctx.lineTo(t2.x-ux*nr,t2.y-uy*nr);
+        ctx.strokeStyle=G_+'0.22)'; ctx.lineWidth=1.5*sc;
+        ctx.setLineDash([3*sc,3*sc]); ctx.stroke(); ctx.setLineDash([]);
+      });
+      // T→RI faint
+      const dxTR=RI.x-T.x, dyTR=RI.y-T.y, lenTR=Math.sqrt(dxTR*dxTR+dyTR*dyTR);
+      const uxTR=dxTR/lenTR, uyTR=dyTR/lenTR;
+      ctx.beginPath(); ctx.moveTo(T.x+uxTR*nr,T.y+uyTR*nr); ctx.lineTo(RI.x-uxTR*riR,RI.y-uyTR*riR);
+      ctx.strokeStyle=G_+'0.18)'; ctx.lineWidth=1*sc;
+      ctx.setLineDash([3*sc,3*sc]); ctx.stroke(); ctx.setLineDash([]);
+
+      // K illuminates strongly
+      const kPulse=0.5+0.5*Math.sin(phaseTick*0.035);
+      const kg=ctx.createRadialGradient(K.x,K.y,0,K.x,K.y,nr*5);
+      kg.addColorStop(0,G_+(0.25+kPulse*.20)+')'); kg.addColorStop(1,G_+'0)');
+      ctx.fillStyle=kg; ctx.beginPath(); ctx.arc(K.x,K.y,nr*5,0,Math.PI*2); ctx.fill();
+
+      // "Where did this come from?" — BELOW K node
+      ctx.font=`italic ${Math.max(8,9.5*sc)}px 'Cormorant Garamond',serif`;
+      ctx.fillStyle=G_+'0.78)';
+      ctx.textAlign='center'; ctx.textBaseline='top';
+      ctx.fillText('where did this come from?', K.x, K.y+nr+8*sc);
+
+      // Zoom-out rings pulsing
+      [0,0.33,0.66].forEach(offset=>{
+        const rp3=((lp+offset)%1);
+        const ringR=R*(1.0+rp3*0.65);
+        const ra=(1-rp3)*0.18;
+        ctx.beginPath(); ctx.arc(cx,cy,ringR,0,Math.PI*2);
+        ctx.strokeStyle=G_+ra+')'; ctx.lineWidth=1.2-rp3*.8; ctx.stroke();
+      });
+      const zoA=0.4+0.3*Math.sin(phaseTick*0.04);
+      ctx.font=`600 ${Math.max(7,8.5*sc)}px 'DM Sans',sans-serif`;
+      ctx.fillStyle=G_+zoA+')';
+      ctx.textAlign='center'; ctx.textBaseline='middle';
+      ctx.fillText('ZOOM OUT', cx, cy-8*sc);
+
+      _drawRINode(ctx, RI, riR, sc, 0.72, true, phaseTick);
+    }
+
+    // ────────────────────────────────────────────
+    // PHASE 4: A* — RI → A* on the orbit
+    // ────────────────────────────────────────────
+    if (phase === 4) {
+      // RI→A* arrow cycles
+      const ap = Math.sin(lp * Math.PI);
+      const drawAP = cl(lp < 0.5 ? lp*2 : 1);
+      const dxRA=A.x-RI.x, dyRA=A.y-RI.y, lenRA=Math.sqrt(dxRA*dxRA+dyRA*dyRA);
+      const uxRA=dxRA/lenRA, uyRA=dyRA/lenRA;
+      const exRA=RI.x+uxRA*(riR+(lenRA-riR-nr)*drawAP);
+      const eyRA=RI.y+uyRA*(riR+(lenRA-riR-nr)*drawAP);
+
+      ctx.beginPath(); ctx.moveTo(RI.x+uxRA*riR, RI.y+uyRA*riR); ctx.lineTo(exRA, eyRA);
+      ctx.strokeStyle=G_+(0.55+ap*.35)+')'; ctx.lineWidth=2.5*sc;
+      ctx.shadowColor=G_+'0.40)'; ctx.shadowBlur=14; ctx.stroke(); ctx.shadowBlur=0;
+
+      if (drawAP > 0.85) {
+        const ang=Math.atan2(eyRA-(RI.y+uyRA*riR), exRA-(RI.x+uxRA*riR));
+        ctx.save(); ctx.translate(exRA,eyRA); ctx.rotate(ang);
+        ctx.beginPath(); ctx.moveTo(0,0); ctx.lineTo(-10*sc,-4.5*sc); ctx.lineTo(-10*sc,4.5*sc);
+        ctx.closePath(); ctx.fillStyle=G_+(0.72+ap*.28)+')'; ctx.fill(); ctx.restore();
+      }
+
+      // A* label above A
+      if (drawAP > 0.70) {
+        const la=cl((drawAP-0.70)/0.30);
+        ctx.font=`italic ${Math.max(9,10*sc)}px 'Cormorant Garamond',serif`;
+        ctx.fillStyle=G_+la*.78+')';
+        ctx.textAlign='center'; ctx.textBaseline='bottom';
+        ctx.fillText('A* — response from clarity', A.x, A.y-nr-8*sc);
+      }
+
+      // A glows gold
+      const ag=ctx.createRadialGradient(A.x,A.y,0,A.x,A.y,nr*3.5);
+      ag.addColorStop(0,G_+ap*.32+')'); ag.addColorStop(1,G_+'0)');
+      ctx.fillStyle=ag; ctx.beginPath(); ctx.arc(A.x,A.y,nr*3.5,0,Math.PI*2); ctx.fill();
+
+      // Faint trace lines
+      [[T,M],[M,E],[E,K]].forEach(([f,t2])=>{
+        const dx=t2.x-f.x,dy=t2.y-f.y,len=Math.sqrt(dx*dx+dy*dy);
+        const ux=dx/len,uy=dy/len;
+        ctx.beginPath(); ctx.moveTo(f.x+ux*nr,f.y+uy*nr); ctx.lineTo(t2.x-ux*nr,t2.y-uy*nr);
+        ctx.strokeStyle=G_+'0.10)'; ctx.lineWidth=1*sc;
+        ctx.setLineDash([2*sc,3*sc]); ctx.stroke(); ctx.setLineDash([]);
+      });
+
+      _drawRINode(ctx, RI, riR, sc, 0.85+ap*.15, true, phaseTick);
+    }
+
+    // ────────────────────────────────────────────
+    // RI NODE — draw function (on orbit, between T and A)
+    // ────────────────────────────────────────────
+    function _drawRINode(ctx, pos, r, sc, alpha, active, tick) {
+      const pulse = active ? 0.5 + 0.5 * Math.sin(tick * 0.022) : 0.2;
+
+      // Wide soft glow — RI radiates distinctly from K-cycle nodes
+      const rig = ctx.createRadialGradient(pos.x, pos.y, 0, pos.x, pos.y, r * 5.5);
+      rig.addColorStop(0, G_ + (alpha * (0.14 + pulse * .10)) + ')');
+      rig.addColorStop(1, G_ + '0)');
+      ctx.fillStyle = rig;
+      ctx.beginPath(); ctx.arc(pos.x, pos.y, r * 5.5, 0, Math.PI * 2); ctx.fill();
+
+      // Two concentric breathing rings when active
+      if (active) {
+        ctx.beginPath(); ctx.arc(pos.x, pos.y, r * (1.9 + pulse * .18), 0, Math.PI * 2);
+        ctx.strokeStyle = G_ + (0.09 + pulse * .10) + ')'; ctx.lineWidth = 1; ctx.stroke();
+        ctx.beginPath(); ctx.arc(pos.x, pos.y, r * (2.6 + pulse * .18), 0, Math.PI * 2);
+        ctx.strokeStyle = G_ + (0.05 + pulse * .06) + ')'; ctx.lineWidth = 1; ctx.stroke();
+      }
+
+      // Main circle
+      ctx.beginPath(); ctx.arc(pos.x, pos.y, r, 0, Math.PI * 2);
+      ctx.fillStyle = '#0a1810'; ctx.fill();
+      ctx.strokeStyle = G_ + (alpha * (0.75 + pulse * .25)) + ')';
+      ctx.lineWidth = 2.2 * sc;
+      if (active) { ctx.shadowColor = G_ + '0.60)'; ctx.shadowBlur = 22; }
+      ctx.stroke(); ctx.shadowBlur = 0;
+
+      // Inner ring — subtle "eye" that makes RI visually distinct from K-nodes
+      ctx.beginPath(); ctx.arc(pos.x, pos.y, r * 0.45, 0, Math.PI * 2);
+      ctx.strokeStyle = G_ + (alpha * (0.30 + pulse * .22)) + ')';
+      ctx.lineWidth = 0.8;
+      ctx.stroke();
+
+      // RI text
+      ctx.font = `700 ${Math.max(9, 11 * sc)}px 'DM Sans',sans-serif`;
+      ctx.fillStyle = G_ + (alpha * (0.88 + pulse * .12)) + ')';
+      ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+      ctx.fillText('RI', pos.x, pos.y);
+
+      // RI label — only in phases where it's the focus (not during trace)
+      // Draw it ABOVE the node to avoid crowding T below it
+      if (active) {
+        ctx.font = `italic ${Math.max(6, 7 * sc)}px 'Cormorant Garamond',serif`;
+        ctx.fillStyle = G_ + (alpha * 0.38) + ')';
+        ctx.textAlign = 'center'; ctx.textBaseline = 'bottom';
+        ctx.fillText('Reflective Intelligence', pos.x, pos.y - r - 5 * sc);
+      }
+    }
+
+    // ── ALL K-CYCLE NODES — drawn last, always on top ──
+    nodes.forEach((n,i) => {
+      const isK=i===0, isA=i===4;
+      const kGold=(isK&&phase>=3)?cl(phase===3?(0.5+0.5*Math.sin(phaseTick*0.035)):1):0;
+      const aGold=(isA&&phase===4)?cl(lp<0.5?lp*2:1):0;
+      const col=kGold>.1
+        ?`rgba(${Math.round(15+kGold*230)},${Math.round(184+kGold*13)},${Math.round(164-kGold*98)},`
+        :aGold>.1?G_:T_;
+      drawNodeCircle(ctx, n, nr, col, 0.70, sc);
+      drawNodeLabel(ctx, n, cx, cy, R, sc, 0.82);
+    });
+  }
+
+    // Resize handler
+  window.addEventListener('resize', () => {
+    const canvas = document.getElementById('c2');
+    if (canvas && geo) { geo = initGeo(canvas); }
   });
-});
 
-// Active nav state on scroll
-const navLinks = document.querySelectorAll('.nav-links a, .nav-cta-wrap a');
-const sections = document.querySelectorAll('section[id]');
-window.addEventListener('scroll', () => {
-  let current = '';
-  sections.forEach(s => { if (window.scrollY >= s.offsetTop - 120) current 
+})(); // end liberation IIFE
+
+// ═══════════════════════════════════════════════════════
+// ZOOM-OUT QUESTIONS — scroll triggered, one by one
+// ═══════════════════════════════════════════════════════
+(function () {
+  const qs  = document.querySelectorAll('.zo-q');
+  const fin = document.getElementById('zoFinal');
+  if (!qs.length) return;
+  let done = false;
+  const obs = new IntersectionObserver(entries => {
+    if (!done && entries[0].isIntersecting) {
+      done = true;
+      qs.forEach((q, i) => setTimeout(() => {
+        q.classList.add('visible');
+        if (i === qs.length - 1) setTimeout(() => fin && fin.classList.add('visible'), 900);
+      }, i * 480));
+      obs.disconnect();
+    }
+  }, { threshold: 0.12 });
+  obs.observe(qs[0]);
+})();
+
+})();
+</script>
+
+<script>
+(function(){
+
+// ═══════════════════════════════════════════════════════
+// SHARED UTILITIES
+// ═══════════════════════════════════════════════════════
+const T_  = 'rgba(15,184,164,';   // teal — liberation
+const AM_ = 'rgba(232,160,32,';   // amber — conditioning
+const G_  = 'rgba(245,197,24,';   // gold — RI node / A*
+const IV  = '#e8fdfb';
+const DP  = '#030a0c';
+const MD  = '#061a1e';
+
+const NODES = [
+  { key:'K', full:'Knowledge',  angle:-126 },
+  { key:'E', full:'Experience', angle:-54  },
+  { key:'M', full:'Memory',     angle:18   },
+  { key:'T', full:'Thought',    angle:90   },
+  { key:'A', full:'Action',     angle:162  },
+];
+
+function initGeo(canvas) {
+  const dpr = window.devicePixelRatio || 1;
+  const W   = canvas.getBoundingClientRect().width;
+  const H   = W * 1.28; // taller — more room top and bottom
+  canvas.style.height = H + 'px';
+  canvas.width  = W * dpr;
+  canvas.height = H * dpr;
+  const ctx = canvas.getContext('2d');
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  const sc  = W / 500;
+  const cx  = W / 2;
+  const cy  = H * 0.48; // slightly above centre — room for top labels
+  const R   = W * 0.185; // fits all nodes on narrow mobile screens
+  const nr  = 19 * sc;
+  const nodes = NODES.map(n => ({
+    ...n,
+    x: cx + R * Math.cos(n.angle * Math.PI / 180),
+    y: cy + R * Math.sin(n.angle * Math.PI / 180),
+  }));
+  return { ctx, W, H, cx, cy, R, sc, nr, nodes };
+}
+
+function drawBg(ctx, cx, cy, W, H, c1, c2) {
+  const g = ctx.createRadialGradient(cx, cy * .85, 0, cx, cy, W * .75);
+  g.addColorStop(0, c1); g.addColorStop(1, c2);
+  ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
+}
+
+function drawArrow(ctx, x1, y1, x2, y2, col, alpha, lw, sc, dash) {
+  ctx.beginPath(); ctx.moveTo(x1, y1); ctx.lineTo(x2, y2);
+  ctx.strokeStyle = col + alpha + ')';
+  ctx.lineWidth = lw;
+  ctx.setLineDash(dash ? [4 * sc, 3 * sc] : []);
+  ctx.stroke(); ctx.setLineDash([]);
+  const ang = Math.atan2(y2 - y1, x2 - x1);
+  const al = Math.max(8, 10 * sc), aw = Math.max(4, 5 * sc); // bigger on mobile
+  ctx.save(); ctx.translate(x2, y2); ctx.rotate(ang);
+  ctx.beginPath(); ctx.moveTo(0, 0); ctx.lineTo(-al, -aw); ctx.lineTo(-al, aw);
+  ctx.closePath(); ctx.fillStyle = col + Math.min(1, alpha + .15) + ')'; ctx.fill();
+  ctx.restore();
+}
+
+function drawNodeCircle(ctx, n, nr, col, alpha, sc) {
+  const g = ctx.createRadialGradient(n.x, n.y, 0, n.x, n.y, nr * 3);
+  g.addColorStop(0, col + alpha * .18 + ')'); g.addColorStop(1, col + '0)');
+  ctx.fillStyle = g; ctx.beginPath(); ctx.arc(n.x, n.y, nr * 3, 0, Math.PI * 2); ctx.fill();
+  ctx.beginPath(); ctx.arc(n.x, n.y, nr, 0, Math.PI * 2);
+  ctx.fillStyle = MD; ctx.fill();
+  ctx.strokeStyle = col + alpha + ')'; ctx.lineWidth = 1.5 * sc; ctx.stroke();
+  ctx.font = `500 ${Math.max(11, 13 * sc)}px 'DM Sans',sans-serif`;
+  ctx.fillStyle = col + Math.min(1, alpha + .2) + ')';
+  ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+  ctx.fillText(n.key, n.x, n.y);
+}
+
+// Per-node label — precise manual offsets, guaranteed no clip/overlap
+function drawNodeLabel(ctx, n, cx, cy, R, sc, alpha) {
+  // Each node: explicit pixel offset direction and alignment
+  // K (-126°) = upper-left  → label to the LEFT, baseline above
+  // E (-54°)  = upper-right → label to the RIGHT, baseline above
+  // M (18°)   = right       → label to the RIGHT
+  // T (90°)   = bottom      → label BELOW, centred
+  // A (162°)  = left        → label to the LEFT
+  const off = 46 * sc;
+  const lx = cx + (R + off) * Math.cos(n.angle * Math.PI / 180);
+  const ly = cy + (R + off) * Math.sin(n.angle * Math.PI / 180);
+
+  ctx.font = `italic ${Math.max(9, 10.5 * sc)}px 'Cormorant Garamond',serif`;
+  ctx.fillStyle = IV;
+  ctx.globalAlpha = alpha;
+
+  if (n.key === 'K') {
+    // Upper-left: right-align text so it extends leftward from node
+    ctx.textAlign = 'right'; ctx.textBaseline = 'bottom';
+    ctx.fillText(n.full, lx + 6*sc, ly + 8*sc);
+  } else if (n.key === 'E') {
+    // Upper-right: left-align, reduced offset to prevent clipping
+    const eLx = cx + (R + 36*sc) * Math.cos(n.angle * Math.PI/180);
+    const eLy = cy + (R + 36*sc) * Math.sin(n.angle * Math.PI/180);
+    ctx.textAlign = 'left'; ctx.textBaseline = 'bottom';
+    ctx.fillText(n.full, eLx - 4*sc, eLy + 10*sc);
+  } else if (n.key === 'M') {
+    // Right side: left-align, centred vertically
+    // Use reduced offset to stay on-screen
+    const mLx = cx + (R + 38*sc) * Math.cos(n.angle * Math.PI/180);
+    ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
+    ctx.fillText(n.full, mLx, ly);
+  } else if (n.key === 'T') {
+    // Bottom: centred below
+    ctx.textAlign = 'center'; ctx.textBaseline = 'top';
+    ctx.fillText(n.full, lx, ly + 4*sc);
+  } else if (n.key === 'A') {
+    // Left side: right-align, centred vertically
+    ctx.textAlign = 'right'; ctx.textBaseline = 'middle';
+    ctx.fillText(n.full, lx, ly);
+  }
+
+  ctx.globalAlpha = 1;
+}
+
+function eio(t) { return t < .5 ? 2 * t * t : -1 + (4 - 2 * t) * t; }
+function cl(v)  { return Math.max(0, Math.min(1, v)); }
+
+// ═══════════════════════════════════════════════════════
+// DIAGRAM 1 — CONDITIONING (amber, clockwise, uniform)
+// ═══════════════════════════════════════════════════════
+(function () {
+  const canvas = document.getElementById('c1');
+  if (!canvas) return;
+  let geo, tick = 0;
+  const PARTS = Array.from({ length: 8 }, (_, i) => ({ pos: i / 8 }));
+
+  function draw() {
+    tick++;
+    const { ctx, W, H, cx, cy, R, sc, nr, nodes } = geo;
+    ctx.clearRect(0, 0, W, H);
+    drawBg(ctx, cx, cy, W, H, '#0d1a10', DP);
+
+    // Orbit ring
+    ctx.beginPath(); ctx.arc(cx, cy, R, 0, Math.PI * 2);
+    ctx.strokeStyle = AM_ + '0.12)'; ctx.lineWidth = 1; ctx.stroke();
+
+    // Arrows — all 5 clockwise
+    for (let i = 0; i < 5; i++) {
+      const f = nodes[i], t = nodes[(i + 1) % 5];
+      const dx = t.x - f.x, dy = t.y - f.y, len = Math.sqrt(dx * dx + dy * dy);
+      const ux = dx / len, uy = dy / len;
+      drawArrow(ctx, f.x + ux * nr, f.y + uy * nr, t.x - ux * nr, t.y - uy * nr, AM_, 0.45, 1.4 * sc, sc, false);
+    }
+
+    // Particles — uniform, slow
+    PARTS.forEach(p => {
+      p.pos = (p.pos + 0.00075) % 1;
+      const ang = p.pos * Math.PI * 2 - Math.PI / 2;
+      const px = cx + R * Math.cos(ang), py = cy + R * Math.sin(ang);
+      const g = ctx.createRadialGradient(px, py, 0, px, py, 7 * sc);
+      g.addColorStop(0, AM_ + '0.80)'); g.addColorStop(1, AM_ + '0)');
+      ctx.fillStyle = g; ctx.beginPath(); ctx.arc(px, py, 7 * sc, 0, Math.PI * 2); ctx.fill();
+      ctx.beginPath(); ctx.arc(px, py, 2.2 * sc, 0, Math.PI * 2);
+      ctx.fillStyle = '#f0c060'; ctx.fill();
+    });
+
+    nodes.forEach(n => { drawNodeCircle(ctx, n, nr, AM_, 0.75, sc); drawNodeLabel(ctx, n, cx, cy, R, sc, 0.82); });
+    requestAnimationFrame(draw);
+  }
+
+  function init() { geo = initGeo(canvas); draw(); }
+  window.addEventListener('resize', () => setTimeout(init, 80));
+  setTimeout(init, 100);
+})();
+
+// ═══════════════════════════════════════════════════════
+// LIBERATION DIAGRAM — USER-CONTROLLED PHASES
+// ═══════════════════════════════════════════════════════
+(function () {
+  const PHASES = [
+    {
+      tag: 'Phase 1 · The conditioning loop',
+      head: 'K → E → M → T — the automatic cycle.',
+      body: 'Knowledge shapes what we expect. Experience arrives already filtered. Memory stores the interpretation. Memory generates Thought. This is the conditioning cycle — running automatically, without awareness, shaping every reaction.',
+      col: 'teal'
+    },
+    {
+      tag: 'Phase 2 · RI activates',
+      head: 'Before thought becomes action — RI enters.',
+      body: 'In the gap between Thought and Action, RI activates — shown here as an inner node between T and A. The automatic T → A jump is intercepted. Thought arrives — but before it becomes Action, awareness enters. This is the gap. This is where everything can change.',
+      col: 'amber'
+    },
+    {
+      tag: 'Phase 3 · Tracing backward',
+      head: 'RI traces the thought back to its root.',
+      body: 'From RI, awareness traces backward:\nT — seeing the thought clearly.\nT → M — detecting the recurring pattern in memory.\nM → E — identifying the original experience or event.\nE → K — identifying the source: lived truth, inherited belief, or conditioned assumption?',
+      col: 'amber'
+    },
+    {
+      tag: 'Phase 4 · The source is seen',
+      head: 'K illuminates — where did this come from?',
+      body: 'The root is now visible. The original knowledge — inherited, unexamined, mistaken for truth — is seen for what it is. Not fought. Not suppressed. Simply seen. What is seen clearly, loses its grip.',
+      col: 'amber'
+    },
+    {
+      tag: 'Phase 5 · A* — response from clarity',
+      head: 'From RI, a different action becomes possible.',
+      body: 'Not reaction. Not suppression. A* — action arising from what is actually seen now, not from old conditioning. RI passes to A* on the orbit. The same situation. A completely different response. The loop opens.',
+      col: 'amber'
+    }
+  ];
+
+  // Current active phase (0-4). -1 = not started.
+  let curPhase = -1;
+  let traceStep = 0; // 0-3: which trace segment is active in phase 3
+  let traceArrowP = 0; // 0→1: animation progress of current segment's arrow
+  let traceDone = false; // current segment arrow fully drawn
+  let geo, phaseTick = 0, animId = null;
+
+  // Phase 0 forward particles
+  const FWD = Array.from({ length: 6 }, (_, i) => ({ pos: i / 6 }));
+
+  // Build the phase pills and dots
+  function buildNav() {
+    const pills = document.getElementById('lib-pills');
+    const dots  = document.getElementById('lib-dots');
+    if (!pills || !dots) return;
+    // Short labels for pills
+    const shortTags = ['1 · Loop','2 · Pause','3 · Trace','4 · Root','5 · A*'];
+    pills.innerHTML = PHASES.map((ph, i) => `
+      <div id="pill-${i}" onclick="libGoTo(${i})" style="
+        flex-shrink:0;
+        padding:10px 16px;
+        font-family:'DM Sans',sans-serif;
+        font-size:9px;letter-spacing:3px;text-transform:uppercase;
+        cursor:pointer;
+        border-right:1px solid rgba(245,197,24,0.08);
+        transition:all 0.3s;
+        color:rgba(200,240,238,0.30);
+        background:transparent;
+        white-space:nowrap;
+      ">${shortTags[i]}</div>
+    `).join('');
+    // Add right-fade gradient to pill bar
+    pills.style.WebkitMaskImage = 'linear-gradient(to right, black 80%, transparent 100%)';
+    pills.style.maskImage = 'linear-gradient(to right, black 80%, transparent 100%)';
+    dots.innerHTML = PHASES.map((_, i) => `
+      <div id="dot-${i}" style="
+        width:6px;height:6px;border-radius:50%;
+        background:rgba(45,212,191,0.20);
+        transition:all 0.3s;
+      "></div>
+    `).join('');
+  }
+
+  function updateNav(p) {
+    PHASES.forEach((_, i) => {
+      const pill = document.getElementById('pill-'+i);
+      const dot  = document.getElementById('dot-'+i);
+      if (pill) {
+        if (i === p) {
+          pill.style.color = 'rgba(245,197,24,0.90)';
+          pill.style.background = 'rgba(245,197,24,0.06)';
+          pill.style.borderBottom = '2px solid rgba(245,197,24,0.50)';
+        } else if (i < p) {
+          pill.style.color = 'rgba(45,212,191,0.45)';
+          pill.style.background = 'transparent';
+          pill.style.borderBottom = 'none';
+        } else {
+          pill.style.color = 'rgba(200,240,238,0.25)';
+          pill.style.background = 'transparent';
+          pill.style.borderBottom = 'none';
+        }
+      }
+      if (dot) {
+        dot.style.background = i === p
+          ? 'rgba(245,197,24,0.80)'
+          : i < p
+          ? 'rgba(45,212,191,0.40)'
+          : 'rgba(200,240,238,0.15)';
+        dot.style.width  = i === p ? '8px' : '6px';
+        dot.style.height = i === p ? '8px' : '6px';
+      }
+    });
+
+    // Prev/Next buttons
+    const prev = document.getElementById('lib-prev');
+    const next = document.getElementById('lib-next');
+    if (prev) prev.style.visibility = p > 0 ? 'visible' : 'hidden';
+    if (next) {
+      if (p === PHASES.length - 1) {
+        next.textContent = 'Watch again ↺';
+        next.style.color = 'rgba(45,212,191,0.70)';
+        next.style.borderColor = 'rgba(45,212,191,0.25)';
+      } else {
+        next.textContent = 'Next →';
+        next.style.color = 'rgba(245,197,24,0.80)';
+        next.style.borderColor = 'rgba(245,197,24,0.30)';
+      }
+    }
+
+    // Scroll active pill into view
+    const activePill = document.getElementById('pill-'+p);
+    if (activePill) activePill.scrollIntoView({ behavior:'smooth', block:'nearest', inline:'center' });
+  }
+
+  function updateContent(p) {
+    const content = document.getElementById('lib-content');
+    if (!content) return;
+    const ph = PHASES[p];
+    const colMap = { teal: 'rgba(45,212,191,0.65)', amber: 'rgba(232,160,32,0.75)' };
+    const bodyFormatted = ph.body.split('\n').join('<br/>');
+    content.innerHTML = `
+      <div style="font-family:'DM Sans',sans-serif;font-size:9px;letter-spacing:4px;text-transform:uppercase;font-weight:600;color:${colMap[ph.col]};margin-bottom:8px;">Phase ${p+1} · ${ph.tag}</div>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:400;line-height:1.35;color:#e8fdfb;margin-bottom:8px;">${ph.head}</div>
+      <div style="font-family:'DM Sans',sans-serif;font-size:13px;color:rgba(220,245,242,0.65);line-height:1.72;font-weight:300;">${bodyFormatted}</div>`;
+  }
+
+  function goToPhase(p) {
+    curPhase = Math.max(0, Math.min(PHASES.length - 1, p));
+    phaseTick = 0;
+    traceStep = 0;
+    traceArrowP = 0;
+    traceDone = false;
+    updateNav(curPhase);
+    updateContent(curPhase);
+    updateTraceUI();
+  }
+
+  // Sub-step labels for phase 3
+  const TRACE_LABELS = [
+    {
+      arrow: 'Reflective Intelligence sees the Thought',
+      desc: 'What exactly is this thought?',
+      context: 'Before doing anything, just pause and look at the thought. Not good or bad — just what it actually is. Most people skip this. They react before they even notice what they are reacting to.'
+    },
+    {
+      arrow: 'Thought traces back to Memory',
+      desc: 'Have I felt this way before?',
+      context: 'Every thought comes from somewhere. Your mind is not creating something new — it is replaying a stored pattern. This feeling, this reaction, has shown up before. Where does it usually appear?'
+    },
+    {
+      arrow: 'Memory traces back to Experience',
+      desc: 'What happened that created this pattern?',
+      context: 'At some point in your life, something happened — a moment, a relationship, a loss, a criticism. Your mind stored it. And ever since, it has been running that stored response automatically, even in new situations.'
+    },
+    {
+      arrow: 'Experience traces back to Knowledge',
+      desc: 'Where did the original belief come from?',
+      context: 'At the root is a belief — something you accepted as true. Maybe you were taught it. Maybe you concluded it from a painful experience. The question now is: is it actually true? Or was it just what you learned to believe?'
+    },
+  ];
+
+  function updateTraceUI() {
+    const nextBtn = document.getElementById('lib-next');
+    const content = document.getElementById('lib-content');
+    if (curPhase !== 2) {
+      if (nextBtn) { nextBtn.textContent = 'Next →'; nextBtn.style.color='rgba(245,197,24,0.80)'; }
+      return;
+    }
+    // Phase 3: show sub-step info in content panel
+    if (content) {
+      const tl = TRACE_LABELS[traceStep];
+      const ph = PHASES[2];
+      const colMap = { teal: 'rgba(45,212,191,0.65)', amber: 'rgba(232,160,32,0.75)' };
+      const descHTML = traceDone
+        ? '<div style="font-family:DM Sans,sans-serif;font-size:14px;color:rgba(232,253,251,0.88);line-height:1.6;font-weight:400;margin-bottom:10px;">' + tl.desc + '</div>'
+          + '<div style="font-family:DM Sans,sans-serif;font-size:13px;color:rgba(200,240,238,0.68);line-height:1.75;font-weight:300;">' + tl.context + '</div>'
+        : '<div style="font-family:DM Sans,sans-serif;font-size:13px;color:rgba(245,197,24,0.50);font-style:italic;line-height:1.6;">Watch the arrow draw...</div>';
+      content.innerHTML =
+        '<div style="font-family:DM Sans,sans-serif;font-size:9px;letter-spacing:4px;text-transform:uppercase;font-weight:600;color:rgba(232,160,32,0.75);margin-bottom:10px;">Step ' + (traceStep+1) + ' of 4 · Tracing Backward</div>'
+        + '<div style="font-family:Cormorant Garamond,Georgia,serif;font-size:15px;font-weight:400;line-height:1.35;color:rgba(245,197,24,0.85);margin-bottom:8px;">' + tl.arrow + '</div>'
+        + descHTML;
+    }
+    if (nextBtn) {
+      if (traceStep < 3) {
+        nextBtn.textContent = traceDone ? 'Next step →' : '...';
+        nextBtn.style.color = traceDone ? 'rgba(245,197,24,0.80)' : 'rgba(245,197,24,0.30)';
+        nextBtn.style.borderColor = traceDone ? 'rgba(245,197,24,0.30)' : 'rgba(245,197,24,0.10)';
+        nextBtn.onclick = traceDone ? () => { traceStep++; traceArrowP=0; traceDone=false; updateTraceUI(); } : null;
+      } else {
+        nextBtn.textContent = traceDone ? 'Phase 4 — The source →' : '...';
+        nextBtn.style.color = traceDone ? 'rgba(45,212,191,0.80)' : 'rgba(45,212,191,0.30)';
+        nextBtn.style.borderColor = traceDone ? 'rgba(45,212,191,0.30)' : 'rgba(45,212,191,0.10)';
+        nextBtn.onclick = traceDone ? () => libNext() : null;
+      }
+    }
+  }
+
+  window.libGoTo = function(p) {
+    goToPhase(p);
+    const nextBtn = document.getElementById('lib-next');
+    if (nextBtn && p !== 2) nextBtn.onclick = libNext;
+  };
+  window.libNext = function() {
+    if (curPhase === PHASES.length - 1) { goToPhase(0); }
+    else {
+      goToPhase(curPhase + 1);
+      // Restore normal Next button onclick after leaving phase 3
+      const nextBtn = document.getElementById('lib-next');
+      if (nextBtn) nextBtn.onclick = libNext;
+    }
+  };
+  window.libPrev = function() { goToPhase(curPhase - 1); };
+
+  window.libBegin = function() {
+    const startEl  = document.getElementById('lib-start');
+    const activeEl = document.getElementById('lib-active');
+    if (startEl)  startEl.style.display  = 'none';
+    if (activeEl) activeEl.style.display = 'block';
+    buildNav();
+    goToPhase(0);
+    updateTraceUI();
+    // Re-init canvas now that it's visible
+    const canvas = document.getElementById('c2');
+    if (canvas) {
+      geo = initGeo(canvas);
+      phaseTick = 0;
+      animFrame();
+    }
+  };
+
+  // ── DRAW FUNCTION — RI on orbit between T and A ──
+  function animFrame() {
+    animId = requestAnimationFrame(animFrame);
+    phaseTick++;
+    const canvas = document.getElementById('c2');
+    if (!canvas || !geo) return;
+    const { ctx, W, H, cx, cy, R, sc, nr, nodes } = geo;
+    const phase = curPhase < 0 ? 0 : curPhase;
+
+    const LOOP = 600;
+    const lt = phaseTick % LOOP;
+    const lp = lt / LOOP; // 0..1 loops
+
+    ctx.clearRect(0, 0, W, H);
+    drawBg(ctx, cx, cy, W, H, '#081e18', DP);
+
+    // Node references
+    const K = nodes[0], E = nodes[1], M = nodes[2], T = nodes[3], A = nodes[4];
+
+    // RI sits at the chord midpoint between T and A, pulled 38% toward centre
+    // This guarantees clear separation from both T and A on any screen size
+    // T = angle 90°, A = angle 162°
+    const T_node = nodes[3], A_node = nodes[4];
+    const chordMidX = (T_node.x + A_node.x) / 2;
+    const chordMidY = (T_node.y + A_node.y) / 2;
+    const RI = {
+      x: chordMidX + 0.38 * (cx - chordMidX),
+      y: chordMidY + 0.38 * (cy - chordMidY)
+    };
+    const riR = nr * 1.15; // slightly larger than K-cycle nodes
+
+    // Phase label at top
+    const phaseNames = ['Phase 1 — Conditioning loop','Phase 2 — RI activates','Phase 3 — Tracing backward','Phase 4 — Source seen','Phase 5 — A* response'];
+    ctx.font = `500 ${Math.max(7, 8.5 * sc)}px 'DM Sans',sans-serif`;
+    ctx.fillStyle = 'rgba(45,212,191,0.38)';
+    ctx.textAlign = 'center'; ctx.textBaseline = 'top';
+    ctx.fillText(phaseNames[phase], W / 2, 9 * sc);
+
+    // Orbit ring
+    ctx.beginPath(); ctx.arc(cx, cy, R, 0, Math.PI * 2);
+    ctx.strokeStyle = T_ + '0.07)'; ctx.lineWidth = 1; ctx.stroke();
+
+    // ────────────────────────────────────────────
+    // PHASE 0: Full conditioning loop K→E→M→T→A
+    // Shows the automatic cycle with T→A direct
+    // ────────────────────────────────────────────
+    if (phase === 0) {
+      const fade = lp > 0.85 ? cl(1 - (lp - 0.85) / 0.15) : 1;
+      // Draw all 5 arrows K→E→M→T→A clockwise
+      for (let i = 0; i < 5; i++) {
+        const f = nodes[i], t2 = nodes[(i+1)%5];
+        const dx=t2.x-f.x, dy=t2.y-f.y, len=Math.sqrt(dx*dx+dy*dy);
+        const ux=dx/len, uy=dy/len;
+        drawArrow(ctx, f.x+ux*nr, f.y+uy*nr, t2.x-ux*nr, t2.y-uy*nr, AM_, 0.42*fade, 1.4*sc, sc, false);
+      }
+      // Particles flowing clockwise K→E→M→T→A
+      const FWD_PARTS = ctx._fwdParts || (ctx._fwdParts = Array.from({length:6},(_,i)=>({pos:i/6})));
+      FWD_PARTS.forEach(fp => {
+        fp.pos = (fp.pos + 0.0009) % 1;
+        const ang = fp.pos * Math.PI * 2 - Math.PI / 2;
+        const px = cx + R * Math.cos(ang), py = cy + R * Math.sin(ang);
+        const g = ctx.createRadialGradient(px,py,0,px,py,7*sc);
+        g.addColorStop(0, AM_+(0.78*fade)+')'); g.addColorStop(1, AM_+'0)');
+        ctx.fillStyle=g; ctx.beginPath(); ctx.arc(px,py,7*sc,0,Math.PI*2); ctx.fill();
+        ctx.beginPath(); ctx.arc(px,py,2*sc,0,Math.PI*2);
+        ctx.fillStyle=AM_+(0.88*fade)+')'; ctx.fill();
+      });
+      // RI visible very faintly — not yet active
+      _drawRINode(ctx, RI, riR, sc, 0.12, false, phaseTick);
+    }
+
+    // ────────────────────────────────────────────
+    // PHASE 1: RI activates in T→A gap
+    // Show T→RI arrow. T→A path "intercepted".
+    // RI pulses/breathes.
+    // ────────────────────────────────────────────
+    if (phase === 1) {
+      // Show the K→E→M→T arrows (conditioning approach, faded)
+      for (let i = 0; i < 4; i++) {
+        const f=nodes[i], t2=nodes[i+1];
+        const dx=t2.x-f.x, dy=t2.y-f.y, len=Math.sqrt(dx*dx+dy*dy);
+        const ux=dx/len, uy=dy/len;
+        drawArrow(ctx, f.x+ux*nr, f.y+uy*nr, t2.x-ux*nr, t2.y-uy*nr, AM_, 0.25, 1.2*sc, sc, false);
+      }
+
+      // T→RI activation arrow — draws in during first third of loop
+      const actP = lp < 0.4 ? cl(lp / 0.4) : 1;
+      const dxTR=RI.x-T.x, dyTR=RI.y-T.y, lenTR=Math.sqrt(dxTR*dxTR+dyTR*dyTR);
+      const uxTR=dxTR/lenTR, uyTR=dyTR/lenTR;
+      const exTR=T.x+uxTR*(nr+(lenTR-nr*2)*actP);
+      const eyTR=T.y+uyTR*(nr+(lenTR-nr*2)*actP);
+      ctx.beginPath(); ctx.moveTo(T.x+uxTR*nr, T.y+uyTR*nr); ctx.lineTo(exTR, eyTR);
+      ctx.strokeStyle=G_+'0.75)'; ctx.lineWidth=2*sc;
+      ctx.shadowColor=G_+'0.35)'; ctx.shadowBlur=10; ctx.stroke(); ctx.shadowBlur=0;
+      if (actP > 0.85) {
+        const ang2=Math.atan2(eyTR-(T.y+uyTR*nr),exTR-(T.x+uxTR*nr));
+        ctx.save(); ctx.translate(exTR,eyTR); ctx.rotate(ang2);
+        ctx.beginPath(); ctx.moveTo(0,0); ctx.lineTo(-9*sc,-4*sc); ctx.lineTo(-9*sc,4*sc);
+        ctx.closePath(); ctx.fillStyle=G_+'0.85)'; ctx.fill(); ctx.restore();
+      }
+
+      // Single clean label: show "The Gap" above the T→RI arrow midpoint
+      // Only one label, positioned above the arrow, never near RI node text
+      const ga = lp < 0.15 ? lp/0.15 : lp > 0.85 ? (1-lp)/0.15 : 1;
+      const gapMidX = (T.x + RI.x) / 2, gapMidY = (T.y + RI.y) / 2;
+      // Push label to the LEFT of the T→RI arrow so it doesn't crowd RI
+      ctx.font=`italic ${Math.max(8,9*sc)}px 'Cormorant Garamond',serif`;
+      ctx.fillStyle=G_+ga*.60+')';
+      ctx.textAlign='right'; ctx.textBaseline='middle';
+      ctx.fillText('the gap', gapMidX - 8*sc, gapMidY - 10*sc);
+
+      // RI glows — actively breathing
+      _drawRINode(ctx, RI, riR, sc, 0.85 + 0.15*lp, true, phaseTick);
+    }
+
+    // ────────────────────────────────────────────
+    // PHASE 2: Backward trace — USER-CONTROLLED SUB-STEPS
+    // traceStep 0=RI→T, 1=T→M, 2=M→E, 3=E→K
+    // Each step: arrow draws → label appears → user taps Next step
+    // ────────────────────────────────────────────
+    if (phase === 2) {
+      // Segment definitions
+      const allSegs = [
+        { from:RI, to:T, fromR:riR, toR:nr },
+        { from:T,  to:M, fromR:nr,  toR:nr },
+        { from:M,  to:E, fromR:nr,  toR:nr },
+        { from:E,  to:K, fromR:nr,  toR:nr },
+      ];
+
+      // Label positions per segment (clear of canvas edges)
+      const labelPos = [
+        { align:'right',  dx:-28, dy: 8  }, // RI→T: left of midpoint
+        { align:'left',   dx: 28, dy: 0  }, // T→M: right
+        { align:'left',   dx: 26, dy:-10 }, // M→E: right and up
+        { align:'center', dx:  0, dy: 20 }, // E→K: below line
+      ];
+
+      // Advance arrow animation
+      if (!traceDone) {
+        traceArrowP = Math.min(1, traceArrowP + 0.018); // ~55 frames to draw
+        if (traceArrowP >= 1) {
+          traceDone = true;
+          updateTraceUI(); // reveal label text + enable Next button
+        }
+      }
+
+      // Draw completed segments (faint)
+      for (let si = 0; si < traceStep; si++) {
+        const seg = allSegs[si];
+        const dx=seg.to.x-seg.from.x, dy=seg.to.y-seg.from.y;
+        const len=Math.sqrt(dx*dx+dy*dy);
+        const ux=dx/len, uy=dy/len;
+        const sx=seg.from.x+ux*seg.fromR, sy=seg.from.y+uy*seg.fromR;
+        const ex=seg.to.x-ux*seg.toR,    ey=seg.to.y-uy*seg.toR;
+        ctx.beginPath(); ctx.moveTo(sx,sy); ctx.lineTo(ex,ey);
+        ctx.strokeStyle=G_+'0.30)'; ctx.lineWidth=1.5*sc;
+        ctx.setLineDash([3*sc,3*sc]); ctx.stroke(); ctx.setLineDash([]);
+        // Completed arrowhead
+        const ang2=Math.atan2(ey-sy,ex-sx);
+        ctx.save(); ctx.translate(ex,ey); ctx.rotate(ang2);
+        ctx.beginPath(); ctx.moveTo(0,0); ctx.lineTo(-8*sc,-3.5*sc); ctx.lineTo(-8*sc,3.5*sc);
+        ctx.closePath(); ctx.fillStyle=G_+'0.38)'; ctx.fill(); ctx.restore();
+        // Completed label (faint)
+        const tl = TRACE_LABELS[si];
+        const mx=(seg.from.x+seg.to.x)/2, my=(seg.from.y+seg.to.y)/2;
+        const lp2 = labelPos[si];
+        ctx.font=`italic ${Math.max(7,8.5*sc)}px 'Cormorant Garamond',serif`;
+        ctx.fillStyle=G_+'0.30)';
+        ctx.textAlign=lp2.align; ctx.textBaseline='middle';
+        ctx.fillText(tl.arrow + ' · ' + tl.desc, mx+lp2.dx*sc, my+lp2.dy*sc);
+      }
+
+      // Draw current segment (animating)
+      if (traceStep < allSegs.length) {
+        const seg = allSegs[traceStep];
+        const dx=seg.to.x-seg.from.x, dy=seg.to.y-seg.from.y;
+        const len=Math.sqrt(dx*dx+dy*dy);
+        const ux=dx/len, uy=dy/len;
+        const sx=seg.from.x+ux*seg.fromR, sy=seg.from.y+uy*seg.fromR;
+        const fullEx=seg.to.x-ux*seg.toR, fullEy=seg.to.y-uy*seg.toR;
+        const curEx=sx+(fullEx-sx)*traceArrowP;
+        const curEy=sy+(fullEy-sy)*traceArrowP;
+
+        // Arrow line
+        ctx.beginPath(); ctx.moveTo(sx,sy); ctx.lineTo(curEx,curEy);
+        ctx.strokeStyle=G_+'0.72)'; ctx.lineWidth=2.2*sc;
+        ctx.setLineDash([4*sc,3*sc]);
+        ctx.shadowColor=G_+'0.30)'; ctx.shadowBlur=10;
+        ctx.stroke(); ctx.shadowBlur=0; ctx.setLineDash([]);
+
+        // Arrowhead when nearly complete
+        if (traceArrowP > 0.88) {
+          const ang2=Math.atan2(fullEy-sy,fullEx-sx);
+          ctx.save(); ctx.translate(fullEx,fullEy); ctx.rotate(ang2);
+          ctx.beginPath(); ctx.moveTo(0,0); ctx.lineTo(-10*sc,-4.5*sc); ctx.lineTo(-10*sc,4.5*sc);
+          ctx.closePath(); ctx.fillStyle=G_+'0.88)'; ctx.fill(); ctx.restore();
+        }
+
+        // Traveling gold dot at tip (while drawing)
+        if (traceArrowP < 1) {
+          const g2=ctx.createRadialGradient(curEx,curEy,0,curEx,curEy,11*sc);
+          g2.addColorStop(0,G_+'0.95)'); g2.addColorStop(1,G_+'0)');
+          ctx.fillStyle=g2; ctx.beginPath(); ctx.arc(curEx,curEy,11*sc,0,Math.PI*2); ctx.fill();
+          ctx.beginPath(); ctx.arc(curEx,curEy,2.5*sc,0,Math.PI*2);
+          ctx.fillStyle='#fffde0'; ctx.fill();
+        }
+
+        // Gentle pulse on arrived arrowhead when done
+        if (traceDone) {
+          const pulse2 = 0.5+0.5*Math.sin(phaseTick*0.06);
+          const pg=ctx.createRadialGradient(fullEx,fullEy,0,fullEx,fullEy,14*sc);
+          pg.addColorStop(0,G_+(0.20+pulse2*.15)+')'); pg.addColorStop(1,G_+'0)');
+          ctx.fillStyle=pg; ctx.beginPath(); ctx.arc(fullEx,fullEy,14*sc,0,Math.PI*2); ctx.fill();
+          // Label appears when done
+          const tl = TRACE_LABELS[traceStep];
+          const mx=(seg.from.x+seg.to.x)/2, my=(seg.from.y+seg.to.y)/2;
+          const lp2 = labelPos[traceStep];
+          const la=cl((traceArrowP-0.88)/0.12 + (traceDone?1:0));
+          ctx.font=`italic ${Math.max(8,9.5*sc)}px 'Cormorant Garamond',serif`;
+          ctx.fillStyle=G_+Math.min(0.82,la*.82)+')';
+          ctx.textAlign=lp2.align; ctx.textBaseline='middle';
+          ctx.fillText(tl.desc, mx+lp2.dx*sc, my+lp2.dy*sc);
+        }
+      }
+
+      _drawRINode(ctx, RI, riR, sc, 0.80, true, phaseTick);
+    }
+
+    // ────────────────────────────────────────────
+    // PHASE 3: K illuminates — "where did this come from?"
+    // Zoom-out rings. All trace lines remain visible.
+    // ────────────────────────────────────────────
+    if (phase === 3) {
+      // Show all trace lines faint
+      [[T,M],[M,E],[E,K]].forEach(([f,t2])=>{
+        const dx=t2.x-f.x, dy=t2.y-f.y, len=Math.sqrt(dx*dx+dy*dy);
+        const ux=dx/len, uy=dy/len;
+        ctx.beginPath(); ctx.moveTo(f.x+ux*nr,f.y+uy*nr); ctx.lineTo(t2.x-ux*nr,t2.y-uy*nr);
+        ctx.strokeStyle=G_+'0.22)'; ctx.lineWidth=1.5*sc;
+        ctx.setLineDash([3*sc,3*sc]); ctx.stroke(); ctx.setLineDash([]);
+      });
+      // T→RI faint
+      const dxTR=RI.x-T.x, dyTR=RI.y-T.y, lenTR=Math.sqrt(dxTR*dxTR+dyTR*dyTR);
+      const uxTR=dxTR/lenTR, uyTR=dyTR/lenTR;
+      ctx.beginPath(); ctx.moveTo(T.x+uxTR*nr,T.y+uyTR*nr); ctx.lineTo(RI.x-uxTR*riR,RI.y-uyTR*riR);
+      ctx.strokeStyle=G_+'0.18)'; ctx.lineWidth=1*sc;
+      ctx.setLineDash([3*sc,3*sc]); ctx.stroke(); ctx.setLineDash([]);
+
+      // K illuminates strongly
+      const kPulse=0.5+0.5*Math.sin(phaseTick*0.035);
+      const kg=ctx.createRadialGradient(K.x,K.y,0,K.x,K.y,nr*5);
+      kg.addColorStop(0,G_+(0.25+kPulse*.20)+')'); kg.addColorStop(1,G_+'0)');
+      ctx.fillStyle=kg; ctx.beginPath(); ctx.arc(K.x,K.y,nr*5,0,Math.PI*2); ctx.fill();
+
+      // "Where did this come from?" — BELOW K node
+      ctx.font=`italic ${Math.max(8,9.5*sc)}px 'Cormorant Garamond',serif`;
+      ctx.fillStyle=G_+'0.78)';
+      ctx.textAlign='center'; ctx.textBaseline='top';
+      ctx.fillText('where did this come from?', K.x, K.y+nr+8*sc);
+
+      // Zoom-out rings pulsing
+      [0,0.33,0.66].forEach(offset=>{
+        const rp3=((lp+offset)%1);
+        const ringR=R*(1.0+rp3*0.65);
+        const ra=(1-rp3)*0.18;
+        ctx.beginPath(); ctx.arc(cx,cy,ringR,0,Math.PI*2);
+        ctx.strokeStyle=G_+ra+')
