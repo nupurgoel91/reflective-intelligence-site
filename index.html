@@ -2648,689 +2648,597 @@ function cl(v)  { return Math.max(0, Math.min(1, v)); }
 })();
 </script>
 
+</div>
+<!-- ═══ END K-CYCLE DIAGRAMS ═══ -->
+
+
+<!-- ═══ K-CYCLE WALKTHROUGH ═══ -->
+<div id="kcycle-walkthrough">
+<style>
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#040b0d;
+  --teal:#0fb8a4;
+  --lite:#2dd4bf;
+  --gold:#c9943a;
+  --ivory:#eaf7f5;
+  --dim:rgba(210,245,242,0.52);
+  --serif:'Cormorant Garamond',Georgia,serif;
+  --sans:'DM Sans',system-ui,sans-serif;
+}
+html{scroll-behavior:smooth;background:var(--bg)}
+body{color:var(--ivory);font-family:var(--sans);overflow-x:hidden}
+
+/* GRAIN */
+body::after{
+  content:'';position:fixed;inset:0;pointer-events:none;z-index:998;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='f'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.88' numOctaves='4'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23f)' opacity='0.030'/%3E%3C/svg%3E");
+  opacity:0.5;
+}
+
+/* ── CLEAN NAV — just the logo, no CTA floating over content ── */
+.nav{
+  padding:28px 40px 0;
+  text-align:center;
+}
+.nav-logo{
+  font-family:var(--serif);font-size:15px;font-style:italic;
+  color:rgba(15,184,164,0.40);letter-spacing:1px;
+}
+@media(max-width:500px){.nav{padding:22px 24px 0}}
+
+/* ── SECTION BASE ── */
+.sec{
+  padding:80px 40px;
+  display:flex;flex-direction:column;
+  align-items:center;
+  position:relative;
+}
+@media(max-width:600px){.sec{padding:64px 24px}}
+
+/* ── REVEAL ── */
+.rx{
+  opacity:0;transform:translateY(20px);
+  transition:opacity 0.9s cubic-bezier(.16,1,.3,1),
+             transform 0.9s cubic-bezier(.16,1,.3,1);
+}
+.rx.on{opacity:1;transform:none}
+.d1{transition-delay:.08s}.d2{transition-delay:.20s}
+.d3{transition-delay:.34s}.d4{transition-delay:.48s}
+.d5{transition-delay:.62s}
+
+/* ── S1: HERO ── */
+.hero{
+  min-height:92svh;justify-content:center;text-align:center;
+  background:radial-gradient(ellipse at 50% 58%,rgba(15,184,164,0.08) 0%,transparent 58%);
+  gap:0;
+}
+.hero-eye{
+  font-size:10px;letter-spacing:8px;text-transform:uppercase;
+  color:rgba(15,184,164,0.35);margin-bottom:28px;
+  animation:up 1s .3s both;
+}
+.hero-h{
+  font-family:var(--serif);font-size:clamp(42px,8vw,96px);
+  font-weight:300;line-height:1.08;letter-spacing:-1px;
+  color:var(--ivory);max-width:760px;
+  animation:up 1s .5s both;
+}
+.hero-h em{font-style:italic;color:var(--teal);display:block}
+.hero-rule{
+  width:1px;height:52px;margin:36px auto;
+  background:linear-gradient(180deg,transparent,rgba(15,184,164,0.28),transparent);
+  animation:up 1s .85s both;
+}
+.hero-sub{
+  font-size:clamp(15px,1.9vw,19px);color:var(--dim);
+  font-weight:300;max-width:480px;line-height:1.88;
+  animation:up 1s 1.05s both;
+}
+.hero-scroll{
+  margin-top:52px;
+  font-size:9px;letter-spacing:5px;text-transform:uppercase;
+  color:rgba(15,184,164,0.22);animation:up 1s 1.4s both;
+}
+
+/* ── S2: THE LOOP ── */
+.loop-sec{
+  background:radial-gradient(ellipse at 20% 50%,rgba(15,184,164,0.04) 0%,transparent 52%),
+             #050f11;
+  gap:52px;
+}
+.sec-tag{font-size:10px;letter-spacing:6px;text-transform:uppercase;color:rgba(15,184,164,0.38);margin-bottom:12px;display:block}
+.sec-h{font-family:var(--serif);font-size:clamp(26px,4.2vw,50px);font-weight:300;line-height:1.22;color:var(--ivory)}
+.sec-h em{font-style:italic;color:var(--teal)}
+.loop-canvas-wrap{width:100%;max-width:400px}
+canvas{width:100%;display:block;border-radius:12px}
+.loop-nodes{
+  display:grid;grid-template-columns:1fr 1fr;gap:12px;
+  width:100%;max-width:480px;
+}
+@media(min-width:700px){.loop-nodes{grid-template-columns:repeat(5,1fr);max-width:640px}}
+.node-pill{
+  padding:14px 16px;border:1px solid rgba(15,184,164,0.08);
+  border-radius:7px;background:rgba(15,184,164,0.02);text-align:center;
+}
+.np-key{font-family:var(--serif);font-size:18px;font-style:italic;color:rgba(15,184,164,0.55);margin-bottom:4px}
+.np-name{font-size:11px;font-weight:500;color:rgba(210,245,242,0.70);margin-bottom:3px}
+.np-desc{font-size:11px;color:var(--dim);font-weight:300;line-height:1.55}
+/* 5th pill spans on mobile */
+.node-pill:nth-child(5){grid-column:1/-1}
+@media(min-width:700px){.node-pill:nth-child(5){grid-column:auto}}
+
+/* ── S3: THE GAP ── */
+.gap-sec{
+  min-height:80svh;justify-content:center;text-align:center;
+  background:radial-gradient(ellipse at 50% 50%,rgba(201,148,58,0.06) 0%,transparent 55%),
+             #050f11;
+  gap:0;
+}
+.gap-line{
+  font-family:var(--serif);font-size:clamp(22px,4vw,52px);
+  font-weight:300;line-height:1.42;color:var(--ivory);
+  max-width:600px;padding:14px 0;
+}
+.gap-line em{font-style:italic;color:var(--teal)}
+.gap-line.gl em{color:var(--gold)}
+.gap-sep{width:1px;height:28px;background:rgba(15,184,164,0.14);margin:0 auto}
+.gap-body{
+  margin-top:28px;font-size:clamp(14px,1.6vw,17px);
+  color:var(--dim);font-weight:300;max-width:460px;line-height:1.88;
+}
+
+/* ── S4: TRACE ── */
+.trace-sec{background:var(--bg);gap:52px}
+.trace-intro{text-align:center;max-width:560px}
+.trace-intro h2{font-family:var(--serif);font-size:clamp(24px,3.8vw,44px);font-weight:300;color:var(--ivory);margin-bottom:10px}
+.trace-intro h2 em{font-style:italic;color:var(--teal)}
+.trace-intro p{font-size:14px;color:var(--dim);font-weight:300;line-height:1.75;max-width:380px;margin:0 auto}
+.trace-canvas-wrap{width:100%;max-width:360px}
+.trace-steps{width:100%;max-width:560px;display:flex;flex-direction:column;gap:0}
+.t-step{
+  display:grid;grid-template-columns:12px 1fr;gap:0 24px;
+  padding-bottom:36px;
+  opacity:0;transform:translateY(14px);
+  transition:opacity 0.7s ease,transform 0.7s ease;
+}
+.t-step.on{opacity:1;transform:none}
+.t-step:nth-child(1){transition-delay:0s}
+.t-step:nth-child(2){transition-delay:.14s}
+.t-step:nth-child(3){transition-delay:.28s}
+.t-step:nth-child(4){transition-delay:.42s}
+.t-col{display:flex;flex-direction:column;align-items:center;padding-top:5px}
+.t-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0;border:1.5px solid rgba(201,148,58,.62);background:rgba(201,148,58,.10);box-shadow:0 0 8px rgba(201,148,58,.18)}
+.t-line{flex:1;width:1px;margin-top:5px;background:linear-gradient(180deg,rgba(201,148,58,.20),rgba(201,148,58,.04))}
+.t-step:last-child .t-line{display:none}
+.t-from{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:rgba(201,148,58,.45);margin-bottom:7px}
+.t-q{font-family:var(--serif);font-size:clamp(17px,2.5vw,26px);font-weight:400;color:var(--ivory);line-height:1.28;margin-bottom:8px}
+.t-q em{font-style:italic;color:var(--teal)}
+.t-ctx{font-size:13px;color:var(--dim);font-weight:300;line-height:1.72}
+
+/* ── S5: ROOT ── */
+.root-sec{
+  min-height:75svh;justify-content:center;text-align:center;
+  background:radial-gradient(ellipse at 50% 50%,rgba(201,148,58,.08) 0%,transparent 58%);
+  gap:24px;
+}
+.root-k{
+  width:70px;height:70px;border-radius:50%;
+  border:1px solid rgba(201,148,58,.45);
+  display:flex;align-items:center;justify-content:center;
+  background:rgba(201,148,58,.05);
+  box-shadow:0 0 36px rgba(201,148,58,.12);
+  font-family:var(--serif);font-size:22px;font-style:italic;
+  color:rgba(201,148,58,.78);
+}
+.root-q{
+  font-family:var(--serif);font-size:clamp(22px,4.2vw,50px);
+  font-weight:300;font-style:italic;color:var(--gold);
+  line-height:1.25;max-width:520px;
+}
+.root-body{
+  font-size:clamp(14px,1.6vw,17px);color:var(--dim);
+  font-weight:300;max-width:420px;line-height:1.88;
+}
+.root-body em{color:var(--teal);font-style:italic}
+
+/* ── S6: A* ── */
+.astar-sec{
+  background:radial-gradient(ellipse at 50% 45%,rgba(15,184,164,.07) 0%,transparent 55%),
+             #050f11;
+  text-align:center;gap:24px;
+}
+.astar-lbl{font-size:10px;letter-spacing:6px;text-transform:uppercase;color:rgba(15,184,164,.38)}
+.astar-h{
+  font-family:var(--serif);font-size:clamp(28px,4.8vw,60px);
+  font-weight:300;color:var(--ivory);line-height:1.15;max-width:600px;
+}
+.astar-h em{font-style:italic;color:var(--teal)}
+.astar-body{
+  font-size:clamp(14px,1.6vw,17px);color:var(--dim);font-weight:300;
+  max-width:420px;line-height:1.88;
+}
+.compare{
+  display:grid;grid-template-columns:1fr 1fr;
+  max-width:460px;width:100%;
+  border:1px solid rgba(15,184,164,.08);border-radius:8px;overflow:hidden;
+}
+.cmp{padding:20px 16px;text-align:center;background:rgba(15,184,164,.015)}
+.cmp+.cmp{border-left:1px solid rgba(15,184,164,.08)}
+.cmp-l{font-size:9px;letter-spacing:4px;text-transform:uppercase;margin-bottom:8px}
+.cmp-l.a{color:rgba(201,148,58,.45)}.cmp-l.t{color:rgba(15,184,164,.45)}
+.cmp-t{font-family:var(--serif);font-size:15px;font-weight:300;color:rgba(210,245,242,.68);line-height:1.5}
+
+/* ── S7: 8 QUESTIONS ── */
+.q8-sec{background:var(--bg);gap:52px}
+.q8-head{text-align:center;max-width:500px}
+.q8-head h2{font-family:var(--serif);font-size:clamp(24px,4vw,46px);font-weight:300;color:var(--ivory);margin-bottom:8px}
+.q8-head h2 em{font-style:italic;color:var(--teal)}
+.q8-head p{font-size:14px;color:var(--dim);font-weight:300;max-width:360px;margin:0 auto;line-height:1.72}
+.q8-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:32px 44px;max-width:660px;width:100%;
+}
+@media(max-width:560px){.q8-grid{grid-template-columns:1fr}}
+.q8-lbl{font-size:9px;letter-spacing:5px;text-transform:uppercase;font-weight:500;padding-bottom:12px;border-bottom:1.5px solid rgba(15,184,164,.14);margin-bottom:4px}
+.q8-lbl.tl{color:rgba(15,184,164,.72)}
+.q8-lbl.gl{color:rgba(201,148,58,.72);border-bottom-color:rgba(201,148,58,.14)}
+.qi{
+  padding:12px 0;border-bottom:1px solid rgba(15,184,164,.06);
+  opacity:0;transform:translateY(7px);
+  transition:opacity .6s ease,transform .6s ease;
+}
+.qi.on{opacity:1;transform:none}
+.qi:last-child{border-bottom:none}
+.qi-n{font-family:var(--serif);font-size:11px;font-style:italic;color:rgba(15,184,164,.22);margin-bottom:5px}
+.qi-t{font-family:var(--serif);font-size:clamp(14px,1.9vw,18px);font-weight:300;color:rgba(232,247,245,.84);line-height:1.42}
+.qi-t em{color:var(--lite);font-style:italic}
+.qi-s{font-size:11px;color:rgba(15,184,164,.30);font-style:italic;margin-top:4px}
+.qi.hinge{border-left:2px solid rgba(15,184,164,.32);padding-left:12px}
+.q8-final{
+  grid-column:1/-1;text-align:center;padding-top:44px;
+  border-top:1px solid rgba(15,184,164,.07);margin-top:12px;
+  opacity:0;transition:opacity 1.2s ease;
+}
+.q8-final.on{opacity:1}
+.q8-final p:first-child{font-family:var(--serif);font-size:clamp(15px,2.3vw,24px);font-weight:300;font-style:italic;color:var(--ivory);line-height:1.65;margin-bottom:8px}
+.q8-final p:first-child em{color:var(--teal)}
+.q8-final p:last-child{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(15,184,164,.28)}
+
+/* ── S8: LUMERI ── */
+.lumeri-sec{
+  background:radial-gradient(ellipse at 50% 42%,rgba(15,184,164,.07) 0%,transparent 55%),
+             #050f11;
+  text-align:center;gap:24px;padding-bottom:100px;
+}
+.lumeri-h{font-family:var(--serif);font-size:clamp(26px,4.5vw,52px);font-weight:300;color:var(--ivory);line-height:1.18;max-width:560px}
+.lumeri-h em{font-style:italic;color:var(--teal)}
+.lumeri-body{font-size:clamp(14px,1.6vw,17px);color:var(--dim);font-weight:300;max-width:420px;line-height:1.88}
+.lumeri-steps{display:flex;flex-direction:column;gap:14px;max-width:420px;width:100%}
+.ls{display:grid;grid-template-columns:28px 1fr;gap:12px;align-items:start;text-align:left;padding:16px 18px;border:1px solid rgba(15,184,164,.08);border-radius:8px;background:rgba(15,184,164,.018)}
+.ls-n{font-family:var(--serif);font-size:17px;font-style:italic;color:rgba(15,184,164,.45);line-height:1.2}
+.ls-h{font-size:13px;font-weight:500;color:var(--ivory);margin-bottom:4px}
+.ls-b{font-size:12px;color:var(--dim);font-weight:300;line-height:1.65}
+.lumeri-quote{
+  font-family:var(--serif);font-size:clamp(15px,1.9vw,20px);
+  font-style:italic;color:rgba(210,245,242,.48);
+  max-width:420px;line-height:1.72;
+  border-left:1.5px solid rgba(15,184,164,.20);
+  padding-left:18px;text-align:left;
+}
+.lumeri-cta{
+  display:inline-block;font-size:11px;font-weight:400;
+  letter-spacing:3.5px;text-transform:uppercase;text-decoration:none;
+  color:var(--bg);background:var(--teal);
+  padding:18px 44px;border-radius:2px;
+  transition:background .3s,transform .2s;
+}
+.lumeri-cta:hover{background:#14d0bc;transform:translateY(-2px)}
+.lumeri-note{font-size:11px;color:rgba(210,245,242,.22);font-weight:300}
+
+/* ── S9: FOUNDER ── */
+.founder-sec{background:var(--bg);text-align:center;padding:80px 40px 100px}
+.founder-text{
+  font-family:var(--serif);font-size:clamp(17px,2.5vw,26px);
+  font-weight:300;font-style:italic;color:rgba(210,245,242,.48);
+  max-width:520px;margin:0 auto;line-height:1.75;
+}
+.founder-sig{margin-top:18px;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:rgba(15,184,164,.28)}
+
+@keyframes up{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+
+</style>
+<section class="sec loop-sec obs">
+  <span class="sec-tag rx">The Conditioning Cycle</span>
+  <h2 class="sec-h rx d1">Your mind runs a loop.<br/><em>Every single day.</em></h2>
+  <div class="loop-canvas-wrap rx d2"><canvas id="kw1" height="340"></canvas></div>
+  <p class="rx d3" style="font-size:clamp(14px,1.6vw,16px);color:var(--dim);font-weight:300;max-width:480px;text-align:center;line-height:1.85">
+    Old beliefs shape what you expect. Experience arrives already filtered. Memory stores your interpretation — not what happened, but what you made of it. Memory generates Thought. Thought drives Action. The loop begins again.
+  </p>
+  <div class="loop-nodes rx d4">
+    <div class="node-pill"><div class="np-key">K</div><div class="np-name">Knowledge</div><div class="np-desc">Beliefs absorbed from childhood and culture — accepted as true without examination.</div></div>
+    <div class="node-pill"><div class="np-key">E</div><div class="np-name">Experience</div><div class="np-desc">Every event arrives filtered through your existing beliefs before it even registers.</div></div>
+    <div class="node-pill"><div class="np-key">M</div><div class="np-name">Memory</div><div class="np-desc">What the mind stores — not raw facts, but the emotional meaning it assigned to them.</div></div>
+    <div class="node-pill"><div class="np-key">T</div><div class="np-name">Thought</div><div class="np-desc">Every thought is generated by memory. You think you see the present — mostly you replay the past.</div></div>
+    <div class="node-pill"><div class="np-key">A</div><div class="np-name">Action</div><div class="np-desc">Driven by thought, from memory, from old beliefs. The same pattern with different names.</div></div>
+  </div>
+</section><section class="sec gap-sec obs">
+  <div class="gap-line rx d1">Between every thought<br/>and every action,<br/>there is a <em>gap.</em></div>
+  <div class="gap-sep rx d2"></div>
+  <div class="gap-line rx d3">Most people never notice it.</div>
+  <div class="gap-sep rx d3" style="transition-delay:.5s"></div>
+  <div class="gap-line gl rx d4"><em>Reflective Intelligence<br/>lives in that gap.</em></div>
+  <p class="gap-body rx d5">Not as a technique you apply. As a capacity already present in you — that becomes available the moment you pause and look.</p>
+</section><section class="sec trace-sec obs" id="traceSec">
+  <div class="trace-intro rx d1">
+    <span class="sec-tag">The Backward Trace</span>
+    <h2>When RI enters the gap,<br/><em>it traces backward.</em></h2>
+    <p>Not to blame the past. Just to see what generated this thought — so it no longer runs automatically.</p>
+  </div>
+  <div class="trace-canvas-wrap rx d2"><canvas id="kw2" height="300"></canvas></div>
+  <div class="trace-steps" id="traceSteps">
+    <div class="t-step">
+      <div class="t-col"><div class="t-dot"></div><div class="t-line"></div></div>
+      <div><div class="t-from">RI → Thought</div><div class="t-q"><em>What is this thought, exactly?</em></div><div class="t-ctx">Seeing the thought clearly before reacting to it. Most people react before they even notice the thought that caused the reaction.</div></div>
+    </div>
+    <div class="t-step">
+      <div class="t-col"><div class="t-dot"></div><div class="t-line"></div></div>
+      <div><div class="t-from">Thought → Memory</div><div class="t-q"><em>Where have I felt this before?</em></div><div class="t-ctx">This thought didn't appear from nowhere. Memory generated it — an old pattern that has fired before in situations that felt similar.</div></div>
+    </div>
+    <div class="t-step">
+      <div class="t-col"><div class="t-dot"></div><div class="t-line"></div></div>
+      <div><div class="t-from">Memory → Experience</div><div class="t-q"><em>What happened that created this?</em></div><div class="t-ctx">Something was stored as a lesson. The mind has been applying it automatically ever since — even in situations where it no longer fits.</div></div>
+    </div>
+    <div class="t-step">
+      <div class="t-col"><div class="t-dot"></div><div class="t-line"></div></div>
+      <div><div class="t-from">Experience → Knowledge</div><div class="t-q"><em>Where did that belief come from?</em></div><div class="t-ctx">At the root: a belief accepted as true. The question is whether it still holds — or was just never questioned.</div></div>
+    </div>
+  </div>
+</section><section class="sec root-sec obs">
+  <div class="root-k rx d1">K</div>
+  <p class="root-q rx d2">"Where did this<br/>belief come from?"</p>
+  <p class="root-body rx d3">This is the moment. The root is visible. You are not fighting it — you are simply <em>seeing it.</em> And what is seen clearly, loses its grip. Not by willpower. By seeing alone.</p>
+</section><section class="sec astar-sec obs">
+  <span class="astar-lbl rx">The Response</span>
+  <h2 class="astar-h rx d1">Something different<br/>becomes <em>possible.</em></h2>
+  <p class="astar-body rx d2">Not reaction driven by old conditioning. A response that arises from what you actually see now. Same situation. Different origin. This is A* — the response from clarity.</p>
+  <div class="compare rx d3">
+    <div class="cmp"><div class="cmp-l a">Without awareness</div><div class="cmp-t">Conditioning runs automatically. The same reaction fires.</div></div>
+    <div class="cmp"><div class="cmp-l t">With awareness</div><div class="cmp-t">RI sees. The root is found. A different response becomes possible.</div></div>
+  </div>
+</section><section class="sec q8-sec obs" id="q8Sec">
+  <div class="q8-head rx d1">
+    <h2>The Practice —<br/><em>Eight Questions</em></h2>
+    <p>These questions walk you through the backward trace in your own life. Take your time with each one.</p>
+  </div>
+  <div class="q8-grid">
+    <div>
+      <p class="q8-lbl tl">Zoom In — Toward the Root</p>
+      <div class="qi obs-q"><div class="qi-n">1</div><div class="qi-t">How are you <em>feeling</em> today?</div></div>
+      <div class="qi obs-q"><div class="qi-n">2</div><div class="qi-t">What is the <em>cause</em> of this feeling?</div></div>
+      <div class="qi obs-q"><div class="qi-n">3</div><div class="qi-t">Is this about the <em>past</em> — or fear of the <em>future?</em></div></div>
+      <div class="qi obs-q"><div class="qi-n">4</div><div class="qi-t">Why is it such an <em>issue?</em></div></div>
+      <div class="qi obs-q"><div class="qi-n">5</div><div class="qi-t">Who, exactly, is <em>facing</em> this?</div></div>
+    </div>
+    <div>
+      <p class="q8-lbl gl">The Hinge &amp; Zoom Out</p>
+      <div class="qi hinge obs-q"><div class="qi-n">6</div><div class="qi-t">Who are you — <em>the one caught in this,</em> or <em>the one who can see it?</em></div><div class="qi-s">The hinge. Step outside the one who is suffering.</div></div>
+      <div class="qi obs-q"><div class="qi-n">7</div><div class="qi-t">What would you tell a <em>close friend</em> who brought you this?</div><div class="qi-s">You already know the answer.</div></div>
+      <div class="qi obs-q"><div class="qi-n">8</div><div class="qi-t">What will you <em>do</em> after seeing this?</div><div class="qi-s">Not from habit. From here. From now.</div></div>
+      <div class="q8-final obs-q" id="q8final">
+        <p>From <em>"How are you feeling?"</em><br/>to <em>"Who are you?"</em></p>
+        <p>That is the entire path.</p>
+      </div>
+    </div>
+  </div>
+</section><section class="sec lumeri-sec obs">
+  <h2 class="lumeri-h rx d1">Ready to walk<br/>this path <em>in your life?</em></h2>
+  <p class="lumeri-body rx d2">Understanding the framework is one thing. Applying it to your actual patterns — in writing, regularly — is what changes things. LumeRI is built for that.</p>
+  <div class="lumeri-steps rx d3">
+    <div class="ls"><div class="ls-n">1</div><div><div class="ls-h">You write honestly</div><div class="ls-b">Bring whatever is alive for you. Write in your own words. LumeRI is private — no human reads what you write.</div></div></div>
+    <div class="ls"><div class="ls-n">2</div><div><div class="ls-h">LumeRI reads the structure beneath</div><div class="ls-b">Not what you said — how you were thinking. It maps your words against the conditioning cycle and names the pattern.</div></div></div>
+    <div class="ls"><div class="ls-n">3</div><div><div class="ls-h">You receive a reflection, not advice</div><div class="ls-b">Drawn from what you wrote and centuries of wisdom. A different quality of light on the same moment.</div></div></div>
+  </div>
+  <blockquote class="lumeri-quote rx d4">"LumeRI does not give you freedom. It helps you see the cycle clearly enough that freedom becomes possible."</blockquote>
+  <a href="https://lumeri.co.in" class="lumeri-cta rx d5">Begin with LumeRI →</a>
+  <p class="lumeri-note rx d5">Free to start · Private · No human reads your words</p>
+</section>
 <script>
 (function(){
 
-// ═══════════════════════════════════════════════════════
-// SHARED UTILITIES
-// ═══════════════════════════════════════════════════════
-const T_  = 'rgba(15,184,164,';   // teal — liberation
-const AM_ = 'rgba(232,160,32,';   // amber — conditioning
-const G_  = 'rgba(245,197,24,';   // gold — RI node / A*
-const IV  = '#e8fdfb';
-const DP  = '#030a0c';
-const MD  = '#061a1e';
-
-const NODES = [
-  { key:'K', full:'Knowledge',  angle:-126 },
-  { key:'E', full:'Experience', angle:-54  },
-  { key:'M', full:'Memory',     angle:18   },
-  { key:'T', full:'Thought',    angle:90   },
-  { key:'A', full:'Action',     angle:162  },
-];
-
-function initGeo(canvas) {
-  const dpr = window.devicePixelRatio || 1;
-  const W   = canvas.getBoundingClientRect().width;
-  const H   = W * 1.28; // taller — more room top and bottom
-  canvas.style.height = H + 'px';
-  canvas.width  = W * dpr;
-  canvas.height = H * dpr;
-  const ctx = canvas.getContext('2d');
-  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-  const sc  = W / 500;
-  const cx  = W / 2;
-  const cy  = H * 0.48; // slightly above centre — room for top labels
-  const R   = W * 0.185; // fits all nodes on narrow mobile screens
-  const nr  = 19 * sc;
-  const nodes = NODES.map(n => ({
-    ...n,
-    x: cx + R * Math.cos(n.angle * Math.PI / 180),
-    y: cy + R * Math.sin(n.angle * Math.PI / 180),
-  }));
-  return { ctx, W, H, cx, cy, R, sc, nr, nodes };
-}
-
-function drawBg(ctx, cx, cy, W, H, c1, c2) {
-  const g = ctx.createRadialGradient(cx, cy * .85, 0, cx, cy, W * .75);
-  g.addColorStop(0, c1); g.addColorStop(1, c2);
-  ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
-}
-
-function drawArrow(ctx, x1, y1, x2, y2, col, alpha, lw, sc, dash) {
-  ctx.beginPath(); ctx.moveTo(x1, y1); ctx.lineTo(x2, y2);
-  ctx.strokeStyle = col + alpha + ')';
-  ctx.lineWidth = lw;
-  ctx.setLineDash(dash ? [4 * sc, 3 * sc] : []);
-  ctx.stroke(); ctx.setLineDash([]);
-  const ang = Math.atan2(y2 - y1, x2 - x1);
-  const al = Math.max(8, 10 * sc), aw = Math.max(4, 5 * sc); // bigger on mobile
-  ctx.save(); ctx.translate(x2, y2); ctx.rotate(ang);
-  ctx.beginPath(); ctx.moveTo(0, 0); ctx.lineTo(-al, -aw); ctx.lineTo(-al, aw);
-  ctx.closePath(); ctx.fillStyle = col + Math.min(1, alpha + .15) + ')'; ctx.fill();
-  ctx.restore();
-}
-
-function drawNodeCircle(ctx, n, nr, col, alpha, sc) {
-  const g = ctx.createRadialGradient(n.x, n.y, 0, n.x, n.y, nr * 3);
-  g.addColorStop(0, col + alpha * .18 + ')'); g.addColorStop(1, col + '0)');
-  ctx.fillStyle = g; ctx.beginPath(); ctx.arc(n.x, n.y, nr * 3, 0, Math.PI * 2); ctx.fill();
-  ctx.beginPath(); ctx.arc(n.x, n.y, nr, 0, Math.PI * 2);
-  ctx.fillStyle = MD; ctx.fill();
-  ctx.strokeStyle = col + alpha + ')'; ctx.lineWidth = 1.5 * sc; ctx.stroke();
-  ctx.font = `500 ${Math.max(11, 13 * sc)}px 'DM Sans',sans-serif`;
-  ctx.fillStyle = col + Math.min(1, alpha + .2) + ')';
-  ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
-  ctx.fillText(n.key, n.x, n.y);
-}
-
-// Per-node label — precise manual offsets, guaranteed no clip/overlap
-function drawNodeLabel(ctx, n, cx, cy, R, sc, alpha) {
-  // Each node: explicit pixel offset direction and alignment
-  // K (-126°) = upper-left  → label to the LEFT, baseline above
-  // E (-54°)  = upper-right → label to the RIGHT, baseline above
-  // M (18°)   = right       → label to the RIGHT
-  // T (90°)   = bottom      → label BELOW, centred
-  // A (162°)  = left        → label to the LEFT
-  const off = 46 * sc;
-  const lx = cx + (R + off) * Math.cos(n.angle * Math.PI / 180);
-  const ly = cy + (R + off) * Math.sin(n.angle * Math.PI / 180);
-
-  ctx.font = `italic ${Math.max(9, 10.5 * sc)}px 'Cormorant Garamond',serif`;
-  ctx.fillStyle = IV;
-  ctx.globalAlpha = alpha;
-
-  if (n.key === 'K') {
-    // Upper-left: right-align text so it extends leftward from node
-    ctx.textAlign = 'right'; ctx.textBaseline = 'bottom';
-    ctx.fillText(n.full, lx + 6*sc, ly + 8*sc);
-  } else if (n.key === 'E') {
-    // Upper-right: left-align, reduced offset to prevent clipping
-    const eLx = cx + (R + 36*sc) * Math.cos(n.angle * Math.PI/180);
-    const eLy = cy + (R + 36*sc) * Math.sin(n.angle * Math.PI/180);
-    ctx.textAlign = 'left'; ctx.textBaseline = 'bottom';
-    ctx.fillText(n.full, eLx - 4*sc, eLy + 10*sc);
-  } else if (n.key === 'M') {
-    // Right side: left-align, centred vertically
-    // Use reduced offset to stay on-screen
-    const mLx = cx + (R + 38*sc) * Math.cos(n.angle * Math.PI/180);
-    ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
-    ctx.fillText(n.full, mLx, ly);
-  } else if (n.key === 'T') {
-    // Bottom: centred below
-    ctx.textAlign = 'center'; ctx.textBaseline = 'top';
-    ctx.fillText(n.full, lx, ly + 4*sc);
-  } else if (n.key === 'A') {
-    // Left side: right-align, centred vertically
-    ctx.textAlign = 'right'; ctx.textBaseline = 'middle';
-    ctx.fillText(n.full, lx, ly);
+// ── CONDITIONING CANVAS ──
+(function(){
+  const c=document.getElementById('kw1');if(!c)return;
+  const TW_='rgba(15,184,164,';let g,tick=0;
+  const NS=[{k:'K',a:-126},{k:'E',a:-54},{k:'M',a:18},{k:'T',a:90},{k:'A',a:162}];
+  const PT=Array.from({length:6},(_,i)=>({p:i/6}));
+  const NM={K:'Knowledge',E:'Experience',M:'Memory',T:'Thought',A:'Action'};
+  const LB=[{k:'K',a:-126,al:'right',vd:-1},{k:'E',a:-54,al:'left',vd:-1},{k:'M',a:18,al:'left',vd:0},{k:'T',a:90,al:'center',vd:1},{k:'A',a:162,al:'right',vd:0}];
+  function init(){
+    const dpr=window.devicePixelRatio||1,W=c.getBoundingClientRect().width||360,H=W;
+    c.style.height=H+'px';c.width=W*dpr;c.height=H*dpr;
+    const ctx=c.getContext('2d');ctx.setTransform(dpr,0,0,dpr,0,0);
+    const sc=W/500,cx=W/2,cy=H*.50,R=W*.200,nr=18*sc;
+    const nodes=NS.map(n=>({...n,x:cx+R*Math.cos(n.a*Math.PI/180),y:cy+R*Math.sin(n.a*Math.PI/180)}));
+    g={ctx,W,H,cx,cy,R,sc,nr,nodes};
   }
-
-  ctx.globalAlpha = 1;
-}
-
-function eio(t) { return t < .5 ? 2 * t * t : -1 + (4 - 2 * t) * t; }
-function cl(v)  { return Math.max(0, Math.min(1, v)); }
-
-// ═══════════════════════════════════════════════════════
-// DIAGRAM 1 — CONDITIONING (amber, clockwise, uniform)
-// ═══════════════════════════════════════════════════════
-(function () {
-  const canvas = document.getElementById('c1');
-  if (!canvas) return;
-  let geo, tick = 0;
-  const PARTS = Array.from({ length: 8 }, (_, i) => ({ pos: i / 8 }));
-
-  function draw() {
-    tick++;
-    const { ctx, W, H, cx, cy, R, sc, nr, nodes } = geo;
-    ctx.clearRect(0, 0, W, H);
-    drawBg(ctx, cx, cy, W, H, '#0d1a10', DP);
-
-    // Orbit ring
-    ctx.beginPath(); ctx.arc(cx, cy, R, 0, Math.PI * 2);
-    ctx.strokeStyle = AM_ + '0.12)'; ctx.lineWidth = 1; ctx.stroke();
-
-    // Arrows — all 5 clockwise
-    for (let i = 0; i < 5; i++) {
-      const f = nodes[i], t = nodes[(i + 1) % 5];
-      const dx = t.x - f.x, dy = t.y - f.y, len = Math.sqrt(dx * dx + dy * dy);
-      const ux = dx / len, uy = dy / len;
-      drawArrow(ctx, f.x + ux * nr, f.y + uy * nr, t.x - ux * nr, t.y - uy * nr, AM_, 0.45, 1.4 * sc, sc, false);
-    }
-
-    // Particles — uniform, slow
-    PARTS.forEach(p => {
-      p.pos = (p.pos + 0.00075) % 1;
-      const ang = p.pos * Math.PI * 2 - Math.PI / 2;
-      const px = cx + R * Math.cos(ang), py = cy + R * Math.sin(ang);
-      const g = ctx.createRadialGradient(px, py, 0, px, py, 7 * sc);
-      g.addColorStop(0, AM_ + '0.80)'); g.addColorStop(1, AM_ + '0)');
-      ctx.fillStyle = g; ctx.beginPath(); ctx.arc(px, py, 7 * sc, 0, Math.PI * 2); ctx.fill();
-      ctx.beginPath(); ctx.arc(px, py, 2.2 * sc, 0, Math.PI * 2);
-      ctx.fillStyle = '#f0c060'; ctx.fill();
+  function draw(){
+    tick++;const{ctx,W,H,cx,cy,R,sc,nr,nodes}=g;
+    ctx.clearRect(0,0,W,H);
+    const bg=ctx.createRadialGradient(cx,cy*.9,0,cx,cy,W*.7);
+    bg.addColorStop(0,'#071c20');bg.addColorStop(1,'#040b0d');
+    ctx.fillStyle=bg;ctx.fillRect(0,0,W,H);
+    ctx.beginPath();ctx.arc(cx,cy,R,0,Math.PI*2);
+    ctx.strokeStyle=TW_+'0.06)';ctx.lineWidth=1;ctx.stroke();
+    nodes.forEach((f,i)=>{
+      const t=nodes[(i+1)%5],dx=t.x-f.x,dy=t.y-f.y,len=Math.sqrt(dx*dx+dy*dy),ux=dx/len,uy=dy/len;
+      const x1=f.x+ux*nr,y1=f.y+uy*nr,x2=t.x-ux*nr,y2=t.y-uy*nr;
+      ctx.beginPath();ctx.moveTo(x1,y1);ctx.lineTo(x2,y2);
+      ctx.strokeStyle=TW_+'0.28)';ctx.lineWidth=1.2*sc;ctx.stroke();
+      const al=Math.max(7,9*sc),aw=Math.max(3.5,4.5*sc),ang=Math.atan2(y2-y1,x2-x1);
+      ctx.save();ctx.translate(x2,y2);ctx.rotate(ang);
+      ctx.beginPath();ctx.moveTo(0,0);ctx.lineTo(-al,-aw);ctx.lineTo(-al,aw);
+      ctx.closePath();ctx.fillStyle=TW_+'0.38)';ctx.fill();ctx.restore();
     });
-
-    nodes.forEach(n => { drawNodeCircle(ctx, n, nr, AM_, 0.75, sc); drawNodeLabel(ctx, n, cx, cy, R, sc, 0.82); });
+    PT.forEach(p=>{
+      p.p=(p.p+0.00065)%1;
+      const ang=p.p*Math.PI*2-Math.PI/2,px=cx+R*Math.cos(ang),py=cy+R*Math.sin(ang);
+      const g2=ctx.createRadialGradient(px,py,0,px,py,8*sc);
+      g2.addColorStop(0,TW_+'0.72)');g2.addColorStop(1,TW_+'0)');
+      ctx.fillStyle=g2;ctx.beginPath();ctx.arc(px,py,8*sc,0,Math.PI*2);ctx.fill();
+      ctx.beginPath();ctx.arc(px,py,2*sc,0,Math.PI*2);ctx.fillStyle='#90e8e0';ctx.fill();
+    });
+    nodes.forEach((n,i)=>{
+      const g3=ctx.createRadialGradient(n.x,n.y,0,n.x,n.y,nr*3);
+      g3.addColorStop(0,TW_+'0.10)');g3.addColorStop(1,TW_+'0)');
+      ctx.fillStyle=g3;ctx.beginPath();ctx.arc(n.x,n.y,nr*3,0,Math.PI*2);ctx.fill();
+      ctx.beginPath();ctx.arc(n.x,n.y,nr,0,Math.PI*2);ctx.fillStyle='#061a1c';ctx.fill();
+      ctx.strokeStyle=TW_+'0.58)';ctx.lineWidth=1.4*sc;ctx.stroke();
+      ctx.font=`400 ${Math.max(10,12*sc)}px 'DM Sans',sans-serif`;
+      ctx.fillStyle=TW_+'0.78)';ctx.textAlign='center';ctx.textBaseline='middle';
+      ctx.fillText(n.k,n.x,n.y);
+      const ld=LB[i],off=50*sc,lx=cx+(R+off)*Math.cos(ld.a*Math.PI/180),ly=cy+(R+off)*Math.sin(ld.a*Math.PI/180);
+      ctx.font=`italic ${Math.max(9,10*sc)}px 'Cormorant Garamond',serif`;
+      ctx.fillStyle='rgba(210,245,242,0.60)';ctx.textAlign=ld.al;
+      ctx.textBaseline=ld.vd<0?'bottom':ld.vd>0?'top':'middle';
+      ctx.fillText(NM[n.k],lx,ly+(ld.vd*4*sc));
+    });
     requestAnimationFrame(draw);
   }
-
-  function init() { geo = initGeo(canvas); draw(); }
-  window.addEventListener('resize', () => setTimeout(init, 80));
-  setTimeout(init, 100);
+  window.addEventListener('resize',()=>setTimeout(init,80));
+  setTimeout(()=>{init();draw();},120);
 })();
 
-// ═══════════════════════════════════════════════════════
-// LIBERATION DIAGRAM — USER-CONTROLLED PHASES
-// ═══════════════════════════════════════════════════════
-(function () {
-  const PHASES = [
-    {
-      tag: 'Phase 1 · The conditioning loop',
-      head: 'K → E → M → T — the automatic cycle.',
-      body: 'Knowledge shapes what we expect. Experience arrives already filtered. Memory stores the interpretation. Memory generates Thought. This is the conditioning cycle — running automatically, without awareness, shaping every reaction.',
-      col: 'teal'
-    },
-    {
-      tag: 'Phase 2 · RI activates',
-      head: 'Before thought becomes action — RI enters.',
-      body: 'In the gap between Thought and Action, RI activates — shown here as an inner node between T and A. The automatic T → A jump is intercepted. Thought arrives — but before it becomes Action, awareness enters. This is the gap. This is where everything can change.',
-      col: 'amber'
-    },
-    {
-      tag: 'Phase 3 · Tracing backward',
-      head: 'RI traces the thought back to its root.',
-      body: 'From RI, awareness traces backward:\nT — seeing the thought clearly.\nT → M — detecting the recurring pattern in memory.\nM → E — identifying the original experience or event.\nE → K — identifying the source: lived truth, inherited belief, or conditioned assumption?',
-      col: 'amber'
-    },
-    {
-      tag: 'Phase 4 · The source is seen',
-      head: 'K illuminates — where did this come from?',
-      body: 'The root is now visible. The original knowledge — inherited, unexamined, mistaken for truth — is seen for what it is. Not fought. Not suppressed. Simply seen. What is seen clearly, loses its grip.',
-      col: 'amber'
-    },
-    {
-      tag: 'Phase 5 · A* — response from clarity',
-      head: 'From RI, a different action becomes possible.',
-      body: 'Not reaction. Not suppression. A* — action arising from what is actually seen now, not from old conditioning. RI passes to A* on the orbit. The same situation. A completely different response. The loop opens.',
-      col: 'amber'
-    }
-  ];
-
-  // Current active phase (0-4). -1 = not started.
-  let curPhase = -1;
-  let traceStep = 0; // 0-3: which trace segment is active in phase 3
-  let traceArrowP = 0; // 0→1: animation progress of current segment's arrow
-  let traceDone = false; // current segment arrow fully drawn
-  let geo, phaseTick = 0, animId = null;
-
-  // Phase 0 forward particles
-  const FWD = Array.from({ length: 6 }, (_, i) => ({ pos: i / 6 }));
-
-  // Build the phase pills and dots
-  function buildNav() {
-    const pills = document.getElementById('lib-pills');
-    const dots  = document.getElementById('lib-dots');
-    if (!pills || !dots) return;
-    // Short labels for pills
-    const shortTags = ['1 · Loop','2 · Pause','3 · Trace','4 · Root','5 · A*'];
-    pills.innerHTML = PHASES.map((ph, i) => `
-      <div id="pill-${i}" onclick="libGoTo(${i})" style="
-        flex-shrink:0;
-        padding:10px 16px;
-        font-family:'DM Sans',sans-serif;
-        font-size:9px;letter-spacing:3px;text-transform:uppercase;
-        cursor:pointer;
-        border-right:1px solid rgba(245,197,24,0.08);
-        transition:all 0.3s;
-        color:rgba(200,240,238,0.30);
-        background:transparent;
-        white-space:nowrap;
-      ">${shortTags[i]}</div>
-    `).join('');
-    // Add right-fade gradient to pill bar
-    pills.style.WebkitMaskImage = 'linear-gradient(to right, black 80%, transparent 100%)';
-    pills.style.maskImage = 'linear-gradient(to right, black 80%, transparent 100%)';
-    dots.innerHTML = PHASES.map((_, i) => `
-      <div id="dot-${i}" style="
-        width:6px;height:6px;border-radius:50%;
-        background:rgba(45,212,191,0.20);
-        transition:all 0.3s;
-      "></div>
-    `).join('');
+// ── TRACE CANVAS ──
+(function(){
+  const c=document.getElementById('kw2');if(!c)return;
+  const GW_='rgba(201,148,58,';const TW_='rgba(15,184,164,';
+  let g,tick=0;
+  const NS=[{k:'K',a:-126},{k:'E',a:-54},{k:'M',a:18},{k:'T',a:90},{k:'A',a:162}];
+  function init(){
+    const dpr=window.devicePixelRatio||1,W=c.getBoundingClientRect().width||320,H=W*.85;
+    c.style.height=H+'px';c.width=W*dpr;c.height=H*dpr;
+    const ctx=c.getContext('2d');ctx.setTransform(dpr,0,0,dpr,0,0);
+    const sc=W/500,cx=W/2,cy=H*.52,R=W*.185,nr=17*sc;
+    const nodes=NS.map(n=>({...n,x:cx+R*Math.cos(n.a*Math.PI/180),y:cy+R*Math.sin(n.a*Math.PI/180)}));
+    const T=nodes[3],A=nodes[4];
+    const midX=(T.x+A.x)/2,midY=(T.y+A.y)/2;
+    const riX=midX+0.40*(cx-midX),riY=midY+0.40*(cy-midY);
+    g={ctx,W,H,cx,cy,R,sc,nr,nodes,riX,riY};
   }
-
-  function updateNav(p) {
-    PHASES.forEach((_, i) => {
-      const pill = document.getElementById('pill-'+i);
-      const dot  = document.getElementById('dot-'+i);
-      if (pill) {
-        if (i === p) {
-          pill.style.color = 'rgba(245,197,24,0.90)';
-          pill.style.background = 'rgba(245,197,24,0.06)';
-          pill.style.borderBottom = '2px solid rgba(245,197,24,0.50)';
-        } else if (i < p) {
-          pill.style.color = 'rgba(45,212,191,0.45)';
-          pill.style.background = 'transparent';
-          pill.style.borderBottom = 'none';
-        } else {
-          pill.style.color = 'rgba(200,240,238,0.25)';
-          pill.style.background = 'transparent';
-          pill.style.borderBottom = 'none';
-        }
-      }
-      if (dot) {
-        dot.style.background = i === p
-          ? 'rgba(245,197,24,0.80)'
-          : i < p
-          ? 'rgba(45,212,191,0.40)'
-          : 'rgba(200,240,238,0.15)';
-        dot.style.width  = i === p ? '8px' : '6px';
-        dot.style.height = i === p ? '8px' : '6px';
+  function draw(){
+    tick++;const{ctx,W,H,cx,cy,R,sc,nr,nodes,riX,riY}=g;
+    ctx.clearRect(0,0,W,H);
+    const bg=ctx.createRadialGradient(cx,cy*.9,0,cx,cy,W*.7);
+    bg.addColorStop(0,'#071c20');bg.addColorStop(1,'#040b0d');
+    ctx.fillStyle=bg;ctx.fillRect(0,0,W,H);
+    const riR=nr*1.1;
+    const T=nodes[3],M=nodes[2],E=nodes[1],K=nodes[0];
+    // faint forward arrows
+    nodes.forEach((f,i)=>{
+      const t=nodes[(i+1)%5],dx=t.x-f.x,dy=t.y-f.y,len=Math.sqrt(dx*dx+dy*dy),ux=dx/len,uy=dy/len;
+      ctx.beginPath();ctx.moveTo(f.x+ux*nr,f.y+uy*nr);ctx.lineTo(t.x-ux*nr,t.y-uy*nr);
+      ctx.strokeStyle=TW_+'0.12)';ctx.lineWidth=sc;ctx.stroke();
+    });
+    // backward gold trace — cycling
+    const PHASE=300;const phase=(tick%PHASE)/PHASE;
+    const traceSegs=[[T,M],[M,E],[E,K]];
+    const segs4=[[{x:riX,y:riY},T,riR,nr],...traceSegs.map(([a,b])=>[a,b,nr,nr])];
+    segs4.forEach(([from,to,fr,tr],si)=>{
+      const dx=to.x-from.x,dy=to.y-from.y,len=Math.sqrt(dx*dx+dy*dy),ux=dx/len,uy=dy/len;
+      const segStart=si/4,segEnd=(si+1)/4;
+      const sp=Math.max(0,Math.min(1,(phase-segStart)/(1/4)));
+      if(sp<=0)return;
+      const ex=from.x+ux*(fr+(len-fr-tr)*sp),ey=from.y+uy*(fr+(len-fr-tr)*sp);
+      ctx.beginPath();ctx.moveTo(from.x+ux*fr,from.y+uy*fr);ctx.lineTo(ex,ey);
+      ctx.strokeStyle=GW_+'0.62)';ctx.lineWidth=2*sc;
+      ctx.setLineDash([4*sc,3*sc]);ctx.shadowColor=GW_+'0.25)';ctx.shadowBlur=8;
+      ctx.stroke();ctx.shadowBlur=0;ctx.setLineDash([]);
+      if(sp>0.88){
+        const ang=Math.atan2(ey-(from.y+uy*fr),ex-(from.x+ux*fr));
+        ctx.save();ctx.translate(to.x-ux*tr,to.y-uy*tr);ctx.rotate(ang);
+        ctx.beginPath();ctx.moveTo(0,0);ctx.lineTo(-8*sc,-3.5*sc);ctx.lineTo(-8*sc,3.5*sc);
+        ctx.closePath();ctx.fillStyle=GW_+'0.78)';ctx.fill();ctx.restore();
       }
     });
-
-    // Prev/Next buttons
-    const prev = document.getElementById('lib-prev');
-    const next = document.getElementById('lib-next');
-    if (prev) prev.style.visibility = p > 0 ? 'visible' : 'hidden';
-    if (next) {
-      if (p === PHASES.length - 1) {
-        next.textContent = 'Watch again ↺';
-        next.style.color = 'rgba(45,212,191,0.70)';
-        next.style.borderColor = 'rgba(45,212,191,0.25)';
-      } else {
-        next.textContent = 'Next →';
-        next.style.color = 'rgba(245,197,24,0.80)';
-        next.style.borderColor = 'rgba(245,197,24,0.30)';
-      }
-    }
-
-    // Scroll active pill into view
-    const activePill = document.getElementById('pill-'+p);
-    if (activePill) activePill.scrollIntoView({ behavior:'smooth', block:'nearest', inline:'center' });
+    // nodes
+    nodes.forEach((n,i)=>{
+      const g2=ctx.createRadialGradient(n.x,n.y,0,n.x,n.y,nr*3);
+      g2.addColorStop(0,TW_+'0.08)');g2.addColorStop(1,TW_+'0)');
+      ctx.fillStyle=g2;ctx.beginPath();ctx.arc(n.x,n.y,nr*3,0,Math.PI*2);ctx.fill();
+      ctx.beginPath();ctx.arc(n.x,n.y,nr,0,Math.PI*2);ctx.fillStyle='#061a1c';ctx.fill();
+      ctx.strokeStyle=TW_+'0.45)';ctx.lineWidth=1.3*sc;ctx.stroke();
+      ctx.font=`400 ${Math.max(9,11*sc)}px 'DM Sans',sans-serif`;
+      ctx.fillStyle=TW_+'0.65)';ctx.textAlign='center';ctx.textBaseline='middle';
+      ctx.fillText(n.k,n.x,n.y);
+    });
+    // RI node
+    const pulse=0.5+0.5*Math.sin(tick*0.035);
+    const rg=ctx.createRadialGradient(riX,riY,0,riX,riY,riR*4);
+    rg.addColorStop(0,GW_+(0.16+pulse*.10)+')');rg.addColorStop(1,GW_+'0)');
+    ctx.fillStyle=rg;ctx.beginPath();ctx.arc(riX,riY,riR*4,0,Math.PI*2);ctx.fill();
+    ctx.beginPath();ctx.arc(riX,riY,riR,0,Math.PI*2);ctx.fillStyle='#0a1810';ctx.fill();
+    ctx.strokeStyle=GW_+(0.72+pulse*.28)+')';ctx.lineWidth=2*sc;
+    ctx.shadowColor=GW_+'0.45)';ctx.shadowBlur=14;ctx.stroke();ctx.shadowBlur=0;
+    ctx.font=`700 ${Math.max(9,11*sc)}px 'DM Sans',sans-serif`;
+    ctx.fillStyle=GW_+(0.88+pulse*.12)+')';ctx.textAlign='center';ctx.textBaseline='middle';
+    ctx.fillText('RI',riX,riY);
+    requestAnimationFrame(draw);
   }
+  window.addEventListener('resize',()=>setTimeout(init,80));
+  setTimeout(()=>{init();draw();},150);
+})();
 
-  function updateContent(p) {
-    const content = document.getElementById('lib-content');
-    if (!content) return;
-    const ph = PHASES[p];
-    const colMap = { teal: 'rgba(45,212,191,0.65)', amber: 'rgba(232,160,32,0.75)' };
-    const bodyFormatted = ph.body.split('\n').join('<br/>');
-    content.innerHTML = `
-      <div style="font-family:'DM Sans',sans-serif;font-size:9px;letter-spacing:4px;text-transform:uppercase;font-weight:600;color:${colMap[ph.col]};margin-bottom:8px;">Phase ${p+1} · ${ph.tag}</div>
-      <div style="font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:400;line-height:1.35;color:#e8fdfb;margin-bottom:8px;">${ph.head}</div>
-      <div style="font-family:'DM Sans',sans-serif;font-size:13px;color:rgba(220,245,242,0.65);line-height:1.72;font-weight:300;">${bodyFormatted}</div>`;
-  }
+// ── OBSERVERS ──
+const io=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(!e.isIntersecting)return;
+    e.target.querySelectorAll('.rx').forEach(el=>el.classList.add('on'));
+    io.unobserve(e.target);
+  });
+},{threshold:0.10});
+document.querySelectorAll('.obs').forEach(s=>io.observe(s));
 
-  function goToPhase(p) {
-    curPhase = Math.max(0, Math.min(PHASES.length - 1, p));
-    phaseTick = 0;
-    traceStep = 0;
-    traceArrowP = 0;
-    traceDone = false;
-    updateNav(curPhase);
-    updateContent(curPhase);
-    updateTraceUI();
-  }
+const traceIo=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(!e.isIntersecting)return;
+    e.target.querySelectorAll('.t-step').forEach((s,i)=>setTimeout(()=>s.classList.add('on'),i*180));
+    traceIo.unobserve(e.target);
+  });
+},{threshold:0.08});
+document.querySelectorAll('#traceSec').forEach(s=>traceIo.observe(s));
 
-  // Sub-step labels for phase 3
-  const TRACE_LABELS = [
-    {
-      arrow: 'Reflective Intelligence sees the Thought',
-      desc: 'What exactly is this thought?',
-      context: 'Before doing anything, just pause and look at the thought. Not good or bad — just what it actually is. Most people skip this. They react before they even notice what they are reacting to.'
-    },
-    {
-      arrow: 'Thought traces back to Memory',
-      desc: 'Have I felt this way before?',
-      context: 'Every thought comes from somewhere. Your mind is not creating something new — it is replaying a stored pattern. This feeling, this reaction, has shown up before. Where does it usually appear?'
-    },
-    {
-      arrow: 'Memory traces back to Experience',
-      desc: 'What happened that created this pattern?',
-      context: 'At some point in your life, something happened — a moment, a relationship, a loss, a criticism. Your mind stored it. And ever since, it has been running that stored response automatically, even in new situations.'
-    },
-    {
-      arrow: 'Experience traces back to Knowledge',
-      desc: 'Where did the original belief come from?',
-      context: 'At the root is a belief — something you accepted as true. Maybe you were taught it. Maybe you concluded it from a painful experience. The question now is: is it actually true? Or was it just what you learned to believe?'
-    },
-  ];
+const qIo=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(!e.isIntersecting)return;
+    e.target.querySelectorAll('.obs-q').forEach((q,i)=>setTimeout(()=>q.classList.add('on'),i*140));
+    qIo.unobserve(e.target);
+  });
+},{threshold:0.08});
+document.querySelectorAll('#q8Sec').forEach(s=>qIo.observe(s));
 
-  function updateTraceUI() {
-    const nextBtn = document.getElementById('lib-next');
-    const content = document.getElementById('lib-content');
-    if (curPhase !== 2) {
-      if (nextBtn) { nextBtn.textContent = 'Next →'; nextBtn.style.color='rgba(245,197,24,0.80)'; }
-      return;
-    }
-    // Phase 3: show sub-step info in content panel
-    if (content) {
-      const tl = TRACE_LABELS[traceStep];
-      const ph = PHASES[2];
-      const colMap = { teal: 'rgba(45,212,191,0.65)', amber: 'rgba(232,160,32,0.75)' };
-      const descHTML = traceDone
-        ? '<div style="font-family:DM Sans,sans-serif;font-size:14px;color:rgba(232,253,251,0.88);line-height:1.6;font-weight:400;margin-bottom:10px;">' + tl.desc + '</div>'
-          + '<div style="font-family:DM Sans,sans-serif;font-size:13px;color:rgba(200,240,238,0.68);line-height:1.75;font-weight:300;">' + tl.context + '</div>'
-        : '<div style="font-family:DM Sans,sans-serif;font-size:13px;color:rgba(245,197,24,0.50);font-style:italic;line-height:1.6;">Watch the arrow draw...</div>';
-      content.innerHTML =
-        '<div style="font-family:DM Sans,sans-serif;font-size:9px;letter-spacing:4px;text-transform:uppercase;font-weight:600;color:rgba(232,160,32,0.75);margin-bottom:10px;">Step ' + (traceStep+1) + ' of 4 · Tracing Backward</div>'
-        + '<div style="font-family:Cormorant Garamond,Georgia,serif;font-size:15px;font-weight:400;line-height:1.35;color:rgba(245,197,24,0.85);margin-bottom:8px;">' + tl.arrow + '</div>'
-        + descHTML;
-    }
-    if (nextBtn) {
-      if (traceStep < 3) {
-        nextBtn.textContent = traceDone ? 'Next step →' : '...';
-        nextBtn.style.color = traceDone ? 'rgba(245,197,24,0.80)' : 'rgba(245,197,24,0.30)';
-        nextBtn.style.borderColor = traceDone ? 'rgba(245,197,24,0.30)' : 'rgba(245,197,24,0.10)';
-        nextBtn.onclick = traceDone ? () => { traceStep++; traceArrowP=0; traceDone=false; updateTraceUI(); } : null;
-      } else {
-        nextBtn.textContent = traceDone ? 'Phase 4 — The source →' : '...';
-        nextBtn.style.color = traceDone ? 'rgba(45,212,191,0.80)' : 'rgba(45,212,191,0.30)';
-        nextBtn.style.borderColor = traceDone ? 'rgba(45,212,191,0.30)' : 'rgba(45,212,191,0.10)';
-        nextBtn.onclick = traceDone ? () => libNext() : null;
-      }
-    }
-  }
+})();
+</script>
+</div>
+<!-- ═══ END K-CYCLE WALKTHROUGH ═══ -->
 
-  window.libGoTo = function(p) {
-    goToPhase(p);
-    const nextBtn = document.getElementById('lib-next');
-    if (nextBtn && p !== 2) nextBtn.onclick = libNext;
-  };
-  window.libNext = function() {
-    if (curPhase === PHASES.length - 1) { goToPhase(0); }
-    else {
-      goToPhase(curPhase + 1);
-      // Restore normal Next button onclick after leaving phase 3
-      const nextBtn = document.getElementById('lib-next');
-      if (nextBtn) nextBtn.onclick = libNext;
-    }
-  };
-  window.libPrev = function() { goToPhase(curPhase - 1); };
+</section>
 
-  window.libBegin = function() {
-    const startEl  = document.getElementById('lib-start');
-    const activeEl = document.getElementById('lib-active');
-    if (startEl)  startEl.style.display  = 'none';
-    if (activeEl) activeEl.style.display = 'block';
-    buildNav();
-    goToPhase(0);
-    updateTraceUI();
-    // Re-init canvas now that it's visible
-    const canvas = document.getElementById('c2');
-    if (canvas) {
-      geo = initGeo(canvas);
-      phaseTick = 0;
-      animFrame();
-    }
-  };
-
-  // ── DRAW FUNCTION — RI on orbit between T and A ──
-  function animFrame() {
-    animId = requestAnimationFrame(animFrame);
-    phaseTick++;
-    const canvas = document.getElementById('c2');
-    if (!canvas || !geo) return;
-    const { ctx, W, H, cx, cy, R, sc, nr, nodes } = geo;
-    const phase = curPhase < 0 ? 0 : curPhase;
-
-    const LOOP = 600;
-    const lt = phaseTick % LOOP;
-    const lp = lt / LOOP; // 0..1 loops
-
-    ctx.clearRect(0, 0, W, H);
-    drawBg(ctx, cx, cy, W, H, '#081e18', DP);
-
-    // Node references
-    const K = nodes[0], E = nodes[1], M = nodes[2], T = nodes[3], A = nodes[4];
-
-    // RI sits at the chord midpoint between T and A, pulled 38% toward centre
-    // This guarantees clear separation from both T and A on any screen size
-    // T = angle 90°, A = angle 162°
-    const T_node = nodes[3], A_node = nodes[4];
-    const chordMidX = (T_node.x + A_node.x) / 2;
-    const chordMidY = (T_node.y + A_node.y) / 2;
-    const RI = {
-      x: chordMidX + 0.38 * (cx - chordMidX),
-      y: chordMidY + 0.38 * (cy - chordMidY)
-    };
-    const riR = nr * 1.15; // slightly larger than K-cycle nodes
-
-    // Phase label at top
-    const phaseNames = ['Phase 1 — Conditioning loop','Phase 2 — RI activates','Phase 3 — Tracing backward','Phase 4 — Source seen','Phase 5 — A* response'];
-    ctx.font = `500 ${Math.max(7, 8.5 * sc)}px 'DM Sans',sans-serif`;
-    ctx.fillStyle = 'rgba(45,212,191,0.38)';
-    ctx.textAlign = 'center'; ctx.textBaseline = 'top';
-    ctx.fillText(phaseNames[phase], W / 2, 9 * sc);
-
-    // Orbit ring
-    ctx.beginPath(); ctx.arc(cx, cy, R, 0, Math.PI * 2);
-    ctx.strokeStyle = T_ + '0.07)'; ctx.lineWidth = 1; ctx.stroke();
-
-    // ────────────────────────────────────────────
-    // PHASE 0: Full conditioning loop K→E→M→T→A
-    // Shows the automatic cycle with T→A direct
-    // ────────────────────────────────────────────
-    if (phase === 0) {
-      const fade = lp > 0.85 ? cl(1 - (lp - 0.85) / 0.15) : 1;
-      // Draw all 5 arrows K→E→M→T→A clockwise
-      for (let i = 0; i < 5; i++) {
-        const f = nodes[i], t2 = nodes[(i+1)%5];
-        const dx=t2.x-f.x, dy=t2.y-f.y, len=Math.sqrt(dx*dx+dy*dy);
-        const ux=dx/len, uy=dy/len;
-        drawArrow(ctx, f.x+ux*nr, f.y+uy*nr, t2.x-ux*nr, t2.y-uy*nr, AM_, 0.42*fade, 1.4*sc, sc, false);
-      }
-      // Particles flowing clockwise K→E→M→T→A
-      const FWD_PARTS = ctx._fwdParts || (ctx._fwdParts = Array.from({length:6},(_,i)=>({pos:i/6})));
-      FWD_PARTS.forEach(fp => {
-        fp.pos = (fp.pos + 0.0009) % 1;
-        const ang = fp.pos * Math.PI * 2 - Math.PI / 2;
-        const px = cx + R * Math.cos(ang), py = cy + R * Math.sin(ang);
-        const g = ctx.createRadialGradient(px,py,0,px,py,7*sc);
-        g.addColorStop(0, AM_+(0.78*fade)+')'); g.addColorStop(1, AM_+'0)');
-        ctx.fillStyle=g; ctx.beginPath(); ctx.arc(px,py,7*sc,0,Math.PI*2); ctx.fill();
-        ctx.beginPath(); ctx.arc(px,py,2*sc,0,Math.PI*2);
-        ctx.fillStyle=AM_+(0.88*fade)+')'; ctx.fill();
-      });
-      // RI visible very faintly — not yet active
-      _drawRINode(ctx, RI, riR, sc, 0.12, false, phaseTick);
-    }
-
-    // ────────────────────────────────────────────
-    // PHASE 1: RI activates in T→A gap
-    // Show T→RI arrow. T→A path "intercepted".
-    // RI pulses/breathes.
-    // ────────────────────────────────────────────
-    if (phase === 1) {
-      // Show the K→E→M→T arrows (conditioning approach, faded)
-      for (let i = 0; i < 4; i++) {
-        const f=nodes[i], t2=nodes[i+1];
-        const dx=t2.x-f.x, dy=t2.y-f.y, len=Math.sqrt(dx*dx+dy*dy);
-        const ux=dx/len, uy=dy/len;
-        drawArrow(ctx, f.x+ux*nr, f.y+uy*nr, t2.x-ux*nr, t2.y-uy*nr, AM_, 0.25, 1.2*sc, sc, false);
-      }
-
-      // T→RI activation arrow — draws in during first third of loop
-      const actP = lp < 0.4 ? cl(lp / 0.4) : 1;
-      const dxTR=RI.x-T.x, dyTR=RI.y-T.y, lenTR=Math.sqrt(dxTR*dxTR+dyTR*dyTR);
-      const uxTR=dxTR/lenTR, uyTR=dyTR/lenTR;
-      const exTR=T.x+uxTR*(nr+(lenTR-nr*2)*actP);
-      const eyTR=T.y+uyTR*(nr+(lenTR-nr*2)*actP);
-      ctx.beginPath(); ctx.moveTo(T.x+uxTR*nr, T.y+uyTR*nr); ctx.lineTo(exTR, eyTR);
-      ctx.strokeStyle=G_+'0.75)'; ctx.lineWidth=2*sc;
-      ctx.shadowColor=G_+'0.35)'; ctx.shadowBlur=10; ctx.stroke(); ctx.shadowBlur=0;
-      if (actP > 0.85) {
-        const ang2=Math.atan2(eyTR-(T.y+uyTR*nr),exTR-(T.x+uxTR*nr));
-        ctx.save(); ctx.translate(exTR,eyTR); ctx.rotate(ang2);
-        ctx.beginPath(); ctx.moveTo(0,0); ctx.lineTo(-9*sc,-4*sc); ctx.lineTo(-9*sc,4*sc);
-        ctx.closePath(); ctx.fillStyle=G_+'0.85)'; ctx.fill(); ctx.restore();
-      }
-
-      // Single clean label: show "The Gap" above the T→RI arrow midpoint
-      // Only one label, positioned above the arrow, never near RI node text
-      const ga = lp < 0.15 ? lp/0.15 : lp > 0.85 ? (1-lp)/0.15 : 1;
-      const gapMidX = (T.x + RI.x) / 2, gapMidY = (T.y + RI.y) / 2;
-      // Push label to the LEFT of the T→RI arrow so it doesn't crowd RI
-      ctx.font=`italic ${Math.max(8,9*sc)}px 'Cormorant Garamond',serif`;
-      ctx.fillStyle=G_+ga*.60+')';
-      ctx.textAlign='right'; ctx.textBaseline='middle';
-      ctx.fillText('the gap', gapMidX - 8*sc, gapMidY - 10*sc);
-
-      // RI glows — actively breathing
-      _drawRINode(ctx, RI, riR, sc, 0.85 + 0.15*lp, true, phaseTick);
-    }
-
-    // ────────────────────────────────────────────
-    // PHASE 2: Backward trace — USER-CONTROLLED SUB-STEPS
-    // traceStep 0=RI→T, 1=T→M, 2=M→E, 3=E→K
-    // Each step: arrow draws → label appears → user taps Next step
-    // ────────────────────────────────────────────
-    if (phase === 2) {
-      // Segment definitions
-      const allSegs = [
-        { from:RI, to:T, fromR:riR, toR:nr },
-        { from:T,  to:M, fromR:nr,  toR:nr },
-        { from:M,  to:E, fromR:nr,  toR:nr },
-        { from:E,  to:K, fromR:nr,  toR:nr },
-      ];
-
-      // Label positions per segment (clear of canvas edges)
-      const labelPos = [
-        { align:'right',  dx:-28, dy: 8  }, // RI→T: left of midpoint
-        { align:'left',   dx: 28, dy: 0  }, // T→M: right
-        { align:'left',   dx: 26, dy:-10 }, // M→E: right and up
-        { align:'center', dx:  0, dy: 20 }, // E→K: below line
-      ];
-
-      // Advance arrow animation
-      if (!traceDone) {
-        traceArrowP = Math.min(1, traceArrowP + 0.018); // ~55 frames to draw
-        if (traceArrowP >= 1) {
-          traceDone = true;
-          updateTraceUI(); // reveal label text + enable Next button
-        }
-      }
-
-      // Draw completed segments (faint)
-      for (let si = 0; si < traceStep; si++) {
-        const seg = allSegs[si];
-        const dx=seg.to.x-seg.from.x, dy=seg.to.y-seg.from.y;
-        const len=Math.sqrt(dx*dx+dy*dy);
-        const ux=dx/len, uy=dy/len;
-        const sx=seg.from.x+ux*seg.fromR, sy=seg.from.y+uy*seg.fromR;
-        const ex=seg.to.x-ux*seg.toR,    ey=seg.to.y-uy*seg.toR;
-        ctx.beginPath(); ctx.moveTo(sx,sy); ctx.lineTo(ex,ey);
-        ctx.strokeStyle=G_+'0.30)'; ctx.lineWidth=1.5*sc;
-        ctx.setLineDash([3*sc,3*sc]); ctx.stroke(); ctx.setLineDash([]);
-        // Completed arrowhead
-        const ang2=Math.atan2(ey-sy,ex-sx);
-        ctx.save(); ctx.translate(ex,ey); ctx.rotate(ang2);
-        ctx.beginPath(); ctx.moveTo(0,0); ctx.lineTo(-8*sc,-3.5*sc); ctx.lineTo(-8*sc,3.5*sc);
-        ctx.closePath(); ctx.fillStyle=G_+'0.38)'; ctx.fill(); ctx.restore();
-        // Completed label (faint)
-        const tl = TRACE_LABELS[si];
-        const mx=(seg.from.x+seg.to.x)/2, my=(seg.from.y+seg.to.y)/2;
-        const lp2 = labelPos[si];
-        ctx.font=`italic ${Math.max(7,8.5*sc)}px 'Cormorant Garamond',serif`;
-        ctx.fillStyle=G_+'0.30)';
-        ctx.textAlign=lp2.align; ctx.textBaseline='middle';
-        ctx.fillText(tl.arrow + ' · ' + tl.desc, mx+lp2.dx*sc, my+lp2.dy*sc);
-      }
-
-      // Draw current segment (animating)
-      if (traceStep < allSegs.length) {
-        const seg = allSegs[traceStep];
-        const dx=seg.to.x-seg.from.x, dy=seg.to.y-seg.from.y;
-        const len=Math.sqrt(dx*dx+dy*dy);
-        const ux=dx/len, uy=dy/len;
-        const sx=seg.from.x+ux*seg.fromR, sy=seg.from.y+uy*seg.fromR;
-        const fullEx=seg.to.x-ux*seg.toR, fullEy=seg.to.y-uy*seg.toR;
-        const curEx=sx+(fullEx-sx)*traceArrowP;
-        const curEy=sy+(fullEy-sy)*traceArrowP;
-
-        // Arrow line
-        ctx.beginPath(); ctx.moveTo(sx,sy); ctx.lineTo(curEx,curEy);
-        ctx.strokeStyle=G_+'0.72)'; ctx.lineWidth=2.2*sc;
-        ctx.setLineDash([4*sc,3*sc]);
-        ctx.shadowColor=G_+'0.30)'; ctx.shadowBlur=10;
-        ctx.stroke(); ctx.shadowBlur=0; ctx.setLineDash([]);
-
-        // Arrowhead when nearly complete
-        if (traceArrowP > 0.88) {
-          const ang2=Math.atan2(fullEy-sy,fullEx-sx);
-          ctx.save(); ctx.translate(fullEx,fullEy); ctx.rotate(ang2);
-          ctx.beginPath(); ctx.moveTo(0,0); ctx.lineTo(-10*sc,-4.5*sc); ctx.lineTo(-10*sc,4.5*sc);
-          ctx.closePath(); ctx.fillStyle=G_+'0.88)'; ctx.fill(); ctx.restore();
-        }
-
-        // Traveling gold dot at tip (while drawing)
-        if (traceArrowP < 1) {
-          const g2=ctx.createRadialGradient(curEx,curEy,0,curEx,curEy,11*sc);
-          g2.addColorStop(0,G_+'0.95)'); g2.addColorStop(1,G_+'0)');
-          ctx.fillStyle=g2; ctx.beginPath(); ctx.arc(curEx,curEy,11*sc,0,Math.PI*2); ctx.fill();
-          ctx.beginPath(); ctx.arc(curEx,curEy,2.5*sc,0,Math.PI*2);
-          ctx.fillStyle='#fffde0'; ctx.fill();
-        }
-
-        // Gentle pulse on arrived arrowhead when done
-        if (traceDone) {
-          const pulse2 = 0.5+0.5*Math.sin(phaseTick*0.06);
-          const pg=ctx.createRadialGradient(fullEx,fullEy,0,fullEx,fullEy,14*sc);
-          pg.addColorStop(0,G_+(0.20+pulse2*.15)+')'); pg.addColorStop(1,G_+'0)');
-          ctx.fillStyle=pg; ctx.beginPath(); ctx.arc(fullEx,fullEy,14*sc,0,Math.PI*2); ctx.fill();
-          // Label appears when done
-          const tl = TRACE_LABELS[traceStep];
-          const mx=(seg.from.x+seg.to.x)/2, my=(seg.from.y+seg.to.y)/2;
-          const lp2 = labelPos[traceStep];
-          const la=cl((traceArrowP-0.88)/0.12 + (traceDone?1:0));
-          ctx.font=`italic ${Math.max(8,9.5*sc)}px 'Cormorant Garamond',serif`;
-          ctx.fillStyle=G_+Math.min(0.82,la*.82)+')';
-          ctx.textAlign=lp2.align; ctx.textBaseline='middle';
-          ctx.fillText(tl.desc, mx+lp2.dx*sc, my+lp2.dy*sc);
-        }
-      }
-
-      _drawRINode(ctx, RI, riR, sc, 0.80, true, phaseTick);
-    }
-
-    // ────────────────────────────────────────────
-    // PHASE 3: K illuminates — "where did this come from?"
-    // Zoom-out rings. All trace lines remain visible.
-    // ────────────────────────────────────────────
-    if (phase === 3) {
-      // Show all trace lines faint
-      [[T,M],[M,E],[E,K]].forEach(([f,t2])=>{
-        const dx=t2.x-f.x, dy=t2.y-f.y, len=Math.sqrt(dx*dx+dy*dy);
-        const ux=dx/len, uy=dy/len;
-        ctx.beginPath(); ctx.moveTo(f.x+ux*nr,f.y+uy*nr); ctx.lineTo(t2.x-ux*nr,t2.y-uy*nr);
-        ctx.strokeStyle=G_+'0.22)'; ctx.lineWidth=1.5*sc;
-        ctx.setLineDash([3*sc,3*sc]); ctx.stroke(); ctx.setLineDash([]);
-      });
-      // T→RI faint
-      const dxTR=RI.x-T.x, dyTR=RI.y-T.y, lenTR=Math.sqrt(dxTR*dxTR+dyTR*dyTR);
-      const uxTR=dxTR/lenTR, uyTR=dyTR/lenTR;
-      ctx.beginPath(); ctx.moveTo(T.x+uxTR*nr,T.y+uyTR*nr); ctx.lineTo(RI.x-uxTR*riR,RI.y-uyTR*riR);
-      ctx.strokeStyle=G_+'0.18)'; ctx.lineWidth=1*sc;
-      ctx.setLineDash([3*sc,3*sc]); ctx.stroke(); ctx.setLineDash([]);
-
-      // K illuminates strongly
-      const kPulse=0.5+0.5*Math.sin(phaseTick*0.035);
-      const kg=ctx.createRadialGradient(K.x,K.y,0,K.x,K.y,nr*5);
-      kg.addColorStop(0,G_+(0.25+kPulse*.20)+')'); kg.addColorStop(1,G_+'0)');
-      ctx.fillStyle=kg; ctx.beginPath(); ctx.arc(K.x,K.y,nr*5,0,Math.PI*2); ctx.fill();
-
-      // "Where did this come from?" — BELOW K node
-      ctx.font=`italic ${Math.max(8,9.5*sc)}px 'Cormorant Garamond',serif`;
-      ctx.fillStyle=G_+'0.78)';
-      ctx.textAlign='center'; ctx.textBaseline='top';
-      ctx.fillText('where did this come from?', K.x, K.y+nr+8*sc);
-
-      // Zoom-out rings pulsing
-      [0,0.33,0.66].forEach(offset=>{
-        const rp3=((lp+offset)%1);
-        const ringR=R*(1.0+rp3*0.65);
-        const ra=(1-rp3)*0.18;
-        ctx.beginPath(); ctx.arc(cx,cy,ringR,0,Math.PI*2);
-        ctx.strokeStyle=G_+ra+')
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand">
+        <img src="ri-logo.png" alt="RI"/>
+        <span class="footer-brand-name">Reflective Intelligence</span>
+      </div>
+      <p class="footer-tagline">The observer and the observed<br/>are not two things.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Explore</h4>
+      <ul>
+        <li><a href="#symbol">The Symbol</a></li>
+        <li><a href="#science">The Science</a></li>
+        <li><a href="#philosophy">Philosophy</a></li>
+        <li><a href="#manifesto">The Manifesto</a
